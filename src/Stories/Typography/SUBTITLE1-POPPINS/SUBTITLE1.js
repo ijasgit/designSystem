@@ -1,5 +1,5 @@
 import React from 'react'
-import "/home/oem/Documents/archimedis/design/src/Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1.css"
+import "./SUBTITLE1.css"
 
 const SUBTITLE1 = (props) => {
     const {

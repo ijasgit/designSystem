@@ -1,5 +1,5 @@
 import React from "react";
-import "/home/oem/Documents/archimedis/design/src/Stories/Buttons/Buttons.css";
+import "./Buttons.css";
 
 const Buttons = (props) => {
   const { variant = "primary", label="Primary", ...rest } = props;

@@ -10,7 +10,7 @@ import Subtitle2 from "./Stories/Typography/Subtitle2-poppins/Subtitle2";
 import BodyLato from "./Stories/Typography/Body-Lato/BodyLato";
 import Caption1Lacto from "./Stories/Typography/Caption 1 - Lato/Caption1Lacto";
 import Caption2Lacto from "./Stories/Typography/Caption 2 -  Lacto/Caption2Lacto";
-import Button1Poppins from "/home/oem/Documents/archimedis/design/src/Typography/Button 1 -poppins/Button1Poppins.js";
+import Button1Poppins from "./Stories/Typography/Button 1 -poppins/Button1Poppins.js";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 const root = ReactDOM.createRoot(document.getElementById("root"));

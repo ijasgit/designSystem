@@ -1,5 +1,5 @@
 import React from 'react'
-import "/home/oem/Documents/archimedis/design/src/Stories/Typography/Button 1 -poppins/Button1Poppins.css"
+import "./Button1Poppins.css"
 const Button1Poppins = (props) => {
     const {
         variant = "primary",

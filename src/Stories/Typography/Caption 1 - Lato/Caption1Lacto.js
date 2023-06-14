@@ -1,5 +1,5 @@
 import React from "react";
-import "/home/oem/Documents/archimedis/design/src/Stories/Typography/Caption 1 - Lato/Caption1Lacto.css";
+import "./Caption1Lacto.css";
 
 const Caption1Lacto = (props) => {
   const {
