@@ -12,6 +12,7 @@ import Caption1Lacto from "./Typography/Caption 1 - Lato/Caption1Lacto";
 import Caption2Lacto from "./Typography/Caption 2 -  Lacto/Caption2Lacto";
 import Button1Poppins from "/home/oem/Documents/archimedis/design/src/Typography/Button 1 -poppins/Button1Poppins.js";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import Buttons from "./Buttons/Buttons";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
+      <Buttons />
     </HashRouter>
   </React.StrictMode>
 );
