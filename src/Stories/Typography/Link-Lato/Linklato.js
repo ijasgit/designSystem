@@ -1,12 +1,13 @@
 import React from 'react'
-import './Linklato.css'
+import './LinkLato.css'
 
-const Linklato =( props) => {
+
+const LinkLato =( props) => {
 
     const { 
       fontSize= 10,
       letterSpacing= 0,
-      lineHight= 'auto',
+      lineHeight= 'auto',
       lable= "Link-Lato",
       fontFamily= 'Lato',
       fontWeight= 500,
@@ -20,7 +21,7 @@ const Linklato =( props) => {
 
           
         letterSpacing: letterSpacing ,
-        lineHight:  lineHight,
+        lineHeight:  lineHeight,
         fontSize :fontSize,
         fontFamily:  fontFamily,
         fontWight: fontWeight,
@@ -34,4 +35,4 @@ const Linklato =( props) => {
   )
 }
 
-export default Linklato
+export default LinkLato

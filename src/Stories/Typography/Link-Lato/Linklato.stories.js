@@ -1,9 +1,9 @@
 // import React from "react";
-import Linklato from "./Linklato";
+import LinkLato from './LinkLato'
 
 export default {
-    title: 'typography/linklato',
-    component : Linklato,
+    title: 'typography/Link-Lato',
+    component : LinkLato,
     tags:["autodocs"]
    
       
@@ -14,7 +14,7 @@ export default {
       variant : 'primary',
       fontSize:10,
       letterSpacing:0,
-      lineHight:'auto',
+      lineHeight:'auto',
       lable:"Link-Lato",
       fontFamily:'Lato',
       fontWeight:500,
