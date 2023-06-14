@@ -1,9 +1,9 @@
 // import React from "react";
-import Linklato from "./Linklato";
+import LinkLato from "./LinkLato";
 
 export default {
-    title: 'typography/linklato',
-    component : Linklato,
+    title: 'typography/LinkLato',
+    component : LinkLato,
     tags:["autodocs"]
    
       
