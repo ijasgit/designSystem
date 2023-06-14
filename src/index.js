@@ -26,7 +26,7 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
-      <LinkLato></LinkLato>
+      <LinkLato/>
       <Buttons
   label="Primary Button"
   variant="secondary"
