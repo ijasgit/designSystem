@@ -1,17 +1,14 @@
-// import React from "react";
 import Linklato from "./Linklato";
 
 export default {
     title: 'typography/linklato',
     component : Linklato,
-    tags:["autodocs"]
-   
-      
+    tags:["autodocs"]   
     }
   
   export const Primary = {
     args: {
-      variant : 'primary',
+      variant :'primary',
       fontSize:10,
       letterSpacing:0,
       lineHight:'auto',
