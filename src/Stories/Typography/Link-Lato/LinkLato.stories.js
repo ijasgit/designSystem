@@ -12,7 +12,7 @@ export default {
   export const Primary = {
     args: {
       variant :'primary',
-      fontSize:11,
+      fontSize:10,
       letterSpacing:0,
       lineHeight:'auto',
       lable:"Link-Lato",
