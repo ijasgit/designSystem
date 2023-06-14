@@ -13,6 +13,7 @@ import Caption2Lacto from "./Stories/Typography/Caption 2 -  Lacto/Caption2Lacto
 import Button1Poppins from "./Stories/Typography/Button 1 -poppins/Button1Poppins.js";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
+import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -25,7 +26,11 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
-      <Buttons/>
+      <LinkLato></LinkLato>
+      <Buttons
+  label="Primary Button"
+  variant="secondary"
+/>
     </HashRouter>
   </React.StrictMode>
 );
