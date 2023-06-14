@@ -1,14 +1,14 @@
 import React from "react";
-import "/home/oem/Documents/archimedis/design/src/Typography/Caption 1 - Lato/Caption1Lacto.css";
+import "/home/oem/Documents/archimedis/design/src/Stories/Typography/Caption 2 -  Lacto/Caption2Lacto.css";
 
-const Caption1Lacto = (props) => {
+const Caption2Lacto = (props) => {
   const {
     variant = "primary",
-    label = "Caption1-Popins",
+    label = "Caption2-Lato",
     fontFamily = "Lato",
-    fontSize = 9,
+    fontSize = 8,
     fontWeight = 400,
-    letterSpacing = 2,
+    letterSpacing = 1,
     lineHeight = "auto",
     ...rest
   } = props;
@@ -28,4 +28,4 @@ const Caption1Lacto = (props) => {
   );
 };
 
-export default Caption1Lacto;
+export default Caption2Lacto;

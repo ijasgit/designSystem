@@ -1,5 +1,5 @@
 import React from 'react'
-import "/home/oem/Documents/archimedis/design/src/Typography/Body-Lato/BodyLato.css"
+import "/home/oem/Documents/archimedis/design/src/Stories/Typography/Body-Lato/BodyLato.css"
 const BodyLato = (props) => {
     const {
         variant = "primary",

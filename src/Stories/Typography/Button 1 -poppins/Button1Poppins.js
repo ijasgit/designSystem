@@ -1,13 +1,13 @@
 import React from 'react'
-import "/home/oem/Documents/archimedis/design/src/Typography/Button 2 -poppins/Button2Poppins.css"
-const Button2Poppins = (props) => {
+import "/home/oem/Documents/archimedis/design/src/Stories/Typography/Button 1 -poppins/Button1Poppins.css"
+const Button1Poppins = (props) => {
     const {
         variant = "primary",
-        label = "Button 2-poppins",
+        label = "Button 1-poppins",
         fontFamily = "Poppins",
-        fontSize = 9,
-        fontWeight = 500,
-        letterSpacing = 1,
+        fontSize = 12,
+        fontWeight = 600,
+        letterSpacing = 0,
         lineHeight = "auto",
         ...rest
       } = props;
@@ -27,4 +27,4 @@ const Button2Poppins = (props) => {
   )
 }
 
-export default Button2Poppins
+export default Button1Poppins

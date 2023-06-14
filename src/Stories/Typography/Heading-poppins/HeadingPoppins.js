@@ -1,5 +1,5 @@
 import React from "react";
-import "/home/oem/Documents/archimedis/design/src/Typography/Heading-poppins/HeadingPoppins.css";
+import "/home/oem/Documents/archimedis/design/src/Stories/Typography/Heading-poppins/HeadingPoppins.css";
 
 const HeadingPoppins = (props) => {
   const {
