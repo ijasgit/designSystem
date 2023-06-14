@@ -25,7 +25,7 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
-      <Buttons label="Primary Button" variant="secondary" />
+      <Buttons/>
     </HashRouter>
   </React.StrictMode>
 );
