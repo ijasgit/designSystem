@@ -1,0 +1,17 @@
+.large{
+    height: 32px;
+    width: 333px;
+    border-radius: 4px;
+    border: 0;
+    outline: 0;
+    background-color:"";
+}
+
+
+.small{
+    background-color: #d3d3d3;
+    height: "22px";
+    width: "125px";
+    border-radius: "4px";
+    font-size: 15px;
+}

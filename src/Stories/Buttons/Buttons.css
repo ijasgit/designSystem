@@ -18,6 +18,8 @@ button:active {
 
 .secondary {
     border-color: #00BAD2;
+    background-color: #ffff;
+
     color: #00BAD2;
     outline: 1px;
     border: solid 1px #00BAD2;
