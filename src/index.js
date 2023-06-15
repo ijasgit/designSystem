@@ -15,6 +15,7 @@ import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
+import SearchBar from "./Stories/Search Bar/SearchBar"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -41,7 +42,11 @@ root.render(
         varient="small"
         width="125px"
       />
+<<<<<<< HEAD
       <LinkLato/>
+=======
+    
+>>>>>>> 9a1e4bc2289630079670fe03ccea0f460c5dcc83
       <Buttons
   label="Primary Button"
   variant="secondary"
