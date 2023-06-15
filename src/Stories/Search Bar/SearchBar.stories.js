@@ -8,7 +8,7 @@ export default {
 
 export const Primary = {
   args: {
-    varient:"large",
+    variant:"large",
     height: "32px",
     width: "333px",
     borderRadius: "4px",

@@ -27,12 +27,18 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
-      <LinkLato/>
-      <Buttons
-  label="Primary Button"
-  variant="secondary"
-/>
-<SearchBar/>
+      <LinkLato />
+      <Buttons label="Primary Button" variant="secondary" />
+      <SearchBar />
+      <SearchBar
+        backgroundColor="#d3d3d3"
+        borderRadius="4px"
+        fontSize={15}
+        height="22px"
+        placeholder="Search"
+        varient="small"
+        width="125px"
+      />
     </HashRouter>
   </React.StrictMode>
 );

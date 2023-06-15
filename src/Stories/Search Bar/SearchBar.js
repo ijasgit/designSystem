@@ -19,7 +19,7 @@ const SearchBar = (props) => {
   return (
     <div className="searchBar">
       <TextField
-        className={variant}
+        
         id="input-with-icon-textfield"
         placeholder={placeholder}
         InputProps={{
@@ -29,10 +29,10 @@ const SearchBar = (props) => {
             </InputAdornment>
           ),
           style: {
-            height:height,
-            width: width,
-            borderRadius:borderRadius,
-            backgroundColor:backgroundColor
+            height,
+            width,
+            borderRadius,
+            backgroundColor
           },
         }}
         variant="outlined"
