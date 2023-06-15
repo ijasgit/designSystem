@@ -29,7 +29,6 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
-<<<<<<< HEA
       <LinkLato />
       <Buttons label="Primary Button" variant="secondary" />
       <SearchBar />
@@ -42,14 +41,12 @@ root.render(
         varient="small"
         width="125px"
       />
-=======
       <LinkLato/>
       <Buttons
   label="Primary Button"
   variant="secondary"
 />
     <Card/>
->>>>>>> 8417ad520b7a0ba6cd4d16ea5085bd5aa2dda21d
     </HashRouter>
   </React.StrictMode>
 );
