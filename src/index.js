@@ -14,6 +14,8 @@ import Button1Poppins from "./Stories/Typography/Button 1 -poppins/Button1Poppin
 import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
+import Card from "./Stories/Cards/Card";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -32,6 +34,7 @@ root.render(
   label="Primary Button"
   variant="secondary"
 />
+    <Card/>
     </HashRouter>
   </React.StrictMode>
 );
