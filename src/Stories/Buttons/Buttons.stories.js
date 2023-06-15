@@ -9,7 +9,16 @@ export default {
   export const Primary = {
     args: {
       variant: "primary",
-      label:"Primary Button"
+      label:"Primary Button",
+
+  
+    },
+  };
+  export const PrimaryDiable = {
+    args: {
+      variant: "primaryDisabled",
+      label:"Primary Button",
+  
   
     },
   };
@@ -17,6 +26,13 @@ export default {
   export const Secondary = {
     args: {
       variant: "secondary",
+      label:"Secondary Button"
+  
+    },
+  };
+  export const SecondaryDisable = {
+    args: {
+      variant: "secondaryDisabled",
       label:"Secondary Button"
   
     },

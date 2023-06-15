@@ -14,13 +14,36 @@ button:active {
     background-color: #00BAD2;
     border-color: #00BAD2;
     color: aliceblue;
+    opacity: 1;
+}
+.primaryDisabled {
+    background-color: #00BAD2;
+    border-color: #00BAD2;
+    color: aliceblue;
+    opacity: 0.3;
+}
+.primary:hover{
+    box-shadow: 0px 1px 8px 0px #00bad291;
 }
 
 .secondary {
     border-color: #00BAD2;
     background-color: #ffff;
-
     color: #00BAD2;
     outline: 1px;
     border: solid 1px #00BAD2;
 }
+
+.secondary:hover{
+  box-shadow:0px 1px 6px 0px #00bad266;
+}
+.secondaryDisabled {
+    border-color: #00BAD2;
+    background-color: #ffff;
+    color: #00BAD2;
+    outline: 1px;
+    border: solid 1px #00BAD2;
+    opacity: 0.3;
+}
+
+
