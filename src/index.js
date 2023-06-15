@@ -11,14 +11,16 @@ import BodyLato from "./Stories/Typography/Body-Lato/BodyLato";
 import Caption1Lacto from "./Stories/Typography/Caption 1 - Lato/Caption1Lacto";
 import Caption2Lacto from "./Stories/Typography/Caption 2 -  Lacto/Caption2Lacto";
 import Button1Poppins from "./Stories/Typography/Button 1 -poppins/Button1Poppins.js";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
-import SearchBar from "./Stories/Search Bar/SearchBar";
+import Card from "./Stories/Cards/Card";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HashRouter>
+   
       <HeadingPoppins />
       <TitlePoppins />
       <SUBTITLE1 />
@@ -27,6 +29,7 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
+<<<<<<< HEAD
       <LinkLato />
       <Buttons label="Primary Button" variant="secondary" />
       <SearchBar />
@@ -39,6 +42,14 @@ root.render(
         varient="small"
         width="125px"
       />
+=======
+      <LinkLato/>
+      <Buttons
+  label="Primary Button"
+  variant="secondary"
+/>
+    <Card/>
+>>>>>>> 8417ad520b7a0ba6cd4d16ea5085bd5aa2dda21d
     </HashRouter>
   </React.StrictMode>
 );
