@@ -42,11 +42,7 @@ root.render(
         varient="small"
         width="125px"
       />
-<<<<<<< HEAD
-      <LinkLato/>
-=======
     
->>>>>>> 9a1e4bc2289630079670fe03ccea0f460c5dcc83
       <Buttons
   label="Primary Button"
   variant="secondary"
