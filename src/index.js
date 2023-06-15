@@ -15,6 +15,7 @@ import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
+import SearchBar from "./Stories/Search Bar/SearchBar"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,7 +30,6 @@ root.render(
       <Caption1Lacto />
       <Caption2Lacto />
       <Button1Poppins />
-<<<<<<< HEA
       <LinkLato />
       <Buttons label="Primary Button" variant="secondary" />
       <SearchBar />
@@ -42,14 +42,12 @@ root.render(
         varient="small"
         width="125px"
       />
-=======
-      <LinkLato/>
+    
       <Buttons
   label="Primary Button"
   variant="secondary"
 />
     <Card/>
->>>>>>> 8417ad520b7a0ba6cd4d16ea5085bd5aa2dda21d
     </HashRouter>
   </React.StrictMode>
 );
