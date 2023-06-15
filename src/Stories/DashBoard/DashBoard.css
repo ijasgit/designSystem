@@ -1,0 +1,21 @@
+body{
+    background-color: green;
+}
+/*  */
+.DashBoard1{
+    /* border: solid; */
+    height: 94px;
+    width: 226px;
+    border-radius: 8px;
+    background-color:#FFFFFF;
+    box-shadow: 0px 1px 3px#F2F2F2;
+    font-family: 'Poppins';
+   
+    
+}
+h3{
+    font-family: 'Poppins'
+
+    
+}
+
