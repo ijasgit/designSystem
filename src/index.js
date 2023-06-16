@@ -16,9 +16,13 @@ import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
+<<<<<<< HEAD
+import SearchBar from "./Stories/Search Bar/SearchBar"
+import DataTable from "./Stories/Table/DataTable";
+
+=======
 import SearchBar from "./Stories/Search Bar/SearchBar";
 import DashBoard from "./Stories/DashBoard/DashBoard";
-// import { DashBoard2 } from "./Stories/DashBoard/DashBoard.stories";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -50,9 +54,8 @@ root.render(
   variant="secondary"
 />
     <Card/>
-    <DashBoard />
-        
-
+    <DashBoard/>
+   
     </HashRouter>
   </React.StrictMode>
 );
