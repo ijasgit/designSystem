@@ -54,7 +54,7 @@ root.render(
   variant="secondary"
 />
     <Card/>
-    <DashBoard/>
+    <DashBoard  variant='primary'/>
    
     </HashRouter>
   </React.StrictMode>
