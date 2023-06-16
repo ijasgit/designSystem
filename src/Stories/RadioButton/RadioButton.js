@@ -59,7 +59,7 @@ import {  lightBlue } from '@mui/material/colors';
         inputProps={{ 'aria-label': 'C' }}
         
         sx={{
-            color:lightBlue[800],
+            color:'default'[800],
             '&.Mui-checked': {
               color: lightBlue[600],
             },
