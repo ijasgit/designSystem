@@ -18,6 +18,7 @@ import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
 import SearchBar from "./Stories/Search Bar/SearchBar";
 import DashBoard from "./Stories/DashBoard/DashBoard";
+// import { DashBoard2 } from "./Stories/DashBoard/DashBoard.stories";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -49,8 +50,9 @@ root.render(
   variant="secondary"
 />
     <Card/>
-    <DashBoard/>
-   
+    <DashBoard />
+        
+
     </HashRouter>
   </React.StrictMode>
 );
