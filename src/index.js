@@ -16,6 +16,7 @@ import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
 import SearchBar from "./Stories/Search Bar/SearchBar"
+import DataTable from "./Stories/Table/DataTable";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -48,7 +49,7 @@ root.render(
   variant="secondary"
 />
     <Card/>
-   
+ <DataTable/>
     </HashRouter>
   </React.StrictMode>
 );
