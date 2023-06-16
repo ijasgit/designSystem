@@ -1,8 +1,18 @@
 import React from 'react'
+import Checkbox from '@mui/material/Checkbox';
+import { FormGroup,FormControlLabel } from '@mui/material';
 
-const CheckBox = () => {
+
+const CheckBox = (props) => {
+  const {variant="selected",label="selected",color="success" } =props ;
   return (
-    <div>CheckBox</div>
+<FormGroup>
+  <FormControlLabel control={<Checkbox  />} label="Enable" />
+  <FormControlLabel control={<Checkbox color='success' />} label="Selected" />
+
+  <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
+  <FormControlLabel  control={<Checkbox default checked color="default"/>} label="Disabled selected" />
+</FormGroup>
   )
 }
 
