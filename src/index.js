@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from "./reportWebVitals";
 import HeadingPoppins from "./Stories/Typography/Heading-poppins/HeadingPoppins";
 import TitlePoppins from "./Stories/Typography/Tiltle-poppins/TitlePoppins";
@@ -15,9 +16,14 @@ import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
+<<<<<<< HEAD
 import SearchBar from "./Stories/Search Bar/SearchBar"
 import DataTable from "./Stories/Table/DataTable";
 
+=======
+import SearchBar from "./Stories/Search Bar/SearchBar";
+import DashBoard from "./Stories/DashBoard/DashBoard";
+>>>>>>> 8fdd4001fd3554a8bf7bcbbdcdd3e665611c7672
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -49,7 +55,12 @@ root.render(
   variant="secondary"
 />
     <Card/>
+<<<<<<< HEAD
  <DataTable/>
+=======
+    <DashBoard/>
+   
+>>>>>>> 8fdd4001fd3554a8bf7bcbbdcdd3e665611c7672
     </HashRouter>
   </React.StrictMode>
 );
