@@ -19,7 +19,7 @@
             spanword='/120',
             h5word='2 New portfolio created today',
             iconDiv ='iconDiv-1',
-            icon=<WorkOutlineOutlinedIcon />,
+            icon=<WorkOutlineOutlinedIcon fontSize="large" />,
             
             
             
@@ -53,8 +53,8 @@
                     <circle  cx="25" cy="25" r="25"  > 
                     </circle>  </svg>
 
-                      <div className={ iconDiv} >
-                      {icon}
+                      <div className={ iconDiv}  >
+                      {icon }
                       </div>
                       
 

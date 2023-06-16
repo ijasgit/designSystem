@@ -15,10 +15,19 @@ import Button1Poppins from "./Stories/Typography/Button 1 -poppins/Button1Poppin
 import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
+<<<<<<< HEAD
 import Card from "./Stories/Cards/Card";
 import SearchBar from "./Stories/Search Bar/SearchBar";
 import DashBoard from "./Stories/DashBoard/DashBoard";
 import DataTable from "./Stories/Table/DataTable";
+=======
+import Card from "./Stories/Cards/Card"
+import SearchBar from "./Stories/Search Bar/SearchBar"
+import DataTable from "./Stories/Table/DataTable";
+// import SearchBar from "./Stories/Search Bar/SearchBar";
+import DashBoard from "./Stories/DashBoard/DashBoard";
+import RadioButton from "./Stories/RadioButton/RadioButton";
+>>>>>>> 8ae1f8fd9aa333c414cc7cacb7a77745b331670b
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -50,8 +59,16 @@ root.render(
   variant="secondary"
 />
     <Card/>
+<<<<<<< HEAD
     <DashBoard/>
    <DataTable/>
+=======
+    <DashBoard  /> 
+    <RadioButton/>
+
+
+   
+>>>>>>> 8ae1f8fd9aa333c414cc7cacb7a77745b331670b
     </HashRouter>
   </React.StrictMode>
 );
