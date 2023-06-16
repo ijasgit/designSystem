@@ -25,7 +25,7 @@ export const DashBoard1 ={
         spanword:'/ 120',
         h5word:'2 New portfolio created today',
         iconDiv:'iconDiv-1',
-        icon:<WorkOutlineOutlinedIcon sx={{ fontSize:"35px" }}/> 
+        icon:<WorkOutlineOutlinedIcon fontSize='large'/> 
         
        
       
@@ -44,7 +44,7 @@ export const DashBoard2 ={
         h5:'h5-tag2',
         svg:'svg-2',
         iconDiv:'iconDiv-2',
-        icon :<ReportGmailerrorredOutlinedIcon  sx={{ fontSize:"35px" }}/>
+        icon :<ReportGmailerrorredOutlinedIcon  fontSize='large'/>
        
       
     }

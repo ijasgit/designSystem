@@ -18,7 +18,7 @@ import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card"
 import SearchBar from "./Stories/Search Bar/SearchBar"
 import DataTable from "./Stories/Table/DataTable";
-import SearchBar from "./Stories/Search Bar/SearchBar";
+// import SearchBar from "./Stories/Search Bar/SearchBar";
 import DashBoard from "./Stories/DashBoard/DashBoard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -51,7 +51,9 @@ root.render(
   variant="secondary"
 />
     <Card/>
-    <DashBoard  variant='primary'/>
+    <DashBoard
+
+  /> 
    
     </HashRouter>
   </React.StrictMode>
