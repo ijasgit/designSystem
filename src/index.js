@@ -20,6 +20,7 @@ import SearchBar from "./Stories/Search Bar/SearchBar"
 import DataTable from "./Stories/Table/DataTable";
 // import SearchBar from "./Stories/Search Bar/SearchBar";
 import DashBoard from "./Stories/DashBoard/DashBoard";
+import RadioButton from "./Stories/RadioButton/RadioButton";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -51,9 +52,10 @@ root.render(
   variant="secondary"
 />
     <Card/>
-    <DashBoard
+    <DashBoard  /> 
+    <RadioButton/>
 
-  /> 
+
    
     </HashRouter>
   </React.StrictMode>
