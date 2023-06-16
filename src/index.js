@@ -16,8 +16,8 @@ import { HashRouter,Route,Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
 import Card from "./Stories/Cards/Card";
-import SearchBar from "./Stories/Search Bar/SearchBar"
-
+import SearchBar from "./Stories/Search Bar/SearchBar";
+import DashBoard from "./Stories/DashBoard/DashBoard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -49,6 +49,7 @@ root.render(
   variant="secondary"
 />
     <Card/>
+    <DashBoard/>
    
     </HashRouter>
   </React.StrictMode>

@@ -35,7 +35,7 @@
         return(
 
      
-            <div className={variant} >
+            <div className={variant}  {...rest}>
 
                 <div >  
                     <p className={p}>{lable} </p>
@@ -53,7 +53,7 @@
                     <circle  cx="25" cy="25" r="25"  > 
                     </circle>  </svg>
 
-                      <div className={ iconDiv}>
+                      <div className={ iconDiv} >
                       {icon}
                       </div>
                       

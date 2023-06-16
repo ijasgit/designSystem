@@ -25,7 +25,8 @@ export const DashBoard1 ={
         spanword:'/ 120',
         h5word:'2 New portfolio created today',
         iconDiv:'iconDiv-1',
-        icon:<WorkOutlineOutlinedIcon sx={{ fontSize:"35px" }}/>
+        icon:<WorkOutlineOutlinedIcon sx={{ fontSize:"35px" }}/> 
+        
        
       
        
