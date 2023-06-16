@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from "./reportWebVitals";
 import HeadingPoppins from "./Stories/Typography/Heading-poppins/HeadingPoppins";
 import TitlePoppins from "./Stories/Typography/Tiltle-poppins/TitlePoppins";
