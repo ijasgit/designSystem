@@ -4,6 +4,15 @@ import "./index.css";
 import App from "./App";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from "./reportWebVitals";
+<<<<<<< HEAD
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App/>
+  
+=======
 import HeadingPoppins from "./Stories/Typography/Heading-poppins/HeadingPoppins";
 import TitlePoppins from "./Stories/Typography/Tiltle-poppins/TitlePoppins";
 import SUBTITLE1 from "./Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
@@ -54,6 +63,7 @@ root.render(
       <DataTable/>
       <CreateNewPortfolio/>
     </HashRouter>
+>>>>>>> 003dd9e4b3bcae2bf422a07bd60e4952d2f2d31e
   </React.StrictMode>
 );
 
