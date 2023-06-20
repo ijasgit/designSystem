@@ -44,7 +44,8 @@ const NavBar = () => {
 
     <div className='nav-bar'>
 
-        <p id='pot-1'> <LibraryBooksOutlinedIcon className='library-icon'/>Portfolio Management <span id='span-1'> / Portfolio</span> <span id='span-2'><SearchBar
+        <p id='pot-1'> <LibraryBooksOutlinedIcon className='library-icon'/>
+        Portfolio Management <span id='span-1'> / Portfolio</span> <span id='span-2'><SearchBar
           backgroundColor="#f3f3f3"
           borderRadius="4px"
           fontSize={15}

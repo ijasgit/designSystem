@@ -9,7 +9,7 @@ body{
     /* border:1PX solid;     */
     height: 720px;
     width: 1280px;
-    margin-left: 7%;
+    margin-left: 1%;
     /* margin-top: 1%; */
     box-shadow: 0px 5px 5px  gray;
     background-color: #F7FCFD;
@@ -31,7 +31,7 @@ body{
     height: 48px;
     position: absolute;
     bottom: 687px;
-    left: 163px;
+    left: 189px;
     background-color: #FFFFFF;
     box-shadow: 0px 1px 1px  gray;
 
@@ -53,6 +53,7 @@ body{
 #pot-1{
     color: #b7b7b7;
     margin-left: 60px;
+    margin-top: 10px;
 }
 #span-1{
     color: black;
@@ -60,6 +61,7 @@ body{
 #span-2{
     position: absolute;
     margin-left: 60%;
+    margin-top: 5px;
 }
 #img-1{
     /* border: solid;    */
@@ -70,7 +72,7 @@ body{
 }
 #p-2{
     position: absolute;
-    top: 48%;
+    top: 50%;
     left: 39%;
     font-weight: 700;
     font-size: 16px;
@@ -78,7 +80,7 @@ body{
 #p-3{
     position: absolute;
     font-size: 13px;
-    top: 53%;
+    top: 55%;
     left: 33%;
     color: #605e5e
     /* border: solid; */
@@ -102,7 +104,7 @@ body{
 #span-4{
     position: absolute;
     left: 96%;
-    bottom: 6px;
+    bottom: 10px;
     color: rgba(86, 86, 86, 0.836);
     
 }
@@ -113,8 +115,8 @@ body{
 }
 .heading-1{
     position: absolute;
-    bottom: 81%;
-    left: 12%;
+    bottom: 83%;
+    left: 14%;
     font-weight: 500;
 }
 .cube-icon{
