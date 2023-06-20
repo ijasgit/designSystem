@@ -2,10 +2,10 @@ import React from "react";
 import "./Buttons.css";
 
 const Buttons = (props) => {
-  const { variant = "primary", label="Primary",opacity=1, ...rest } = props;
+  const { variant = "primary", label="Primary",opacity=1,onClick, ...rest } = props;
   return (
     <div>
-      <button className={variant}>{label}</button>
+      <button className={variant} onClick={onClick}>{label}</button>
     </div>
   );
 };

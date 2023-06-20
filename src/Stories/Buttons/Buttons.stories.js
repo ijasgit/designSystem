@@ -4,12 +4,15 @@ export default {
     title: "Buttons/Button",
     component: Buttons,
     tags: ["autodocs"],
+    argTypes: { onClick: { action: 'clicke' } },
   };
   
   export const Primary = {
     args: {
       variant: "primary",
       label:"Primary Button",
+      onclick:""
+
 
   
     },
