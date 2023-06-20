@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import HeadingPoppins from "../Typography/Heading-poppins/HeadingPoppins";
@@ -12,6 +11,9 @@ import LinkLato from "../Typography/Link-Lato/LinkLato";
 import Buttons from "../Buttons/Buttons";
 import "./CreateNewPortfolio.css";
 import { TextareaAutosize } from "@mui/base";
+// import Buttons from "../Stories/Buttons/Buttons";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import "../../Components/NavBar/NavBar.css"
 
 const CreateNewPortfolio = () => {
   const style = {
@@ -40,7 +42,9 @@ const CreateNewPortfolio = () => {
   };
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      {/* <Button onClick={handleOpen}>Open modal</Button> */}
+      <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen} />
+      <AddOutlinedIcon className="addout-1" fontSize="small"></AddOutlinedIcon>
       <Modal
         open={open}
         onClose={handleClose}
@@ -126,9 +130,9 @@ const CreateNewPortfolio = () => {
                   }}
                 /> */}
                 <TextareaAutosize
-                maxRows="10"
-                minRows="10"
-                style={{ width: "100%",resize:"none" }}
+                  maxRows="10"
+                  minRows="10"
+                  style={{ width: "100%", resize: "none" }}
                 />
               </div>
               <div className="row3">

@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 // import Container from 'react-bootstrap/Container';
-import SearchBar from '../Stories/Search Bar/SearchBar';
+import SearchBar from '../../Stories/Search Bar/SearchBar';
 import NotificationsTwoToneIcon from '@mui/icons-material/NotificationsTwoTone';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
 import ViewInArTwoToneIcon from '@mui/icons-material/ViewInArTwoTone';
