@@ -3,16 +3,28 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const TextFields = (props) => {
-  const { label = "select", height = "32px", width = "375px",borderRadius="4px" } = props;
+  const {
+    label = "select",
+    height = "32px",
+    width = "375px",
+    borderRadius = "4px",
+    placeholder,
+  } = props;
   return (
     <div>
       <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={top100Films}
       
-       sx={{ width: width,borderRadius }}
-        renderInput={(params) => <TextField {...params} label={label} placeholder="Select Region"/>}
+        options={top100Films}
+        sx={{ width: width, borderRadius }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            placeholder={placeholder}
+            label={label}
+            size="small"
+        
+          />
+        )}
       />
     </div>
   );

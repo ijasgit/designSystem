@@ -11,6 +11,7 @@ export const primaryCard = {
     label: "Select Region",
     height: "32px",
     width: "375px",
-    borderRadius:"4px"
+    borderRadius:"4px",
+    placeholder:""
   },
 };

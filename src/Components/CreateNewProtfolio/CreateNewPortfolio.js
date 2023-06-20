@@ -14,6 +14,7 @@ import { TextareaAutosize } from "@mui/base";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 import image from "../../Components/NavBar/Image/Rectangle.png";
+import TextFields from "../../Stories/Text Fields/TextFields";
 
 const CreateNewPortfolio = () => {
   const style = {
@@ -165,17 +166,12 @@ const CreateNewPortfolio = () => {
                       lineHeight="18px"
                       variant="primary"
                     />
-                    <TextField
-                      id="outlined-basic"
-                      //   style={{ width: 375}}
-                      size="small"
-                      variant="outlined"
-                      inputProps={{
-                        style: {
-                          height: "20px",
-                          width: "375px",
-                        },
-                      }}
+                    <TextFields
+                      borderRadius="4px"
+                      height=""
+                      label=""
+                      placeholder="Select Field"
+                      width="375px"
                     />
                   </div>
                 </div>
@@ -197,17 +193,12 @@ const CreateNewPortfolio = () => {
                       lineHeight="18px"
                       variant="primary"
                     />
-                    <TextField
-                      id="outlined-basic"
-                      //   style={{ width: 375}}
-                      size="small"
-                      variant="outlined"
-                      inputProps={{
-                        style: {
-                          height: "20px",
-                          width: "375px",
-                        },
-                      }}
+                    <TextFields
+                      borderRadius="4px"
+                      height="32px"
+                      label=""
+                      placeholder="Select case development custom field"
+                      width="375px"
                     />
                   </div>
                   <div className="row2">
