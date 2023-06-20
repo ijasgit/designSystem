@@ -6,105 +6,97 @@ body{
 }
 
 .main-div{
-    /* border:1PX solid;     */
+   
+    display: flex;
     height: 720px;
     width: 1280px;
     margin-left: 1%;
-    /* margin-top: 1%; */
     box-shadow: 0px 5px 5px  gray;
     background-color: #F7FCFD;
-    /* border-radius: 2px;   */
+   
 }
 .side-div{
     /* border: 1px solid gray; */
     width: 55px;
     height: 719px;
-    right: 10px;
-    margin-top: 10px;
     background-color:  #FFFFFF;
     box-shadow: 0px 0px 1px  gray;
+    display: flex;
+    position: sticky;
+    z-index: 1100;
+    top: 0;
+    /* justify-content: space-between; */
+    left: auto; 
     
+}
+.data-1{
+    width: 1225px;
+    height: 579px;
+    background-color: white;
+
+    border-radius: 3px;
 }
 .nav-bar{
-    /* border:0.5px solid gray; */
-    width: 1223px;
+    display: flex;
+    width: 1225px;
     height: 48px;
-    position: absolute;
-    bottom: 687px;
-    left: 189px;
     background-color: #FFFFFF;
     box-shadow: 0px 1px 1px  gray;
-
-    
+    position: sticky;
+    z-index: 1100;
+    top: 0;
+    justify-content: space-between;
+    left: auto; 
 }
 
-.data-1{
-    /* border: 1px solid; */
-    width:   1223px;
-    height: 575px;
-    position: absolute;
-    bottom: 15px;
-   margin-left: 56px;
-   background-color:   #FFFFFF;
-   border-radius: 5px;
-   box-shadow: 0px 2px 1px  gray;
-
-}
 #pot-1{
     color: #b7b7b7;
-    margin-left: 60px;
     margin-top: 10px;
+    margin-left: 19px;
 }
+  
+
 #span-1{
     color: black;
 }
-#span-2{
-    position: absolute;
-    margin-left: 60%;
-    margin-top: 5px;
-}
+
 #img-1{
-    /* border: solid;    */
-    position: absolute;
-    left: 44%;
-    top: 30%;
+    /* position: absolute; */
+    margin-left:46%;
     height: 15vh;
+    margin-top: 10%;
+    
+  
 }
 #p-2{
-    position: absolute;
-    top: 50%;
-    left: 39%;
+   
+    text-align: center;
     font-weight: 700;
     font-size: 16px;
+    margin-top: 27px;
+
 }
 #p-3{
-    position: absolute;
+    text-align: center;
     font-size: 13px;
-    top: 55%;
-    left: 33%;
     color: #605e5e
-    /* border: solid; */
+  
 }
 #span-3{
    margin-left: 17px;
    color: #605e5e;
 }
 .btn-1{
-    /* border: solid; */
-    position: absolute;
-    top: 65%;
-    left: 42%;
+    text-align: center;
+    position: relative;
 }
 .addout-1{
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    color: white;
+ color: white;
 }
 #span-4{
-    position: absolute;
+    /* position: absolute;
     left: 96%;
-    bottom: 10px;
+    bottom: 10px; */
     color: rgba(86, 86, 86, 0.836);
     
 }
@@ -113,12 +105,7 @@ body{
     left: 2%;
     color: rgba(0, 0, 0, 0.452);
 }
-.heading-1{
-    position: absolute;
-    bottom: 83%;
-    left: 14%;
-    font-weight: 500;
-}
+
 .cube-icon{
     position: absolute;
     box-shadow:  0px 0px 1px  ;
