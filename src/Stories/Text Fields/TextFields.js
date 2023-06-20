@@ -10,7 +10,8 @@ const TextFields = (props) => {
         disablePortal
         id="combo-box-demo"
         options={top100Films}
-        sx={{ width, height,borderRadius }}
+      
+       sx={{ width: width,borderRadius }}
         renderInput={(params) => <TextField {...params} label={label} placeholder="Select Region"/>}
       />
     </div>

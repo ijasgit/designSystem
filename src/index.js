@@ -12,27 +12,20 @@ import BodyLato from "./Stories/Typography/Body-Lato/BodyLato";
 import Caption1Lacto from "./Stories/Typography/Caption 1 - Lato/Caption1Lacto";
 import Caption2Lacto from "./Stories/Typography/Caption 2 -  Lacto/Caption2Lacto";
 import Button1Poppins from "./Stories/Typography/Button 1 -poppins/Button1Poppins.js";
-import { HashRouter,Route,Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Buttons from "./Stories/Buttons/Buttons";
 import LinkLato from "./Stories/Typography/Link-Lato/LinkLato";
-<<<<<<< HEAD
 import Card from "./Stories/Cards/Card";
 import SearchBar from "./Stories/Search Bar/SearchBar";
-import DashBoard from "./Stories/DashBoard/DashBoard";
-import DataTable from "./Stories/Table/DataTable";
-=======
-import Card from "./Stories/Cards/Card"
-import SearchBar from "./Stories/Search Bar/SearchBar"
 import DataTable from "./Stories/Table/DataTable";
 // import SearchBar from "./Stories/Search Bar/SearchBar";
 import DashBoard from "./Stories/DashBoard/DashBoard";
 import RadioButton from "./Stories/RadioButton/RadioButton";
->>>>>>> 8ae1f8fd9aa333c414cc7cacb7a77745b331670b
+import CreateNewPortfolio from "./Stories/CreateNewProtfolio/CreateNewPortfolio";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HashRouter>
-   
       <HeadingPoppins />
       <TitlePoppins />
       <SUBTITLE1 />
@@ -53,22 +46,13 @@ root.render(
         varient="small"
         width="125px"
       />
-    
-      <Buttons
-  label="Primary Button"
-  variant="secondary"
-/>
-    <Card/>
-<<<<<<< HEAD
-    <DashBoard/>
-   <DataTable/>
-=======
-    <DashBoard  /> 
-    <RadioButton/>
 
-
-   
->>>>>>> 8ae1f8fd9aa333c414cc7cacb7a77745b331670b
+      <Buttons label="Primary Button" variant="secondary" />
+      <Card />
+      <DashBoard />
+      <RadioButton />
+      <DataTable/>
+      <CreateNewPortfolio/>
     </HashRouter>
   </React.StrictMode>
 );
