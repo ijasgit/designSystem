@@ -43,27 +43,34 @@ const CreateNewPortfolio = () => {
   return (
     <div>
       <div className="data-1">
-        <img src={image} alt="logo" id="img-1" />
+        <div className="data-2">
+          <img src={image} alt="logo" id="img-1" />
 
-        <p id="p-2">No Part A financial Data avaliable</p>
-        <p id="p-3">
-          You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
+          <p id="p-2">No Part A financial Data avaliable</p>
+          <p id="p-3">
+            You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
+            <br />
+            <span id="span-3">
+              eiusmod tempor incididunt ut labore et dolore magna aliqua
+            </span>
+          </p>
           <br />
-          <span id="span-3">
-            eiusmod tempor incididunt ut labore et dolore magna aliqua
-          </span>
-        </p>
-        <br />
-        <div className="btn-1">
-          <Buttons
-            label="Add Portfolio"
-            variant="primary"
-            onClick={handleOpen}
-          />
-          <AddOutlinedIcon
-            className="addout-1"
-            fontSize="small"
-          ></AddOutlinedIcon>
+          <div className="btn-1">
+            <Buttons
+              label="Add Portfolio"
+              variant="primary"
+              onClick={handleOpen}
+            />
+            <div style={{position:'absolute',top: "6px", left: "549px"}}>
+   
+             
+              <AddOutlinedIcon
+                className="addout-1"
+                fontSize="small"
+              ></AddOutlinedIcon>
+            </div>
+          </div>
+
           <Modal
             open={open}
             onClose={handleClose}
