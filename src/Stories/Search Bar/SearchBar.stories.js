@@ -26,6 +26,6 @@ export const Secondary = {
     borderRadius: "4px",
     placeholder:"Search",
     fontSize:15,
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#f3f3f3',
   },
 };

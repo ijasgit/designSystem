@@ -37,7 +37,10 @@ export const DashBoard1 ={
 export const DashBoard2 ={
     args:{
         variant:'DashBoard2',
+        p:'p-tag',
         h4word:'02',
+        h4:'h4-tag1',
+        span:'span-1',
         spanword:'/ 90',
         lable:'PORTFOLIO AT RISK',
         h5word:'5 Portfolio are on verge of getting risky',

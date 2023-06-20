@@ -1,6 +1,7 @@
     import React from "react";
     import './DashBoard.css';
-    import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+    // import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+    import ReportGmailerrorredOutlinedIcon from '@mui/icons-material/ReportGmailerrorredOutlined';
     
    
    
@@ -8,19 +9,18 @@
     const DashBoard = (props)=>{
 
         const {
-            variant = 'DashBoard1',
-            p='p-tag',
-            h4='h4-tag1',
-            span='span-1',
-            h5='h5-tag1',
-            svg='svg-1',
-            lable='ACTIVE PORTFOLIO',
-            h4word="90",
-            spanword='/120',
-            h5word='2 New portfolio created today',
-            iconDiv ='iconDiv-1',
-            icon=<WorkOutlineOutlinedIcon fontSize="large" />,
-            
+            variant='DashBoard2',
+        p='p-tag',
+        h4word='02',
+        h4='h4-tag1',
+        span='span-1',
+        spanword='/ 90',
+        lable='PORTFOLIO AT RISK',
+        h5word='5 Portfolio are on verge of getting risky',
+        h5='h5-tag2',
+        svg='svg-2',
+        iconDiv='iconDiv-2',
+        icon =<ReportGmailerrorredOutlinedIcon  fontSize='large'/>,
             
             
             
