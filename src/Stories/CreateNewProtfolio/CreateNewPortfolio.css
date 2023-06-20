@@ -1,4 +1,4 @@
-.modal{
+/* .modal{
     position: absolute;
     width: 846px;
     height: 460px;
@@ -8,6 +8,25 @@
     box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
     border-radius: 6px;
 
+} */
+
+.title{
+    position: "absolute";
+width: "169px";
+height: "21px";
+left: "249px";
+top: "170px";
 }
+.footer{
+    background: #F7FCFD;
+    box-shadow: -1px 2px 11px rgb(0 0 0 / 15%);
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    margin: 37px 0px 0px 0px;
+    padding: 14px 30px 14px 30px;
+}
+
+
 
 
