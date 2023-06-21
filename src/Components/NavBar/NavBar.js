@@ -13,14 +13,11 @@ const NavBar = () => {
    <div className="nav-bar">
 
             <p id="pot-1">             
-              <LibraryBooksOutlinedIcon  />
+              <LibraryBooksOutlinedIcon className="library-icon"  />
               Portfolio Management <span id="span-1"> / Portfolios</span>
               </p>
               
-            <div style={{display: "flex",    columnGap: "19px",
-    marginTop: "11px",
-    marginRight: "30px"}}>
-    
+            <div style={{display: "flex",    columnGap: "19px", marginTop: "11px", marginRight: "30px"}}>
    
                 <SearchBar
                   backgroundColor="#f3f3f3"
@@ -31,7 +28,7 @@ const NavBar = () => {
                   varient="small"
                   width="125px"
                 />
-                 <NotificationsTwoToneIcon />
+                 <NotificationsTwoToneIcon className="notification-icon" />
 
               </div>
 
