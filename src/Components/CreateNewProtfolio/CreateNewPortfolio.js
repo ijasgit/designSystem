@@ -15,8 +15,14 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 import image from "../../Components/NavBar/Image/Rectangle.png";
 import TextFields from "../../Stories/Text Fields/TextFields";
+import {useSelector} from 'react-redux'
 
 const CreateNewPortfolio = () => {
+
+  const userList = useSelector ((state)=>state.users.value)
+
+
+
   const style = {
     position: "absolute",
     width: "846px",
@@ -57,6 +63,7 @@ const CreateNewPortfolio = () => {
           </p>
           <br />
           <div className="btn-1">
+            
             <Buttons
               label="Add Portfolio"
               variant="primary"
@@ -340,6 +347,16 @@ const CreateNewPortfolio = () => {
           </Modal>
         </div>
       </div>
+      <div>  {userList.map((user)=>{
+              return <div>
+                <h3>{user.name}</h3> 
+                <h3>{user.status}</h3> 
+                <h3>{user.date}</h3> 
+                <h3>{user.manager}</h3> 
+                </div>
+        console.log(user)
+
+      }) }</div>
     </div>
   );
 };
