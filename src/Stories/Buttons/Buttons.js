@@ -5,7 +5,7 @@ const Buttons = (props) => {
   const { variant = "primary", label="Primary",opacity=1,onClick, ...rest } = props;
   return (
     <div>
-      <button className= {variant} id="button" onClick={onClick}>{label}</button>
+      <button className= {`button ${variant}`}  onClick={onClick}>{label}</button>
     </div>
   );
 };

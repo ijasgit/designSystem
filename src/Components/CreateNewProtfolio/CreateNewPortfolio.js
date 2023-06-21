@@ -19,7 +19,7 @@ import TextFields from "../../Stories/Text Fields/TextFields";
 const CreateNewPortfolio = () => {
   const style = {
     position: "absolute",
-    width: "846px",
+    width: "878px",
     height: "460px",
     left: "217px",
     top: "130px",
@@ -79,8 +79,9 @@ const CreateNewPortfolio = () => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
+            <div id="mainBox" style={{    margin:" 40px 32px 0px 32px"}}>
               <Typography id="modal-modal-title">
-                <div style={{ margin: "18px 0px 0px 16px" }}>
+                <div >
                   <HeadingPoppins
                     fontFamily="Poppins"
                     fontSize={16}
@@ -96,8 +97,8 @@ const CreateNewPortfolio = () => {
                 className="main"
                 style={{
                   display: "flex",
-                  margin: "16px 0px 0px 18px",
-                  columnGap: "12px",
+              
+                  columnGap: "32px",
                 }}
               >
                 <div
@@ -108,7 +109,7 @@ const CreateNewPortfolio = () => {
                     rowGap: "24px",
                   }}
                 >
-                  <div className="row1">
+                  <div className="row1" style={{    marginTop:" 28px"}}>
                     {" "}
                     <SUBTITLE1
                       fontFamily="Poppins"
@@ -124,6 +125,7 @@ const CreateNewPortfolio = () => {
                       //   style={{ width: 375}}
                       size="small"
                       variant="outlined"
+                      placeholder="Enter Portfolio Name"
                       inputProps={{
                         style: {
                           height: "20px",
@@ -157,12 +159,14 @@ const CreateNewPortfolio = () => {
                   }}
                 /> */}
                     <TextareaAutosize
-                      maxRows="10"
-                      minRows="10"
-                      style={{ width: "100%", resize: "none" }}
+                     placeholder="Enter Portfolio Description"
+                      maxRows="8"
+                      minRows="8"
+
+                      style={{ width: "100%", resize: "none",height:"88px",fontSize: "14px" }}
                     />
                   </div>
-                  <div className="row3">
+                  <div className="row3" style={{    marginBottom:" 38px"}}>
                     {" "}
                     <SUBTITLE1
                       fontFamily="Poppins"
@@ -190,7 +194,7 @@ const CreateNewPortfolio = () => {
                     rowGap: "24px",
                   }}
                 >
-                  <div className="row1">
+                  <div className="row1" style={{    marginTop:" 28px"}}>
                     <SUBTITLE1
                       fontFamily="Poppins"
                       fontSize={12}
@@ -327,6 +331,8 @@ const CreateNewPortfolio = () => {
                     </label>
                   </div>
                 </div>
+              </div>
+             
               </div>
               <div className="footer">
                 <Buttons
