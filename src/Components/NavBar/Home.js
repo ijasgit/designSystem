@@ -3,6 +3,7 @@ import "./NavBar.css";
 import SideNav from "./SideNav";
 import NavBar from "./NavBar";
 import CreateNewPortfolio from "../CreateNewProtfolio/CreateNewPortfolio";
+import DataTable from "../../Stories/Table/DataTable";
 const Home = () => {
   return (
     <>
@@ -13,7 +14,8 @@ const Home = () => {
           <NavBar />
           <div> <h4 style={{    margin: "27px 0px 36px 13px"}}>Portfolio</h4></div>
          
-          <CreateNewPortfolio /> {/* body & button-popup */}
+          {/* <CreateNewPortfolio /> body & button-popup */}
+         {false?<CreateNewPortfolio/>:<DataTable/>} 
         </div>
       </div>
     </>

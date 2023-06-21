@@ -10,56 +10,26 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Checkbox from "@mui/material/Checkbox";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+import SearchBar from "../Search Bar/SearchBar";
+import AddBtn from "../../Components/Add button -create new member/AddBtn";
+import { GiSettingsKnobs } from "react-icons/gi";
+import { TbShare2 } from "react-icons/tb";
+import { HiSortDescending } from "react-icons/hi";
+import "../../Stories/Table/DataTable.css";
 
 const DataTable = (props) => {
-
-  const{variant="primary",height,width, ...rest}=props
+  const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState([
     {
       id: 1,
       name: "Frozen yoghurt",
-      calories: 159,
-      fat: 6.0,
-      carbs: 24,
-      protein: 4.0,
+      status: 159,
+      createdBy: 6.0,
+      manager: 24,
+   
       show: false,
     },
-    {
-      id: 2,
-      name: "Ice cream sandwich",
-      calories: 237,
-      fat: 6.0,
-      carbs: 24,
-      protein: 4.0,
-      show: false,
-    },
-    {
-      id: 3,
-      name: "Eclair",
-      calories: 262,
-      fat: 6.0,
-      carbs: 24,
-      protein: 4.0,
-      show: false,
-    },
-    {
-      id: 4,
-      name: "Cupcake",
-      calories: 305,
-      fat: 6.0,
-      carbs: 24,
-      protein: 4.0,
-      show: false,
-    },
-    {
-      id: 5,
-      name: "Gingerbread",
-      calories: 356,
-      fat: 16.0,
-      carbs: 24,
-      protein: 4.0,
-      show: false,
-    },
+    
   ]);
   // const [show, setShow] = useState([{ index: false }]);
   const check = (id, index) => {
@@ -70,51 +40,72 @@ const DataTable = (props) => {
 
   console.log(rows);
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <TableRow
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell>
-                <Checkbox />
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">
-                {row.protein}
-                <MoreHorizIcon onClick={() => check(row.id, index)} />
-                {row.show ? (
-                  <Paper>
-                    <MenuList>
-                      <MenuItem>Profile</MenuItem>
-                      <MenuItem>My account</MenuItem>
-                      <MenuItem>Logout</MenuItem>
-                    </MenuList>
-                  </Paper>
-                ) : null}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "0px 32px 21px 32px",
+        }}
+      >
+        <SearchBar />
+        <div style={{ display: "flex", columnGap: "32px" }}>
+          <div style={{ display: "flex", columnGap: "12px" }}>
+            <GiSettingsKnobs className="icon" />
+            <HiSortDescending className="icon" />
+            <TbShare2 className="icon" />{" "}
+          </div>
+          <AddBtn />
+        </div>
+      </div>
+      <div style={{ width: "1161px", marginLeft: "31px" }}>
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell align="right">Status</TableCell>
+                <TableCell align="right">Created date</TableCell>
+                <TableCell align="right">Manager</TableCell>
+                <TableCell align="right"></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row, index) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <Checkbox />
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.status}</TableCell>
+                  <TableCell align="right">{row.createdBy}</TableCell>
+                  <TableCell align="right">{row.manager}</TableCell>
+                  <TableCell align="right">
+                    {row.protein}
+                    <MoreHorizIcon onClick={() => check(row.id, index)} />
+                    {row.show ? (
+                      <Paper>
+                        <MenuList>
+                          <MenuItem>Profile</MenuItem>
+                          <MenuItem>My account</MenuItem>
+                          <MenuItem>Logout</MenuItem>
+                        </MenuList>
+                      </Paper>
+                    ) : null}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </div>
   );
 };
 
