@@ -15,11 +15,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 import image from "../../Components/NavBar/Image/Rectangle.png";
 import TextFields from "../../Stories/Text Fields/TextFields";
-<<<<<<< HEAD
-import AddBtn from "../Add button -create new member/AddBtn";
-=======
 import {useSelector} from 'react-redux'
->>>>>>> 4cf869aa14f620b63fb4a3cdc2ff62d645810d08
 
 const CreateNewPortfolio = () => {
 
@@ -66,9 +62,6 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-<<<<<<< HEAD
-  <AddBtn/>
-=======
           <div className="btn-1">
             
             <Buttons
@@ -358,17 +351,18 @@ const CreateNewPortfolio = () => {
               </div>
             </Box>
           </Modal>
->>>>>>> 4cf869aa14f620b63fb4a3cdc2ff62d645810d08
         </div>
       </div>
       <div>  {userList.map((user)=>{
+               console.log(user)
               return <div>
                 <h3>{user.name}</h3> 
                 <h3>{user.status}</h3> 
                 <h3>{user.date}</h3> 
                 <h3>{user.manager}</h3> 
+                
                 </div>
-        console.log(user)
+      
 
       }) }</div>
     </div>
