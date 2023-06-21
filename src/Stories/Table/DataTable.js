@@ -11,7 +11,9 @@ import Checkbox from "@mui/material/Checkbox";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 
-const DataTable = () => {
+const DataTable = (props) => {
+
+  const{variant="primary",height,width, ...rest}=props
   const [rows, setRows] = useState([
     {
       id: 1,

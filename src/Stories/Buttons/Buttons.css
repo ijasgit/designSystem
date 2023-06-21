@@ -1,8 +1,8 @@
-#button {
+.button {
     height: 32px;
     width: 153px;
     border-radius: 4px;
-    border: 0;
+   
     font-family: 'Poppins';
 }
 
@@ -15,6 +15,7 @@ button:active {
     border-color: #00BAD2;
     color: aliceblue;
     opacity: 1;
+     border: 0;
 }
 .primaryDisabled {
     background-color: #00BAD2;
