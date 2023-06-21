@@ -19,21 +19,10 @@ import "../../Stories/Table/DataTable.css";
 import { useSelector } from "react-redux";
 
 const DataTable = (props) => {
-  const useselector=useSelector((state)=>state)
+  const useselector=useSelector((state)=>state.users.value)
   console.log(useselector,"data")
   const { variant = "primary", height, width, ...rest } = props;
-  const [rows, setRows] = useState([
-    {
-      id: 1,
-      name: "Frozen yoghurt",
-      status: 159,
-      createdBy: 6.0,
-      manager: 24,
-   
-      show: false,
-    },
-    
-  ]);
+  const [rows, setRows] = useState(useselector);
   // const [show, setShow] = useState([{ index: false }]);
   const check = (id, index) => {
     let data = rows.slice();
@@ -87,7 +76,7 @@ const DataTable = (props) => {
                     {row.name}
                   </TableCell>
                   <TableCell align="right">{row.status}</TableCell>
-                  <TableCell align="right">{row.createdBy}</TableCell>
+                  <TableCell align="right">{row.date}</TableCell>
                   <TableCell align="right">{row.manager}</TableCell>
                   <TableCell align="right">
                     {row.protein}
