@@ -66,13 +66,15 @@ const CreateNewPortfolio = () => {
         </div>
       </div>
       <div>  {userList.map((user)=>{
+               console.log(user)
               return <div>
                 <h3>{user.name}</h3> 
                 <h3>{user.status}</h3> 
                 <h3>{user.date}</h3> 
                 <h3>{user.manager}</h3> 
+                
                 </div>
-        console.log(user)
+      
 
       }) }</div>
     </div>
