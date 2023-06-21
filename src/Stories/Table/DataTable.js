@@ -16,8 +16,11 @@ import { GiSettingsKnobs } from "react-icons/gi";
 import { TbShare2 } from "react-icons/tb";
 import { HiSortDescending } from "react-icons/hi";
 import "../../Stories/Table/DataTable.css";
+import { useSelector } from "react-redux";
 
 const DataTable = (props) => {
+  const useselector=useSelector((state)=>state)
+  console.log(useselector,"data")
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState([
     {
