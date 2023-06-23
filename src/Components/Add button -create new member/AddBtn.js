@@ -7,15 +7,50 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import HeadingPoppins from "../../Stories/Typography/Heading-poppins/HeadingPoppins";
 import SUBTITLE1 from "../../Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
-import { TextField } from "@mui/material";
+import { TextField, private_excludeVariablesFromRoot } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import { lightBlue } from "@mui/material/colors";
 import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
 import Buttons from "../../Stories/Buttons/Buttons";
 import "../../Components/NavBar/NavBar.css";
+import { addUser } from "../Featuers/User";
+import{useDispatch,useSelector} from 'react-redux';
+import { useState } from "react";
+import { format } from 'date-fns';
+
 
 
 const AddBtn = () => {
+  
+       const diapatch= useDispatch ();
+      //  console.log(diapatch)
+   
+       const userList =useSelector((state)=>state.users.value)
+       console.log(userList)
+
+       const [name,setName] = useState ('');
+       const[status,setStatus] =  useState ("");        
+       const [manager,setManager] = useState ("Kapil Dev");
+       const [date] = useState(new Date());
+
+       const handleSave = () => {
+        const formattedDate = format(date, 'MMM dd, hh:mm a');
+    
+        diapatch(
+          addUser({
+            id: userList[userList.length - 1].id + 1,
+            name,
+            status,
+            manager,
+            date: formattedDate, // Pass the formatted date here
+          })
+        );
+        handleClose();
+      };
+         
+        
+
+       
     const style = {
         position: "absolute",
         width: "878px",
@@ -40,6 +75,7 @@ const AddBtn = () => {
       const handleChange1 = (event) => {
         setSelectedValue1(event.target.value);
       };
+    
   return (
     <div>
       {" "}
@@ -106,6 +142,10 @@ const AddBtn = () => {
                     size="small"
                     variant="outlined"
                     placeholder="Enter Portfolio Name"
+                    onChange={(event) =>
+                      {setName(event.target.value)}
+                      
+                    }
                     inputProps={{
                       style: {
                         height: "20px",
@@ -194,6 +234,11 @@ const AddBtn = () => {
                     label=""
                     placeholder="Select case development custom field"
                     width="375px"
+                    on={(event) =>
+                      {setManager(event.target.value)}
+                      
+                      
+                    }
                   />
                 </div>
                 <div className="row2">
@@ -216,6 +261,7 @@ const AddBtn = () => {
                       color: "default"[800],
                       "&.Mui-checked": {
                         color: lightBlue[600],
+                        
                       },
                     }}
                   />{" "}
@@ -266,16 +312,24 @@ const AddBtn = () => {
                     variant="primary"
                   />
                   <Radio
-                    checked={selectedValue1 === "e"}
-                    onChange={handleChange1}
-                    value="e"
+                    checked={selectedValue1 === "Inactive"}
+                    
+                    onChange={handleChange1 }
+                    onClick={(event) =>
+                      {setStatus(event.target.value)}
+                      
+                      
+                    }                  
+                    value="Inactive"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "E" }}
                     sx={{
                       color: "default"[800],
                       "&.Mui-checked": {
                         color: lightBlue[600],
+                        
                       },
+                     
                     }}
                   />{" "}
                   <label>
@@ -287,12 +341,17 @@ const AddBtn = () => {
                       letterSpacing={0}
                       lineHeight="14px"
                       variant="primary"
+                      
                     />
                   </label>
                   <Radio
-                    checked={selectedValue1 === "d"}
+                    checked={selectedValue1 === "Active" }
                     onChange={handleChange1}
-                    value="d"
+                    onClick={(event) => {
+                      setStatus(event.target.value);
+                      //event.target.style.color = 'red'; 
+                    }}
+                    value="Active"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "D" }}
                     sx={{
@@ -311,6 +370,7 @@ const AddBtn = () => {
                       letterSpacing={0}
                       lineHeight="14px"
                       variant="primary"
+                    
                     />
                   </label>
                 </div>
@@ -319,7 +379,13 @@ const AddBtn = () => {
           </div>
           <div className="footer">
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
-            <Buttons label="Save" variant="primary" onClick={handleClose} />
+            <Buttons label="Save" variant="primary"  onClick={handleSave} 
+            //  onClick={()=>{diapatch( addUser({
+            //   id: userList[userList.length -1 ].id + 1, name,  status ,manager,date 
+            // }))
+            // handleClose()
+            // }} 
+             />
           </div>
         </Box>
       </Modal>

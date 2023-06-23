@@ -19,7 +19,7 @@ import AddBtn from "../Add button -create new member/AddBtn";
 import { useSelector } from "react-redux";
 const CreateNewPortfolio = () => {
 
-  const userList = useSelector ((state)=>state.users.value)
+  // const userList = useSelector ((state)=>state.users.value)
 
 
 
@@ -65,7 +65,7 @@ const CreateNewPortfolio = () => {
   <AddBtn/>
         </div>
       </div>
-      <div>  {userList.map((user)=>{
+      {/* <div>  {userList.map((user)=>{
                console.log(user)
               return <div>
                 <h3>{user.name}</h3> 
@@ -73,10 +73,10 @@ const CreateNewPortfolio = () => {
                 <h3>{user.date}</h3> 
                 <h3>{user.manager}</h3> 
                 
-                </div>
+                </div> */}
       
 
-      }) }</div>
+      {/* }) }</div> */}
     </div>
   );
 };
