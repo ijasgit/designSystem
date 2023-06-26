@@ -1,11 +1,13 @@
 import "./App.css";
-import Home from "./Components/NavBar/Home";
+import SignInPage from "./Components/Sign-In page/SignInPage";
+// import Home from "./Components/NavBar/Home";
 // import NavBar from "./Components/NavBar/NavBar";
 
 function App() {
   return (
     <>
-      <Home/>
+      {/* <Home/> */}
+      <SignInPage/>
     </>
   );
 }

@@ -28,7 +28,7 @@ const AddBtn = () => {
        const userList =useSelector((state)=>state.users.value)
        console.log(userList)
 
-       const [name,setName] = useState ('');
+       const [name,setName] = useState ("");
        const[status,setStatus] =  useState ("");        
        const [manager,setManager] = useState ("Kapil Dev");
        const [date] = useState(new Date());
@@ -42,9 +42,11 @@ const AddBtn = () => {
             name,
             status,
             manager,
-            date: formattedDate, // Pass the formatted date here
+            date: formattedDate, 
           })
         );
+        setName('');
+        setStatus('');
         handleClose();
       };
          
@@ -234,7 +236,7 @@ const AddBtn = () => {
                     label=""
                     placeholder="Select case development custom field"
                     width="375px"
-                    on={(event) =>
+                    onChange={(event) =>
                       {setManager(event.target.value)}
                       
                       
