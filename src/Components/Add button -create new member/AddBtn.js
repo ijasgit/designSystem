@@ -24,25 +24,27 @@ const AddBtn = () => {
   
        const diapatch= useDispatch ();
       //  console.log(diapatch)
-   
-       const userList =useSelector((state)=>state.users.value)
+       const userList =useSelector((state)=>state.users)
        console.log(userList)
 
        const [name,setName] = useState ('');
-       const[status,setStatus] =  useState ("");        
+       const[status,setStatus] =  useState ("");      
+       const [iid,setiid]=useState(0)  
        const [manager,setManager] = useState ("Kapil Dev");
        const [date] = useState(new Date());
 
        const handleSave = () => {
         const formattedDate = format(date, 'MMM dd, hh:mm a');
+        setiid(iid+1)
     
         diapatch(
           addUser({
-            id: userList[userList.length - 1].id + 1,
+            id: iid,
             name,
             status,
             manager,
             date: formattedDate, // Pass the formatted date here
+            show:false,
           })
         );
         handleClose();

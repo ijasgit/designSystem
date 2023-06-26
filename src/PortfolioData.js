@@ -3,7 +3,8 @@ export const UserData = [
     name: "Iron Man",
     status:'Active',
     date: "Dec 30 ,09:42 PM ",
-    manager:"Kapil Dev"
+    manager:"Kapil Dev",
+    show:false,
    },
   
 ];

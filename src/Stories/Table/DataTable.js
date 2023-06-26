@@ -21,15 +21,15 @@ import { useSelector } from "react-redux";
 // import { red } from "@mui/material/colors";
 
 const DataTable = (props) => {
-  const useselector=useSelector((state)=>state.users.value)
+  const useselector = useSelector((state) => state.users);
   // console.log(useselector,"data")
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(useselector);
-  
-  useEffect=(()=>{
-    setRows(useSelector((state)=>state.users.value))
-  })
-  
+
+  useEffect = () => {
+    setRows(useselector);
+  };
+
   const check = (id, index) => {
     let data = rows.slice();
     data[index].show = !data[index].show;
@@ -61,7 +61,10 @@ const DataTable = (props) => {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell> <span style={{marginLeft:"15px"}}>ID</span></TableCell>
+                <TableCell>
+                  {" "}
+                  <span style={{ marginLeft: "15px" }}>ID</span>
+                </TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell align="right">Status</TableCell>
                 <TableCell align="right">Created date</TableCell>
@@ -72,21 +75,29 @@ const DataTable = (props) => {
             <TableBody>
               {rows.map((row, index) => (
                 <TableRow
-                  key={row.name}
+                  key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                
                   <TableCell>
-                  <TableCell >{row.id}</TableCell>
-                  <Checkbox   align="right" />                  
+                    <div style={{ display: "flex" }}>
+                     
+                      <TableCell>{row.id}</TableCell>
+                    </div>
                   </TableCell>
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right" style={{ color: row.status === 'Active' ? '#15AC52' : '#C03767' }} >{row.status}</TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      color: row.status === "Active" ? "#15AC52" : "#C03767",
+                    }}
+                  >
+                    {row.status}
+                  </TableCell>
                   <TableCell align="right">{row.date.toLocaleString()}</TableCell>
                   <TableCell align="right">{row.manager}</TableCell>
-                 
+
                   <TableCell align="right">
                     {row.protein}
                     <MoreHorizIcon onClick={() => check(row.id, index)} />
