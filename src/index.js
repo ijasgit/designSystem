@@ -7,7 +7,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import  userReducer  from "./Components/Featuers/User";
-import Node from "./Node";
+// import Node from "./Node";
+// import SignInSide from "../src/Components/Sign-In-page/SignInPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -22,8 +23,9 @@ const store = configureStore({
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <App /> */}
-      <Node/>
+      <App />
+      {/* <Node/>
+      <SignInSide/> */}
       
     </Provider>
   </React.StrictMode>

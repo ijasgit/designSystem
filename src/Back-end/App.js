@@ -1,7 +1,5 @@
-import express from "express";
-
+import express from "express"
 import pkg from "pg";
-
 
 const { Client } = pkg;
 
@@ -23,6 +21,7 @@ app.get("/api/data", async (req, res) => {
   res.send(result.rows)
  
   client.end()
+ 
 
   console.log("getting");
 });

@@ -21,14 +21,15 @@ import { useSelector } from "react-redux";
 // import { red } from "@mui/material/colors";
 
 const DataTable = (props) => {
-  const useselector = useSelector((state) => state.users);
+  const data = useSelector((state) => state.users.value);
   // console.log(useselector,"data")
   const { variant = "primary", height, width, ...rest } = props;
-  const [rows, setRows] = useState(useselector);
+  const [rows, setRows] = useState(data || []);
 
-  useEffect = () => {
-    setRows(useselector);
-  };
+  useEffect (() => {
+   console.log(data)
+    setRows(data || []);
+  },[data]);
 
   const check = (id, index) => {
     let data = rows.slice();
@@ -56,7 +57,7 @@ const DataTable = (props) => {
           <AddBtn />
         </div>
       </div>
-      <div style={{ width: "1161px", marginLeft: "31px" }}>
+     {rows &&rows.length ? <div style={{ width: "1161px", marginLeft: "31px" }}>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
@@ -117,6 +118,7 @@ const DataTable = (props) => {
           </Table>
         </TableContainer>
       </div>
+      : 'no data'}
     </div>
   );
 };

@@ -3,12 +3,12 @@ import { UserData } from "../../PortfolioData";
 
 export const userSlice = createSlice({
   name: "users",
-  initialState: [],
+  initialState: {value: []},
 
   reducers: {
     addUser: (state, action) => {
 
-      state.push (action.payload)
+      state.value.push (action.payload)
     },
 
   },
