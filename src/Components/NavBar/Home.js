@@ -6,33 +6,31 @@ import CreateNewPortfolio from "../CreateNewProtfolio/CreateNewPortfolio";
 import DataTable from "../../Stories/Table/DataTable";
 import { useSelector } from "react-redux";
 const Home = () => {
-  const useselector=useSelector((state=>state.users))
-  console.log("use",useselector)
+  const data = useSelector((state) => state.users.value);
+  //const data = []
+  //console.log("use", data);
 
-  const isData=((useselector.length)<=0)
-  console.log(isData,"isdata")
-  // if(useselector.length==0){
-  //   console.log("true")
-  //   setData(false)
-  // }
-  // else{
-  //   setData(true)
-  // }
+  // const isData=((useselector.length)<=0)
+  // console.log(isData,"isdata")
 
   return (
-    <>
+  
       <div className="main-div">
         <SideNav />
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <NavBar />
-          <div> <h4 style={{    margin: "27px 0px 36px 13px"}}>Portfolio</h4></div>
-         
+          <div>
+            {" "}
+            <h4 style={{ margin: "27px 0px 36px 13px" }}>Portfolio</h4>
+          </div>
+
           {/* <CreateNewPortfolio /> body & button-popup */}
-         {isData?<CreateNewPortfolio/>:<DataTable/>} 
+          {data && data.length ?  <div><DataTable /></div> : <CreateNewPortfolio /> }
+         
         </div>
       </div>
-    </>
+  
   );
 };
 

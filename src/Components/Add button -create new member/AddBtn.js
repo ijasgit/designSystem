@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TextareaAutosize } from "@mui/base";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import TextFields from "../../Stories/Text Fields/TextFields";
@@ -24,23 +24,23 @@ const AddBtn = () => {
   
        const diapatch= useDispatch ();
       //  console.log(diapatch)
-       const userList =useSelector((state)=>state.users)
-       console.log(userList)
+       const userList =useSelector((state)=>state.users.value)
+       console.log(userList.length,"length")
 
        
        const [name,setName] = useState ('');
        const[status,setStatus] =  useState ("");      
-       const [iid,setiid]=useState(0)  
        const [manager,setManager] = useState ("Kapil Dev");
        const [date] = useState(new Date());
 
+
        const handleSave = () => {
         const formattedDate = format(date, 'MMM dd, hh:mm a');
-        setiid(iid+1)
+        
     
         diapatch(
           addUser({
-            id: iid,
+            id:userList.length+1 ,
             name,
             status,
             manager,
@@ -49,8 +49,8 @@ const AddBtn = () => {
           })
         );
         setName('');
-        setStatus('');
-        handleClose();
+  
+       handleClose();
       };
          
         
@@ -68,11 +68,11 @@ const AddBtn = () => {
         borderRadius: "5px",
       };
     
-      const [open, setOpen] = React.useState(false);
+      const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
-      const [selectedValue, setSelectedValue] = React.useState("a");
-      const [selectedValue1, setSelectedValue1] = React.useState("e");
+      const [selectedValue, setSelectedValue] = useState("a");
+      const [selectedValue1, setSelectedValue1] = useState("e");
     
       const handleChange = (event) => {
         setSelectedValue(event.target.value);
@@ -170,19 +170,7 @@ const AddBtn = () => {
                     lineHeight="18px"
                     variant="primary"
                   />
-                  {/* <TextField
-          id="outlined-basic"
-          //   style={{ width: 375}}
-          size="small"
-          variant="outlined"
-          inputProps={{
-            style: {
-              height: "112px",
-
-              width: "375px",
-            },
-          }}
-        /> */}
+             
                   <TextareaAutosize
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
