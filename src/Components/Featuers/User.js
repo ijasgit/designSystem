@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserData } from "../../PortfolioData";
+// import { UserData } from "../../PortfolioData";
 
 export const userSlice = createSlice({
   name: "users",
