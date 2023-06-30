@@ -11,8 +11,8 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/designSystem/.github.io/" element={<SignInPage/>}> </Route>
-      <Route path="/designSystem/.github.io/home" element={<Home/>}> </Route>
+      <Route path="/" element={<SignInPage/>}> </Route>
+      <Route path="/home" element={<Home/>}> </Route>
 
       {/* <Route path="/signup" element={<SignUp/>}> </Route>  */}
 

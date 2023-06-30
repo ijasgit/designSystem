@@ -24,20 +24,19 @@ export default function SignInSide() {
 
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  
   useEffect(() => {
-    console.log(data);
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/data");
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error.response);
-      }
-    };
-
-    fetchData();
+   
+    fetchData()
   }, []);
+  console.log(data);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/api/data");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error.response);
+    }
+  };
 
   const handleSubmit = (data) => {
     const username = document.getElementById("email").value;
@@ -47,7 +46,7 @@ export default function SignInSide() {
     } else {
       const bool = data.filter((item, index) => item.username === username);
       if (bool[0].username === username && bool[0].password === password) {
-        navigate("/designSystem/.github.io/home");
+        navigate("/home");
       } else {
         console.log("error");
       }
@@ -125,9 +124,8 @@ export default function SignInSide() {
               Sign in
             </Typography>
             <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
+           
+             
               sx={{ mt: 1 }}
             >
               <TextField
@@ -163,10 +161,11 @@ export default function SignInSide() {
               </div>
 
               <Button
-                type="submit"
+            
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={()=>handleSubmit(data)}
               >
                 Sign In
               </Button>
