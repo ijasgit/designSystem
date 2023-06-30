@@ -3,6 +3,9 @@
     padding: 0%;
     box-sizing: border-box;
 }
+body{
+    background-color: #F5F5F5 !important;
+}
 
 .aiOutlet-icon{
     display: flex;

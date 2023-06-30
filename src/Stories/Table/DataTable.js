@@ -7,7 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Checkbox from "@mui/material/Checkbox";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import SearchBar from "../Search Bar/SearchBar";
@@ -18,21 +17,9 @@ import { HiSortDescending } from "react-icons/hi";
 import "../../Stories/Table/DataTable.css";
 import { useSelector } from "react-redux";
 
-// import { red } from "@mui/material/colors";
 
 const DataTable = (props) => {
-<<<<<<< HEAD
-  const data = useSelector((state) => state.users);
-  // console.log(useselector,"data")
-  const { variant = "primary", height, width, ...rest } = props;
-  const [rows, setRows] = useState(data);
-
-  useEffect(() => {
-   setRows(data);
-},[data]);
-=======
   const data = useSelector((state) => state.users.value);
-  // console.log(useselector,"data")
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(data || []);
 
@@ -40,7 +27,7 @@ const DataTable = (props) => {
    console.log(data)
     setRows(data || []);
   },[data]);
->>>>>>> 4521c4420029c6b1805cc22ee9169aeee5dea066
+
 
   const check = (id, index) => {
     let data = rows.slice();

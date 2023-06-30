@@ -4,8 +4,8 @@ const { Client } = pkg;
 const client = new Client({
   user: "postgres",
   host: "localhost",
-  database: "my_newdb",
-  password: "ijas@db1",
+  database: "postgres",
+  password: "Sarathi@123",
   port: 5432,
 });
 //connectToDatabase();
@@ -13,7 +13,7 @@ async function connectToDatabase() {
   try {
     await client.connect();
     console.log("Connected to the database!");
-    const query = 'select * from public."Authentication"';
+    const query = 'select * from public."my_newdb"';
     const result = await client.query(query);
 
     // Display the retrieved data
@@ -27,12 +27,12 @@ async function connectToDatabase() {
     return TableData;
     // You can execute queries and perform other operations here
   } catch (error) {
-    console.error("Error connecting to the database:", error);
+    // console.error("Error connecting to the database:", error);
   }
  
 }
 
-// export default connectToDatabase;
+//export default connectToDatabase;
 
 
 
