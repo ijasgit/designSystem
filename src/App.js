@@ -16,11 +16,15 @@ function App() {
 
       {/* <Route path="/signup" element={<SignUp/>}> </Route>  */}
 
-    </Routes>  
-    </BrowserRouter>
-   
+     </Routes> 
+     </BrowserRouter> 
+  
+
+    {/* <SignInPage/>
+    <Home/> */}
     </>
-  );
+  ); 
+  
 }
 
 export default App;

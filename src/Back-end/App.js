@@ -6,8 +6,8 @@ const { Pool } = pkg;
 const client1 = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "my_newdb",
-  password: "ijas@db1",
+  database: "postgres",
+  password: "Sarathi@123",
   port: 5432,
 });
 
@@ -24,3 +24,4 @@ app.get("/api/data", async (req, res) => {
 const port = process.env.PORT || 8081;
 
 app.listen(port, () => console.log(`listinng on port ${port}`));
+

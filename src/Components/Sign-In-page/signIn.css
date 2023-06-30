@@ -1,0 +1,26 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F5F5F5 !important;
+}
+
+.aiOutlet-icon{
+    display: flex;
+    position: relative;
+    bottom: 47px;
+    left: 87%;
+    width:7%;
+  
+}
+
+.grid-1{
+    /* border: solid;    */
+    box-shadow: 2px 2px 9px gray;
+    /* display: flex; */
+
+    
+    
+}
