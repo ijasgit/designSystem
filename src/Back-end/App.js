@@ -17,10 +17,11 @@ app.get("/api/data", async (req, res) => {
   console.log("Connected to the database!");
   const query = 'select * from public."my_newdb"';
   const result = await client.query(query);
+  res.send(result.rows)
+ 
   
   console.log(result.rows)
- res.send(result.rows)
- 
+
 //  res.send(data)
   console.log("getting");
 });
