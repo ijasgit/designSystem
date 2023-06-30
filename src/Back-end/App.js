@@ -18,6 +18,7 @@ app.get("/api/data", async (req, res) => {
   const result = await client1.query(query);
   console.log(result.rows)
   res.send(result.rows)
+  console.log("getting")
 });
 
 
