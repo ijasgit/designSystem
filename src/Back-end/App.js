@@ -1,13 +1,13 @@
 import express from "express"
 import pkg from "pg";
 
-const { Pool } = pkg;
+const { Client } = pkg;
 
-const client = new Pool({
+const client = new Client({
   user: "postgres",
   host: "localhost",
-  database: "my_newdb",
-  password: "ijas@db1",
+  database: "postgres",
+  password: "Sarathi@123",
   port: 5432,
 });
 
@@ -18,10 +18,15 @@ app.get("/api/data", async (req, res) => {
   const result = await client.query(query);
   console.log(result.rows)
   res.send(result.rows)
-  console.log("getting")
-});
+ 
+  
+  console.log(result.rows)
 
+//  res.send(data)
+  console.log("getting");
+});
 
 const port = process.env.PORT || 8081;
 
 app.listen(port, () => console.log(`listinng on port ${port}`));
+
