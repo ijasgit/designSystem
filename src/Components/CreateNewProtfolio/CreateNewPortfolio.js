@@ -1,22 +1,8 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import HeadingPoppins from "../../Stories/Typography/Heading-poppins/HeadingPoppins";
-import SUBTITLE1 from "../../Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
-import { TextField } from "@mui/material";
-import Radio from "@mui/material/Radio";
-import { lightBlue } from "@mui/material/colors";
-import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
-import Buttons from "../../Stories/Buttons/Buttons";
 import "./CreateNewPortfolio.css";
-import { TextareaAutosize } from "@mui/base";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 import image from "../../Components/NavBar/Image/Rectangle.png";
-import TextFields from "../../Stories/Text Fields/TextFields";
 import AddBtn from "../Add button -create new member/AddBtn";
-import { useSelector } from "react-redux";
 const CreateNewPortfolio = () => {
 
   // const userList = useSelector ((state)=>state.users.value)
@@ -62,21 +48,11 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-  <AddBtn/>
+          <div style={{paddingBottom:"122px"}}><AddBtn/></div>
+  
         </div>
       </div>
-      {/* <div>  {userList.map((user)=>{
-               console.log(user)
-              return <div>
-                <h3>{user.name}</h3> 
-                <h3>{user.status}</h3> 
-                <h3>{user.date}</h3> 
-                <h3>{user.manager}</h3> 
-                
-                </div> */}
       
-
-      {/* }) }</div> */}
     </div>
   );
 };

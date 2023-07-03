@@ -25,7 +25,6 @@ const AddBtn = () => {
        const diapatch= useDispatch ();
       //  console.log(diapatch)
        const userList =useSelector((state)=>state.users.value)
-       console.log(userList.length,"length")
 
        
        const [name,setName] = useState ('');

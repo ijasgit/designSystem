@@ -30,7 +30,7 @@ export default function SignInSide() {
    
     fetchData()
   }, []);
-  console.log(data);
+
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/data");
@@ -43,7 +43,7 @@ export default function SignInSide() {
   const handleSubmit = (data) => {
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    if (username == "" && password == "") {
+    if (username === "" && password === "") {
       alert("enter all details");
       
     } else {
