@@ -16,9 +16,11 @@ import { TbShare2 } from "react-icons/tb";
 import { HiSortDescending } from "react-icons/hi";
 import "../../Stories/Table/DataTable.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 const DataTable = (props) => {
+   const nav=useNavigate()
   const data = useSelector((state) => state.users.value);
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(data || []);
@@ -83,8 +85,8 @@ const DataTable = (props) => {
                       <TableCell>{row.id}</TableCell>
                     </div>
                   </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.name}
+                  <TableCell component="th" scope="row" onClick={()=>nav("/software")} >
+                    {row.name} 
                   </TableCell>
                   <TableCell
                     align="right"

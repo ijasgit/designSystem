@@ -22,13 +22,13 @@ const Software = () => {
           <h4 style={{ margin: "27px 0px 36px 13px" }}>Software_As_Service</h4>
         </div>
         <div><TabComp /></div>
-        {data && data.length ? (
+        {/* {data && data.length ? (
           <div>
             <DataTable />
           </div>
         ) : (
           <CreateNewPortfolio />
-        )}
+        )} */}
         </div>
       </div>
     </div>
