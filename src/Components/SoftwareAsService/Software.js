@@ -19,13 +19,6 @@ const Software = () => {
       <div>
         <TabComp />
       </div>
-      {/* {data && data.length ? (
-    <div>
-      <DataTable />
-    </div>
-  ) : (
-    <CreateNewPortfolio />
-  )} */}
     </div>
   );
 };
