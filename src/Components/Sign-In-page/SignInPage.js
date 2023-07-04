@@ -25,10 +25,11 @@ export default function SignInSide() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-   
-    fetchData()
+    fetchData();
   }, []);
+  
   console.log(data);
+  
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/data");
@@ -37,22 +38,25 @@ export default function SignInSide() {
       console.error("Error fetching data:", error.response);
     }
   };
-
+  
   const handleSubmit = (data) => {
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    if (username == "" && password == "") {
-      alert("enter all details");
+    console.log(username,password)
+  
+    if (username === "" || password === "") {
+      alert("Enter all details");
     } else {
-      const bool = data.filter((item, index) => item.username === username);
-      if (bool[0].username === username && bool[0].password === password) {
+      const bool = data.filter((item) => item.username === username);
+  
+      if (bool.length > 0 && bool[0].username === username && bool[0].password === password) {
         navigate("/home");
       } else {
-        console.log("error");
+        console.log("Error: Invalid username or password");
       }
     }
   };
-
+  
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid

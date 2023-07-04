@@ -1,4 +1,4 @@
-import express from "express"
+import express from "express";
 import pkg from "pg";
 
 const { Client } = pkg;
@@ -11,22 +11,23 @@ const client = new Client({
   port: 5432,
 });
 
-const app = express();
+const app = express()
 app.get("/api/data", async (req, res) => {
-  client.connect();
-  console.log("Connected to the database!");
-  const query = 'select * from public."my_newdb"';
-  const result = await client.query(query);
-  res.send(result.rows)
- 
-  
-  console.log(result.rows)
+  try {
+    await client.connect()
+    console.log("Connected to the database!");
 
-//  res.send(data)
-  console.log("getting");
+    const query = 'select * from public."my_newdb"';
+    const result = await client.query(query);
+    res.send(result.rows);
+
+    console.log(result.rows);
+    console.log("Getting");
+  } catch (error) {
+    console.error("An error occurred:", error);
+  } 
 });
 
 const port = process.env.PORT || 8081;
 
-app.listen(port, () => console.log(`listinng on port ${port}`));
-
+app.listen(port, () => console.log(`Listening on port ${port}`)); 
