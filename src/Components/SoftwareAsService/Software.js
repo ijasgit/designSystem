@@ -13,13 +13,13 @@ const Software = () => {
   return (
     <div className="main-div">
       <SideNav />
-
+    
       <div style={{ display: "flex", flexDirection: "column" }}>
         <NavBar />
         <div>
         <div>
           {" "}
-          <h4 style={{ margin: "27px 0px 36px 13px" }}>Software_As_Service</h4>
+          <p style={{ margin: "27px 0px 36px 13px" }}>Software_As_Service</p>
         </div>
         <div><TabComp /></div>
         {/* {data && data.length ? (

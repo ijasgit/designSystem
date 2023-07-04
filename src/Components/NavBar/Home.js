@@ -22,7 +22,7 @@ const Home = () => {
         <div>
         <div>
           {" "}
-          <h4 style={{ margin: "27px 0px 36px 13px" }}>Portfolio</h4>
+          <p style={{ margin: "27px 0px 36px 13px" }}>Portfolio</p>
         </div>
         {data && data.length ? (
           <div>

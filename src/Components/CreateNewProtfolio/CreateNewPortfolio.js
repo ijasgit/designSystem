@@ -1,7 +1,7 @@
 import React from "react";
 import "./CreateNewPortfolio.css";
 import "../../Components/NavBar/NavBar.css";
-import image from "../../Components/NavBar/Image/Rectangle.png";
+import image from "../../Components/NavBar/Image/port-icon.svg";
 import AddBtn from "../Add button -create new member/AddBtn";
 const CreateNewPortfolio = () => {
 
@@ -37,7 +37,7 @@ const CreateNewPortfolio = () => {
     <div>
       <div className="data-1">
         <div className="data-2">
-          <img src={image} alt="logo" id="img-1" />
+          <img src={image} alt="logo" className="img-1" />
 
           <p id="p-2">No Part A financial Data avaliable</p>
           <p id="p-3">
@@ -48,7 +48,7 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-          <div style={{paddingBottom:"122px"}}><AddBtn/></div>
+          <div ><AddBtn/></div>
   
         </div>
       </div>
