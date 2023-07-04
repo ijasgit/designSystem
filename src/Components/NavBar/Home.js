@@ -14,25 +14,17 @@ const Home = () => {
   // console.log(isData,"isdata")
 
   return (
-    <div className="main-div">
-      <SideNav />
-
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <NavBar />
-        <div>
-        <div>
-          {" "}
-          <h4 style={{ margin: "27px 0px 36px 13px" }}>Portfolio</h4>
-        </div>
-        {data && data.length ? (
-          <div>
-            <DataTable />
-          </div>
-        ) : (
-          <CreateNewPortfolio />
-        )}
-        </div>
+    <div>
+      <div>
+        <p style={{ margin: "27px 0px 36px 13px" }}>Portfolio</p>
       </div>
+      {data && data.length ? (
+        <div>
+          <DataTable />
+        </div>
+      ) : (
+        <CreateNewPortfolio />
+      )}
     </div>
   );
 };
