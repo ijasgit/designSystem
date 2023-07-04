@@ -8,8 +8,8 @@ const NavBar = () => {
   return (
     <>
       <div className="nav-bar">
-        <p id="pot-1">
-          <LibraryBooksOutlinedIcon className="library-icon" />
+      <LibraryBooksOutlinedIcon className="library-icon" />
+        <p id="pot-1">       
           Portfolio Management <span id="span-1"> / Portfolios</span>
         </p>
 
