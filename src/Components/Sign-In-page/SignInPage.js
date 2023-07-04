@@ -27,9 +27,6 @@ export default function SignInSide() {
   useEffect(() => {
     fetchData();
   }, []);
-  
-  console.log(data);
-  
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/data");
@@ -42,10 +39,8 @@ export default function SignInSide() {
   const handleSubmit = (data) => {
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    console.log(username,password)
-  
-    if (username === "" || password === "") {
-      alert("Enter all details");
+    if (username === "" && password === "") {
+      alert("enter all details");
     } else {
       const bool = data.filter((item) => item.username === username);
   

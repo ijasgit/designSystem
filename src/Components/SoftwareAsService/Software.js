@@ -1,17 +1,14 @@
-import React from "react";
-import "./NavBar.css";
-import SideNav from "./SideNav";
-import NavBar from "./NavBar";
+import React from 'react'
+import "../NavBar/NavBar.css";
+import SideNav from "../NavBar/SideNav";
+import NavBar from "../NavBar/NavBar";
 import CreateNewPortfolio from "../CreateNewProtfolio/CreateNewPortfolio";
 import DataTable from "../../Stories/Table/DataTable";
 import { useSelector } from "react-redux";
-const Home = () => {
-  const data = useSelector((state) => state.users.value);
-  //const data = []
-  //console.log("use", data);
+import TabComp from '../../Stories/Tabs/TabComp';
 
-  // const isData=((useselector.length)<=0)
-  // console.log(isData,"isdata")
+const Software = () => {
+  const data = useSelector((state) => state.users.value);
 
   return (
     <div className="main-div">
@@ -22,8 +19,9 @@ const Home = () => {
         <div>
         <div>
           {" "}
-          <h4 style={{ margin: "27px 0px 36px 13px" }}>Portfolio</h4>
+          <h4 style={{ margin: "27px 0px 36px 13px" }}>Software_As_Service</h4>
         </div>
+        <div><TabComp /></div>
         {data && data.length ? (
           <div>
             <DataTable />
@@ -34,7 +32,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Software
