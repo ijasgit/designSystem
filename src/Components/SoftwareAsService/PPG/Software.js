@@ -1,7 +1,7 @@
 import React from "react";
-import "../NavBar/NavBar.css";
+import "../../NavBar/NavBar.css";
 import { useSelector } from "react-redux";
-import TabComp from "../../Stories/Tabs/TabComp";
+import TabComp from "../../../Stories/Tabs/TabComp";
 
 const Software = () => {
   const data = useSelector((state) => state.software.value);

@@ -6,7 +6,7 @@ import Home from "./Components/NavBar/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Tabs from "./Stories/Tabs/TabComp";
 // import SignUp from "./Components/Sign-In-page/SignUp";
-import Software from "./Components/SoftwareAsService/Software";
+import Software from "./Components/SoftwareAsService/PPG/Software";
 import SideNav from "./Components/NavBar/SideNav";
 import NavBar from "./Components/NavBar/NavBar";
 

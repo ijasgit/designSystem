@@ -5,7 +5,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import { useSelector } from "react-redux";
-import DataTable from "../../Components/SoftwareAsService/DataTable"
+import DataTable from "../../Components/SoftwareAsService/PPG/DataTable"
 import TitlePoppins from "../../Stories/Typography/Tiltle-poppins/TitlePoppins";
 import CreateNewPortfolio from "../../Components/CreateNewProtfolio/CreateNewPortfolio";
 

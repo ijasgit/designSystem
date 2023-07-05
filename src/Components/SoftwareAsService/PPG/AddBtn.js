@@ -1,23 +1,22 @@
 import React, { useEffect } from "react";
 import { TextareaAutosize } from "@mui/base";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import TextFields from "../../Stories/Text Fields/TextFields";
+import TextFields from "../../../Stories/Text Fields/TextFields";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import HeadingPoppins from "../../Stories/Typography/Heading-poppins/HeadingPoppins";
-import SUBTITLE1 from "../../Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
+import HeadingPoppins from "../../../Stories/Typography/Heading-poppins/HeadingPoppins";
+import SUBTITLE1 from "../../../Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
 import { TextField,  } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import { lightBlue } from "@mui/material/colors";
-import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
-import Buttons from "../../Stories/Buttons/Buttons";
-import "../../Components/NavBar/NavBar.css";
-import { addUser } from "../Featuers/User";
+import LinkLato from "../../../Stories/Typography/Link-Lato/LinkLato";
+import Buttons from "../../../Stories/Buttons/Buttons";
+import "../../NavBar/NavBar.css";
 import{useDispatch,useSelector} from 'react-redux';
 import { useState } from "react";
 import { format } from 'date-fns';
-import { addPPG, addSoftware } from "../Featuers/SoftwareSlice";
+import { addPPG, addSoftware } from "../../Featuers/SoftwareSlice";
 
 
 
@@ -36,7 +35,8 @@ const AddBtn = () => {
 
        const handleSave = () => {
         const formattedDate = format(date, 'MMM dd, hh:mm a');
-        console.log("working")
+
+        console.log("working scsc")
         
     
         diapatch(

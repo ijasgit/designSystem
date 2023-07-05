@@ -1,8 +1,8 @@
 import React from "react";
 import "./CreateNewPortfolio.css";
-import "../../Components/NavBar/NavBar.css";
-import image from "../../Components/NavBar/Image/port-icon.svg";
-import AddBtn from "../SoftwareAsService/AddBtn";
+import "../../../Components/NavBar/NavBar.css";
+import image from "../../../Components/NavBar/Image/port-icon.svg";
+import AddBtn from "../PPG/AddBtn";
 const CreateNewPortfolio = () => {
 
   // const userList = useSelector ((state)=>state.users.value)
