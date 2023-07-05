@@ -10,7 +10,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import SearchBar from "../../../Stories/Search Bar/SearchBar";
-import AddBtn from "../../Add button -create new member/AddBtn";
+import AddBtn from "../PPG/AddBtn";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { TbShare2 } from "react-icons/tb";
 import { HiSortDescending } from "react-icons/hi";
@@ -23,9 +23,9 @@ import CreateNewPortfolio from "../PPG/CreateNewPortfolio";
 const DataTable = (props) => {
   const nav = useNavigate();
   const data = useSelector((state) => state.software.ppgDataTable);
-  console.log(data,"softdata")
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(data || []);
+ 
 
   useEffect(() => {
     console.log(data);
@@ -52,9 +52,27 @@ const DataTable = (props) => {
   };
   return (
     <div>
+    
      
       {rows && rows.length ? (
         <div style={{ width: "1161px", marginLeft: "31px" }}>
+        <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "0px 32px 21px 32px",
+        }}
+      >
+        <SearchBar />
+        <div style={{ display: "flex", columnGap: "32px" }}>
+          <div style={{ display: "flex", columnGap: "12px" }}>
+            <GiSettingsKnobs className="icon" />
+            <HiSortDescending className="icon" />
+            <TbShare2 className="icon" />{" "}
+          </div>
+          <AddBtn />
+        </div>
+      </div>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
