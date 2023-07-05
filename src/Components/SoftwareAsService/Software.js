@@ -1,9 +1,5 @@
 import React from "react";
 import "../NavBar/NavBar.css";
-import SideNav from "../NavBar/SideNav";
-import NavBar from "../SoftwareAsService/NavBar";
-import CreateNewPortfolio from "../CreateNewProtfolio/CreateNewPortfolio";
-import DataTable from "../../Stories/Table/DataTable";
 import { useSelector } from "react-redux";
 import TabComp from "../../Stories/Tabs/TabComp";
 
@@ -19,13 +15,7 @@ const Software = () => {
       <div>
         <TabComp />
       </div>
-      {/* {data && data.length ? (
-    <div>
-      <DataTable />
-    </div>
-  ) : (
-    <CreateNewPortfolio />
-  )} */}
+
     </div>
   );
 };

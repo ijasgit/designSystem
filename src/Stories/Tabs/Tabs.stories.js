@@ -14,6 +14,7 @@ export default {
       label2:"Stragic Outcome",
       label3:"Finance",
       label4:"Setting",
+     
 
     },
   };

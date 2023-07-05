@@ -1,0 +1,34 @@
+*{
+    /* padding: 0%; */
+    margin: 0%;
+    box-sizing: border-box;
+
+}
+@media (max-width: 768px) {
+    .img-2 {
+        height: 40vh;
+        /* border: solid; */
+     
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .img-2 {
+        border: solid;
+        height: 10vh;
+    }
+  }
+  .img-2{
+    /* position: absolute;  */
+    /* display: flex; */
+    margin-left:45%;
+    margin-top: 7%;
+    /* border: solid; */
+    
+  
+}
+.soft-1{
+    background-color: #F7FCFD;
+    padding: 0 !important;
+    margin-top: 10px;
+}

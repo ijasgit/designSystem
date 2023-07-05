@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import DataTable from "../../Stories/Table/DataTable";
 import TitlePoppins from "../../Stories/Typography/Tiltle-poppins/TitlePoppins";
 import CreateNewPortfolio from "../../Components/CreateNewProtfolio/CreateNewPortfolio";
+import SoftwareHome from "../../Components/SoftwareAsService/SoftwareHome";
 
 
 const TabComp = (props) => {
@@ -22,7 +23,7 @@ const TabComp = (props) => {
 
   return (
     <div>
-      <Box sx={{ width, typography: "body1" ,backgroundColor:"white" }}>
+      <Box sx={{ width, typography: "body1" ,backgroundColor:"#F7FCFD" }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList
@@ -88,12 +89,13 @@ const TabComp = (props) => {
               />
             </TabList>
           </Box>
-          <TabPanel value="1"> {data && data.length ? (
-          <div>
-            <DataTable />
+          
+          <TabPanel value="1" className="soft-1"> {data && data.length ? (
+          <div  className="soft-1">
+            <DataTable  />
           </div>
         ) : (
-          <CreateNewPortfolio />
+            <SoftwareHome/>
         )}</TabPanel>
         <TabPanel value="2">{data && data.length ? (
           <div>
