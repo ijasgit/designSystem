@@ -94,7 +94,7 @@ const TabComp = (props) => {
             <DataTable  />
           </div>
         ) : (
-            <SoftwareHome/>
+          <CreateNewPortfolio />
         )}</TabPanel>
         <TabPanel value="2">{data && data.length ? (
           <div>
