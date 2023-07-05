@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./App.css";
 import SignInPage from "./Components/Sign-In-page/SignInPage";
 import Home from "./Components/NavBar/Home";
@@ -6,11 +6,15 @@ import Home from "./Components/NavBar/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Tabs from "./Stories/Tabs/TabComp";
 // import SignUp from "./Components/Sign-In-page/SignUp";
-import Software from "./Components/SoftwareAsService/Software";
+import Software from "./Components/SoftwareAsService/PPG/Software";
 import SideNav from "./Components/NavBar/SideNav";
 import NavBar from "./Components/NavBar/NavBar";
 
+
+
+
 function App() {
+
   return (
     <>
       <div className="main-div">
@@ -21,11 +25,7 @@ function App() {
             <div>
               <BrowserRouter>
                 <Routes>
-                  <Route path="/" element={<SignInPage />}>                
-                  </Route>
                   <Route path="/home" element={<Home />}>                  
-                  </Route>
-                  <Route path="/tabs" element={<Tabs />}>
                   </Route>
                   <Route path="/software" element={<Software />}></Route>
                 </Routes>

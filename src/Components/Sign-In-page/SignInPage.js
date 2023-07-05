@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate } from "react-router";
+//import { useNavigate } from "react-router";
 import { AiOutlineEye } from "react-icons/ai";
 import image from "../NavBar/Image/logo.png";
 import "./signIn.css";
@@ -23,7 +23,7 @@ export default function SignInSide() {
   const isXsScreen = useMediaQuery(theme.breakpoints.only("xs")); //media quary for card
 
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
   useEffect(() => {
     fetchData();
   }, []);
@@ -39,13 +39,15 @@ export default function SignInSide() {
   const handleSubmit = (data) => {
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+
     if (username === "" && password === "") {
       alert("enter all details");
     } else {
       const bool = data.filter((item) => item.username === username);
   
       if (bool.length > 0 && bool[0].username === username && bool[0].password === password) {
-        navigate("/home");
+       // navigate("/home");4
+       window.location.replace('/home');
       } else {
         console.log("Error: Invalid username or password");
       }
