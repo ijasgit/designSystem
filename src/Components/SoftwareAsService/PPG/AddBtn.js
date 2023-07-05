@@ -17,6 +17,7 @@ import{useDispatch,useSelector} from 'react-redux';
 import { useState } from "react";
 import { format } from 'date-fns';
 import { addPPG, addSoftware } from "../../Featuers/SoftwareSlice";
+import "./CreateNewPortfolio.css"
 
 
 
@@ -86,11 +87,14 @@ const AddBtn = () => {
     <div>
       {" "}
       <div className="btn-1">
-        <Buttons label="Add PPG" variant="primary" onClick={handleOpen} />
-        <div style={{ position: "absolute", top: "6px", left: "549px" }}>
+        <Buttons label="Add PPG" variant="primary" onClick={handleOpen} >
+          
+        </Buttons>
+        <div style={{ position: "absolute", top: "2px", left: "551px", }}>
           <AddOutlinedIcon
-            className="addout-1"
+            className="addout-2"
             fontSize="small"
+            onClick={handleOpen}
           ></AddOutlinedIcon>
         </div>
       </div>

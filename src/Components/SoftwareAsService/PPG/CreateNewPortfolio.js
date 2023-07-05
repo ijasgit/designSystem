@@ -3,6 +3,7 @@ import "./CreateNewPortfolio.css";
 import "../../../Components/NavBar/NavBar.css";
 import image from "../../../Components/NavBar/Image/port-icon.svg";
 import AddBtn from "../PPG/AddBtn";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 const CreateNewPortfolio = () => {
 
   // const userList = useSelector ((state)=>state.users.value)
@@ -48,7 +49,11 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-          <div ><AddBtn/></div>
+         
+          <div > <AddBtn/></div>
+        
+           
+          
           
   
         </div>

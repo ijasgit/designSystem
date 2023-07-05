@@ -111,6 +111,7 @@ body{
 }
 .addout-1{
  color: white;
+ cursor: pointer;
 }
 
 .library-icon{
