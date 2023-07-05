@@ -7,8 +7,9 @@ import TabList from "@mui/lab/TabList";
 import { useSelector } from "react-redux";
 import DataTable from "../../Components/SoftwareAsService/PPG/DataTable"
 import TitlePoppins from "../../Stories/Typography/Tiltle-poppins/TitlePoppins";
-import CreateNewPortfolio from "../../Components/CreateNewProtfolio/CreateNewPortfolio";
-import SoftwareHome from "../../Components/SoftwareAsService/SoftwareHome";
+// import CreateNewPortfolio from "../../Components/CreateNewProtfolio/CreateNewPortfolio";
+import CreateNewPortfolio from "../../Components/SoftwareAsService/PPG/CreateNewPortfolio";
+
 
 
 const TabComp = (props) => {
@@ -91,11 +92,11 @@ const TabComp = (props) => {
           </Box>
           
           <TabPanel value="1" className="soft-1"> {data && data.length ? (
-          <div  className="soft-1">
+          <div >
             <DataTable  />
           </div>
         ) : (
-            <SoftwareHome/>
+            <CreateNewPortfolio/>
         )}</TabPanel>
         <TabPanel value="2">{data && data.length ? (
           <div>
