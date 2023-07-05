@@ -4,8 +4,8 @@ const { Client } = pkg;
 const client = new Client({
   user: "postgres",
   host: "localhost",
-  database: "postgres",
-  password: "Sarathi@123",
+  database: "my_newdb",
+  password: "test",
   port: 5432,
 });
 //connectToDatabase();
@@ -21,18 +21,13 @@ async function connectToDatabase() {
     const TableData=result.rows
     console.log(TableData);
    
-   
-    await client.end();
-    console.log("end");
-    return TableData;
-    // You can execute queries and perform other operations here
   } catch (error) {
-    // console.error("Error connecting to the database:", error);
+    console.error("Error connecting to the database:", error);
   }
  
 }
 
-//export default connectToDatabase;
+export default connectToDatabase;
 
 
 
