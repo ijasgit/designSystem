@@ -9,6 +9,8 @@ import DataTable from "../../Components/SoftwareAsService/PPG/DataTable"
 import TitlePoppins from "../../Stories/Typography/Tiltle-poppins/TitlePoppins";
 // import CreateNewPortfolio from "../../Components/CreateNewProtfolio/CreateNewPortfolio";
 import CreateNewPortfolio from "../../Components/SoftwareAsService/PPG/CreateNewPortfolio";
+import CreateNewPortfolio1 from "../../Components/SoftwareAsService/Stratagic outcome/CreateNewPortfolio";
+import DataTable1 from "../../Components/SoftwareAsService/Stratagic outcome/DataTable";
 
 
 
@@ -100,10 +102,10 @@ const TabComp = (props) => {
         )}</TabPanel>
         <TabPanel value="2">{data && data.length ? (
           <div>
-            <DataTable />
+            <DataTable1 />
           </div>
         ) : (
-          <CreateNewPortfolio />
+          <CreateNewPortfolio1 />
         )}</TabPanel>
         <TabPanel value="3">{data && data.length ? (
           <div>
