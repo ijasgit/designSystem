@@ -11,11 +11,14 @@ import TitlePoppins from "../../Stories/Typography/Tiltle-poppins/TitlePoppins";
 import CreateNewPortfolio from "../../Components/SoftwareAsService/PPG/CreateNewPortfolio";
 import CreateNewPortfolio1 from "../../Components/SoftwareAsService/Stratagic outcome/CreateNewPortfolio";
 import DataTable1 from "../../Components/SoftwareAsService/Stratagic outcome/DataTable";
+import { useDispatch } from "react-redux";
+import { addLabel } from "../../Components/Featuers/RoutesLabelSlice";
 
 
 
 const TabComp = (props) => {
   const data = useSelector((state) => state.users.value);
+  const dispatch=useDispatch()
 
   const{width="100%",height="", label1="PPG",label2="Strategic outcome",label3="Finance", ...rest}=props
   const [value, setValue] = React.useState('1');
@@ -24,6 +27,15 @@ const TabComp = (props) => {
     setValue(newValue);
   };
 
+  const getTabName=(label)=>{
+console.log(label)
+const tabName=label
+dispatch(
+  addLabel({
+  name: tabName
+  })
+);
+  }
   return (
     <div>
       <Box sx={{ width, typography: "body1" ,backgroundColor:"#F7FCFD" }}>
@@ -35,6 +47,7 @@ const TabComp = (props) => {
               TabIndicatorProps={{ style: { backgroundColor: "#1976d2" } }}
             >
               <Tab
+              onClick={()=>getTabName(label1)}
               value="1"
                 label={
                   <TitlePoppins
@@ -49,6 +62,7 @@ const TabComp = (props) => {
                 }
               />
               <Tab
+              onClick={()=>getTabName(label2)}
               value="2"
                 label={
                   <TitlePoppins
@@ -63,6 +77,7 @@ const TabComp = (props) => {
                 }
               />
               <Tab
+              onClick={()=>getTabName(label3)}
               value="3"
                 label={
                   <TitlePoppins
@@ -77,6 +92,7 @@ const TabComp = (props) => {
                 }
               />
                 <Tab
+                onClick={()=>getTabName(label3)}
                 value="4"
                 label={
                   <TitlePoppins

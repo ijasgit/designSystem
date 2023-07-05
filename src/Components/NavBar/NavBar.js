@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 const NavBar = () => {
   const data = useSelector((state) => state.software.value[0].name);
   const [path, setPath] = useState(window.location.pathname);
+  const tabName = useSelector((state) => state.routeLabel.value[0].name);
+  console.log(tabName,"tabname")
 
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const NavBar = () => {
           <span id="span-1">{window.location.pathname == "/software" ? null : "/Portfolios"}</span>{" "}
           <span id="span-1">
             {" "}
-            {data != "" ? " / " + data + " / PPG" : null}
+            {data != "" ? " / " + data + " / " +tabName : null}
           </span>
         </p>
 

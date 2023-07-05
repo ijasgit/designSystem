@@ -9,6 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import  userReducer  from "./Components/Featuers/User";
 import softwareReducer from "./Components/Featuers/SoftwareSlice"
 import StratagicReducer from "./Components/Featuers/StratagicSlice"
+import RouteLabelReducer from "./Components/Featuers/RoutesLabelSlice";
 import SignInPage from "./Components/Sign-In-page/SignInPage"
 // import Node from "./Node";
 // import SignInSide from "../src/Components/Sign-In-page/SignInPage";
@@ -20,7 +21,8 @@ const store = configureStore({
   reducer: {
     users: userReducer,
     software:softwareReducer,
-    stratagic:StratagicReducer
+    stratagic:StratagicReducer,
+    routeLabel:RouteLabelReducer
 
   },
 });
