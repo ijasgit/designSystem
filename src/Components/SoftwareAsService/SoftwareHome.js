@@ -1,19 +1,23 @@
-import React from "react";
-import "./CreateNewPortfolio.css";
-import "../../Components/NavBar/NavBar.css";
+import React from 'react';
+import "./Software.css";
 import image from "../../Components/NavBar/Image/port-icon.svg";
-import AddBtn from "../Add button -create new member/AddBtn";
-const CreateNewPortfolio = () => {
 
- 
+
+
+
+const SoftwareHome = () => {
   return (
-    <div>
-      <div className="data-1">
-        <div className="data-2">
+    <>
+
+<div>
+      <div className="soft-1">
+        <div className="soft-2">
+        <img src={image} alt="logo"  className="img-2" />
+
         
           
-          <img src={image} alt="logo"  className="img-1" />
-              
+     
+
           <p id="p-2">No Part A financial Data avaliable</p>
           <p id="p-3">
             You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
@@ -23,13 +27,19 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-          <div ><AddBtn/></div>
+          <div ></div>
   
         </div>
       </div>
       
     </div>
-  );
-};
+    
+    
+    
+    
+    </>
 
-export default CreateNewPortfolio;
+  )
+}
+
+export default SoftwareHome

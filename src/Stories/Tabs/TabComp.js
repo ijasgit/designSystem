@@ -22,7 +22,7 @@ const TabComp = (props) => {
 
   return (
     <div>
-      <Box sx={{ width, typography: "body1" ,backgroundColor:"white" }}>
+      <Box sx={{ width, typography: "body1" ,backgroundColor:"#F7FCFD" }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList
@@ -88,12 +88,13 @@ const TabComp = (props) => {
               />
             </TabList>
           </Box>
-          <TabPanel value="1"> {data && data.length ? (
-          <div>
-            <DataTable />
+          
+          <TabPanel value="1" className="soft-1"> {data && data.length ? (
+          <div  className="soft-1">
+            <DataTable  />
           </div>
         ) : (
-          <CreateNewPortfolio />
+            <SoftwareHome/>
         )}</TabPanel>
         <TabPanel value="2">{data && data.length ? (
           <div>

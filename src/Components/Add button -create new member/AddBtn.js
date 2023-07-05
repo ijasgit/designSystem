@@ -84,8 +84,8 @@ const AddBtn = () => {
     <div>
       {" "}
       <div className="btn-1">
-        <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen} />
-        <div style={{ position: "absolute", top: "6px", left: "549px" }}>
+        <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen}  />
+        <div style={{ position: "absolute", top: "3px", left: "540px" ,cursor:"pointer"}} onClick={handleOpen} >
           <AddOutlinedIcon
             className="addout-1"
             fontSize="small"

@@ -20,6 +20,7 @@ body{
     /* display: flex; */
     margin-left:45%;
     margin-top: 10%;
+    /* border: solid; */
     
   
 }
@@ -52,6 +53,7 @@ body{
     height: 579px;
     background-color: white;
     border-radius: 3px;
+    
 }
 .nav-bar{
     display: flex;
@@ -104,6 +106,7 @@ body{
 .btn-1{
     text-align: center;
     position: relative;
+
     
 }
 .addout-1{
