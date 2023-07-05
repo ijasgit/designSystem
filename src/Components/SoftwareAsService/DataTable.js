@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import SearchBar from "../Search Bar/SearchBar";
+import SearchBar from "../../Stories/Search Bar/SearchBar";
 import AddBtn from "../../Components/Add button -create new member/AddBtn";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { TbShare2 } from "react-icons/tb";
@@ -19,10 +19,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addSoftware } from "../../Components/Featuers/SoftwareSlice";
 import { useDispatch } from "react-redux";
-
+import CreateNewPortfolio from "../SoftwareAsService/CreateNewPortfolio";
 const DataTable = (props) => {
   const nav = useNavigate();
-  const data = useSelector((state) => state.users.value);
+  const data = useSelector((state) => state.software.ppgDataTable);
+  console.log(data,"softdata")
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(data || []);
 
@@ -51,23 +52,7 @@ const DataTable = (props) => {
   };
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          margin: "0px 32px 21px 32px",
-        }}
-      >
-        <SearchBar />
-        <div style={{ display: "flex", columnGap: "32px" }}>
-          <div style={{ display: "flex", columnGap: "12px" }}>
-            <GiSettingsKnobs className="icon" />
-            <HiSortDescending className="icon" />
-            <TbShare2 className="icon" />{" "}
-          </div>
-          <AddBtn />
-        </div>
-      </div>
+     
       {rows && rows.length ? (
         <div style={{ width: "1161px", marginLeft: "31px" }}>
           <TableContainer component={Paper}>
@@ -136,7 +121,7 @@ const DataTable = (props) => {
           </TableContainer>
         </div>
       ) : (
-        "no data"
+       <CreateNewPortfolio/>
       )}
     </div>
   );
