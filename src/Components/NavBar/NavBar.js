@@ -9,14 +9,12 @@ const NavBar = () => {
   const data = useSelector((state) => state.software.value[0].name);
   const [path, setPath] = useState(window.location.pathname);
   const tabName = useSelector((state) => state.routeLabel.value[0].name);
-  console.log(tabName,"tabname")
 
 
   useEffect(() => {
     setPath(window.location.pathname);
   }, [path]);
-  console.log(path);
-  console.log(data, window.location.pathname);
+
   return (
     <>
       <div className="nav-bar">

@@ -6,7 +6,6 @@ import TabComp from "../../../Stories/Tabs/TabComp";
 const Software = () => {
   const data = useSelector((state) => state.software.value);
   const Title= data[0].name
-  console.log(data[0].name)
 
   return (
     <div>

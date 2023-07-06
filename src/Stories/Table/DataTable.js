@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -19,15 +19,18 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addSoftware } from "../../Components/Featuers/SoftwareSlice";
 import { useDispatch } from "react-redux";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import "../../Components/NavBar/NavBar.css"
 
 const DataTable = (props) => {
+  const childRef = useRef();
   const nav = useNavigate();
   const data = useSelector((state) => state.users.value);
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(data || []);
 
   useEffect(() => {
-    console.log(data);
+
     setRows(data || []);
   }, [data]);
 
@@ -37,17 +40,16 @@ const DataTable = (props) => {
     setRows(data);
   };
 
-  const diapatch= useDispatch ();
+  const diapatch = useDispatch();
 
   const NavtoSoftware = (name) => {
-    console.log(name)
-    const Name=name
+    const Name = name;
     diapatch(
       addSoftware({
-       name:Name
+        name: Name,
       })
     );
-    nav("/software")
+    nav("/software");
   };
   return (
     <div>
@@ -65,7 +67,28 @@ const DataTable = (props) => {
             <HiSortDescending className="icon" />
             <TbShare2 className="icon" />{" "}
           </div>
-          <AddBtn />
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+            }}
+          >
+            <AddBtn ref={childRef} />
+            <div
+              style={{
+                position: "absolute",
+                paddingTop: "3px",
+                left: "6px",
+                cursor: "pointer",
+              }}
+              onClick={() => childRef.current.handleOpen()}
+            >
+              <AddOutlinedIcon
+                className="addout-1"
+                fontSize="small"
+              ></AddOutlinedIcon>
+            </div>
+          </div>
         </div>
       </div>
       {rows && rows.length ? (
@@ -99,7 +122,7 @@ const DataTable = (props) => {
                     <TableCell
                       component="th"
                       scope="row"
-                      onClick={()=>NavtoSoftware(row.name)}
+                      onClick={() => NavtoSoftware(row.name)}
                     >
                       {row.name}
                     </TableCell>

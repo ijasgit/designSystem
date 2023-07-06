@@ -21,15 +21,16 @@ import { addSoftware } from "../../Featuers/SoftwareSlice";
 import {addStratagicName} from "../../Featuers/StratagicSlice"
 import { useDispatch } from "react-redux";
 import CreateNewPortfolio from "../Stratagic outcome/CreateNewPortfolio";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { useRef } from "react";
 const DataTable = (props) => {
+  const childRef=useRef()
   const nav = useNavigate();
   const data = useSelector((state) => state.stratagic.ppgDataTable);
   const { variant = "primary", height, width, ...rest } = props;
   const [rows, setRows] = useState(data || []);
-  console.log(rows,"ssst")
 
   useEffect(() => {
-    console.log(data);
     setRows(data || []);
   }, [data]);
 
@@ -71,7 +72,23 @@ const DataTable = (props) => {
             <HiSortDescending className="icon" />
             <TbShare2 className="icon" />{" "}
           </div>
-          <AddBtn />
+          <div style={{ display: "flex", flexDirection: "row",justifyContent:"center",position:"relative"  }}>
+            <AddBtn ref={childRef} />
+            <div
+              style={{
+                position: "absolute",
+                paddingTop: "3px",
+                left: "2px",
+                cursor: "pointer",
+              }}
+              onClick={()=>childRef.current.handleOpen()}
+            >
+              <AddOutlinedIcon
+                className="addout-1"
+                fontSize="small"
+              ></AddOutlinedIcon>
+            </div>
+          </div>
         </div>
       </div>
           <TableContainer component={Paper}>
