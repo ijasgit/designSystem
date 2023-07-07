@@ -1,4 +1,4 @@
-import React, { useEffect,forwardRef,useImperativeHandle } from "react";
+import React, { useEffect } from "react";
 import { TextareaAutosize } from "@mui/base";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import TextFields from "../../../Stories/Text Fields/TextFields";
@@ -16,15 +16,16 @@ import "../../NavBar/NavBar.css";
 import{useDispatch,useSelector} from 'react-redux';
 import { useState } from "react";
 import { format } from 'date-fns';
-import {addStratagic} from "../../Featuers/StratagicSlice"
+import { addFinance } from "../../Featuers/FinanceSlice";
+import "./CreateNewPortfolio.css"
 
 
 
-const AddBtn = (props,ref) => {
+const AddBtn = () => {
   
        const diapatch= useDispatch ();
-       console.log(diapatch)
-       const userList =useSelector((state)=> state.stratagic.ppgDataTable)
+       console.log("haiii")
+       const userList =useSelector((state)=> state.finance.ppgDataTable)
 
        
        const [name,setName] = useState ('');
@@ -36,10 +37,11 @@ const AddBtn = (props,ref) => {
        const handleSave = () => {
         const formattedDate = format(date, 'MMM dd, hh:mm a');
 
+        console.log("working Finanace")
         
     
         diapatch(
-          addStratagic({
+          addFinance({
             id:userList.length+1 ,
             name,
             status,
@@ -80,20 +82,19 @@ const AddBtn = (props,ref) => {
       const handleChange1 = (event) => {
         setSelectedValue1(event.target.value);
       };
-
-      useImperativeHandle(ref,()=>({
-        handleOpen
-      }))
+    
   return (
     <div>
       {" "}
       <div className="btn-1">
-        <Buttons label="Add Stratagic" variant="primary" onClick={handleOpen} />
-        <div style={{ position: "absolute", top: "2px", left: "535px" }}>
+        <Buttons label="Add Finance" variant="primary" onClick={handleOpen} >
+          
+        </Buttons>
+        <div style={{ position: "absolute", top: "2px", left: "540px", }}>
           <AddOutlinedIcon
-          onClick={handleOpen} 
-            className="addout-1"
+            className="addout-3"
             fontSize="small"
+            onClick={handleOpen}
           ></AddOutlinedIcon>
         </div>
       </div>
@@ -390,4 +391,4 @@ const AddBtn = (props,ref) => {
   );
 };
 
-export default forwardRef(AddBtn) ;
+export default AddBtn;

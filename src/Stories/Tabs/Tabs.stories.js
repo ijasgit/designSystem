@@ -13,7 +13,6 @@ export default {
       label1:"PPG",
       label2:"Stragic Outcome",
       label3:"Finance",
-      label4:"Setting",
      
 
     },

@@ -1,5 +1,6 @@
 
 *{
+    /* padding: 0%; */
     margin: 0%;
     box-sizing: border-box;
 
@@ -24,6 +25,7 @@ top: "170px";
 @media (max-width: 768px) {
     .img-2 {
         height: 40vh;
+        /* border: solid; */
      
     }
   }
@@ -35,18 +37,25 @@ top: "170px";
     }
   }
   .img-2{
- 
+    /* position: absolute;  */
+    /* display: flex; */
     margin-left:45%;
     margin-top: 7%;
     /* border: solid; */
     
   
 }
-.stratagic-1{
+.finance-1{
     background-color: #F7FCFD !important;
     padding: 0 !important;
     margin-top: 10px;
     /* border: solid; */
+}
+.addout-3{
+    /* border: solid; */
+    /* margin-bottom: 11px; */
+    color:white;
+    cursor: pointer;
 }
 
 

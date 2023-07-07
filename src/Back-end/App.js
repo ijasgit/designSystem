@@ -12,17 +12,26 @@ const client = new Pool({
 });
 
 const app = express()
-app.get("/api/data", async (req, res) => { 
-  client.query('SELECT * FROM public."Authentication"', (err, result) => {
+app.get("/api/data", async (req, res) => {
+
+  client.query('SELECT * FROM public."my_newdb"', (err, result) => {
+
     if (err) {
+
       console.error('Error executing query:', err);
+
     } else {
+
       console.log('Query result:', result.rows);
+
       const result1 = result.rows
+
         res.send(result1);
 
     }
+
   });
+
 });
 
 const port = process.env.PORT || 8081;

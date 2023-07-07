@@ -31,7 +31,7 @@ const childRef=useRef()
         <div className="soft-2">
         <img src={image} alt="logo"  className="img-2" />
 
-          <p id="p-2">No Part A financial Data avaliable</p>
+          <p id="p-2">No PPG Created In Portfolio</p>
           <p id="p-3">
             You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
             <br />

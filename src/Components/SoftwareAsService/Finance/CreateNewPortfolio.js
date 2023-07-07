@@ -1,12 +1,11 @@
-import React,{useRef}  from "react";
+import React from "react";
 import "./CreateNewPortfolio.css";
 import "../../../Components/NavBar/NavBar.css";
 import image from "../../../Components/NavBar/Image/port-icon.svg";
-import AddBtn from "../Stratagic outcome/AddBtn";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-
+import AddBtn from "../Finance/AddBtn"
 const CreateNewPortfolio = () => {
-  const childRef=useRef()
+
+  // const userList = useSelector ((state)=>state.users.value)
 
 
 
@@ -23,18 +22,24 @@ const CreateNewPortfolio = () => {
   };
 
   const [open, setOpen] = React.useState(false);
-
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [selectedValue1, setSelectedValue1] = React.useState("e");
 
-
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+  const handleChange1 = (event) => {
+    setSelectedValue1(event.target.value);
+  };
   return (
     <div>
-      <div className="stratagic-1">
-        <div className="stratagic-2">
+      <div className="finance-1">
+        <div className="soft-2">
         <img src={image} alt="logo"  className="img-2" />
 
-          <p id="p-2">No Stratagic Outcome Added</p>
+          <p id="p-2">No Finance Outcome Added</p>
           <p id="p-3">
             You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
             <br />
@@ -43,23 +48,11 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-          <div style={{ display: "flex", flexDirection: "row",justifyContent:"center",position:"relative"  }}>
-            <AddBtn ref={childRef} />
-            <div
-              style={{
-                position: "absolute",
-                paddingTop: "3px",
-                left: "514px",
-                cursor: "pointer",
-              }}
-              onClick={()=>childRef.current.handleOpen()}
-            >
-              <AddOutlinedIcon
-                className="addout-1"
-                fontSize="small"
-              ></AddOutlinedIcon>
-            </div>
-          </div>
+         
+          <div > <AddBtn/></div>
+        
+           
+          
           
   
         </div>

@@ -10,9 +10,11 @@ import TitlePoppins from "../../Stories/Typography/Tiltle-poppins/TitlePoppins";
 // import CreateNewPortfolio from "../../Components/CreateNewProtfolio/CreateNewPortfolio";
 import CreateNewPortfolio from "../../Components/SoftwareAsService/PPG/CreateNewPortfolio";
 import CreateNewPortfolio1 from "../../Components/SoftwareAsService/Stratagic outcome/CreateNewPortfolio";
+import CreateNewPortfolio2 from "../../Components/SoftwareAsService/Finance/CreateNewPortfolio";
 import DataTable1 from "../../Components/SoftwareAsService/Stratagic outcome/DataTable";
 import { useDispatch } from "react-redux";
 import { addLabel } from "../../Components/Featuers/RoutesLabelSlice";
+import DataTable2 from "../../Components/SoftwareAsService/Finance/DataTable";
 
 
 
@@ -91,52 +93,33 @@ dispatch(
                   />
                 }
               />
-                <Tab
-                onClick={()=>getTabName(label3)}
-                value="4"
-                label={
-                  <TitlePoppins
-                    fontFamily="Poppins"
-                    fontSize={12}
-                    fontWeight={0}
-                    label={label3}
-                    letterSpacing={0}
-                    lineHeight="18px"
-                    variant="primary"
-                  />
-                }
-              />
+                
             </TabList>
           </Box>
           
-          <TabPanel value="1" className="soft-1"> {data && data.length ? (
+          <TabPanel value="1" className="soft-1 stratagic-1" style={{padding:"0"}}> {data && data.length ? (
           <div >
             <DataTable  />
           </div>
         ) : (
             <CreateNewPortfolio/>
         )}</TabPanel>
-        <TabPanel value="2">{data && data.length ? (
+        <TabPanel value="2" style={{padding:"0"}}>{data && data.length ?  (
           <div>
             <DataTable1 />
           </div>
         ) : (
           <CreateNewPortfolio1 />
         )}</TabPanel>
-        <TabPanel value="3">{data && data.length ? (
+        
+        <TabPanel value="3" style={{padding:"0"}}>{data && data.length ? (
           <div>
-            <DataTable />
+            <DataTable2 />
           </div>
         ) : (
-          <CreateNewPortfolio />
+          <CreateNewPortfolio2 />
         )}</TabPanel>
-        <TabPanel value="4">{data && data.length ? (
-          <div>
-            <DataTable />
-          </div>
-        ) : (
-          <CreateNewPortfolio />
-        )}</TabPanel>
+       
         </TabContext>
       </Box>
     </div>

@@ -11,7 +11,7 @@ const client = new Client({
 //connectToDatabase();
 async function connectToDatabase() {
   try {
-    await client.connect();
+    // await client.connect();
     console.log("Connected to the database!");
     const query = 'select * from public."my_newdb"';
     const result = await client.query(query);

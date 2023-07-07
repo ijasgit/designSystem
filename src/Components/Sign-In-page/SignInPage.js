@@ -39,6 +39,7 @@ export default function SignInSide() {
   };
   
   const handleSubmit = (data) => {
+   
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
