@@ -2,8 +2,7 @@ import React from "react";
 import "./CreateNewPortfolio.css";
 import "../../../Components/NavBar/NavBar.css";
 import image from "../../../Components/NavBar/Image/port-icon.svg";
-import AddBtn from "../PPG/AddBtn";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import AddBtn from "../Finance/AddBtn"
 const CreateNewPortfolio = () => {
 
   // const userList = useSelector ((state)=>state.users.value)
@@ -36,11 +35,11 @@ const CreateNewPortfolio = () => {
   };
   return (
     <div>
-      <div className="soft-1">
+      <div className="finance-1">
         <div className="soft-2">
         <img src={image} alt="logo"  className="img-2" />
 
-          <p id="p-2">No PPG Created In Portfolio</p>
+          <p id="p-2">No Finance Outcome Added</p>
           <p id="p-3">
             You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
             <br />

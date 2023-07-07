@@ -1,9 +1,9 @@
 import express from "express";
 import pkg from "pg";
 
-const { Client } = pkg;
+const { Pool } = pkg;
 
-const client = new Client({
+const client = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
@@ -13,19 +13,25 @@ const client = new Client({
 
 const app = express()
 app.get("/api/data", async (req, res) => {
-  try {
-    await client.connect()
-    console.log("Connected to the database!");
 
-    const query = 'select * from public."my_newdb"';
-    const result = await client.query(query);
-    res.send(result.rows);
+  client.query('SELECT * FROM public."my_newdb"', (err, result) => {
 
-    console.log(result.rows);
-    console.log("Getting");
-  } catch (error) {
-    console.error("An error occurred:", error);
-  } 
+    if (err) {
+
+      console.error('Error executing query:', err);
+
+    } else {
+
+      console.log('Query result:', result.rows);
+
+      const result1 = result.rows
+
+        res.send(result1);
+
+    }
+
+  });
+
 });
 
 const port = process.env.PORT || 8081;

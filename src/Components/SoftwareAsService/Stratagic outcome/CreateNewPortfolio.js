@@ -5,8 +5,6 @@ import image from "../../../Components/NavBar/Image/port-icon.svg";
 import AddBtn from "../Stratagic outcome/AddBtn";
 const CreateNewPortfolio = () => {
 
-  // const userList = useSelector ((state)=>state.users.value)
-
 
 
   const style = {
@@ -35,11 +33,11 @@ const CreateNewPortfolio = () => {
   };
   return (
     <div>
-      <div className="soft-1">
-        <div className="soft-2">
+      <div className="stratagic-1">
+        <div className="stratagic-2">
         <img src={image} alt="logo"  className="img-2" />
 
-          <p id="p-2">No Part A financial Data avaliable</p>
+          <p id="p-2">No Stratagic Outcome Added</p>
           <p id="p-3">
             You might Lorem ipsum dolor consectetur adipiscing elite,sed dolor
             <br />
@@ -48,7 +46,11 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-          <div ><AddBtn/></div>
+         
+          <div > <AddBtn/></div>
+        
+           
+          
           
   
         </div>
