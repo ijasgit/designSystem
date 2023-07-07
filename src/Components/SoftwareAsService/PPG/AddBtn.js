@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,forwardRef,useImperativeHandle } from "react";
 import { TextareaAutosize } from "@mui/base";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import TextFields from "../../../Stories/Text Fields/TextFields";
@@ -21,7 +21,7 @@ import "./CreateNewPortfolio.css"
 
 
 
-const AddBtn = () => {
+const AddBtn = (props,ref) => {
   
        const diapatch= useDispatch ();
       //  console.log(diapatch)
@@ -37,7 +37,6 @@ const AddBtn = () => {
        const handleSave = () => {
         const formattedDate = format(date, 'MMM dd, hh:mm a');
 
-        console.log("working scsc")
         
     
         diapatch(
@@ -82,6 +81,10 @@ const AddBtn = () => {
       const handleChange1 = (event) => {
         setSelectedValue1(event.target.value);
       };
+
+      useImperativeHandle(ref,()=>({
+        handleOpen
+      }))
     
   return (
     <div>
@@ -90,13 +93,7 @@ const AddBtn = () => {
         <Buttons label="Add PPG" variant="primary" onClick={handleOpen} >
           
         </Buttons>
-        <div style={{ position: "absolute", top: "2px", left: "551px", }}>
-          <AddOutlinedIcon
-            className="addout-2"
-            fontSize="small"
-            onClick={handleOpen}
-          ></AddOutlinedIcon>
-        </div>
+        
       </div>
       <Modal
         open={open}
@@ -112,7 +109,7 @@ const AddBtn = () => {
                   fontFamily="Poppins"
                   fontSize={16}
                   fontWeight={500}
-                  label="Create New Portfolio"
+                  label="Create Product Platform Group"
                   letterSpacing={0}
                   lineHeight="24px"
                   variant="primary"
@@ -141,7 +138,7 @@ const AddBtn = () => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="NAME"
+                    label="PRODUCT PLATFORM NAME"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
@@ -151,7 +148,7 @@ const AddBtn = () => {
                     //   style={{ width: 375}}
                     size="small"
                     variant="outlined"
-                    placeholder="Enter Portfolio Name"
+                    placeholder="Enter Product Platform Name"
                     onChange={(event) =>
                       {setName(event.target.value)}
                       
@@ -194,7 +191,7 @@ const AddBtn = () => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="REGION"
+                    label="TYPE"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
@@ -221,7 +218,7 @@ const AddBtn = () => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="CUSTOM FIELD"
+                    label="OWNER"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
@@ -244,133 +241,58 @@ const AddBtn = () => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="ACCESS"
+                    label="ROLE 1"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
                   />
-                  <Radio
-                    checked={selectedValue === "b"}
-                    onChange={handleChange}
-                    value="b"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "B" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                        
-                      },
-                    }}
-                  />{" "}
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Private"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                    />
-                  </label>
-                  <Radio
-                    checked={selectedValue === "c"}
-                    onChange={handleChange}
-                    value="c"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "C" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                      },
-                    }}
+                  <TextFields
+                    borderRadius="4px"
+                    height="32px"
+                    label=""
+                    placeholder="Select case development custom field"
+                    width="375px"
+                    
                   />
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Public"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                    />
-                  </label>
+                  
                 </div>
                 <div className="row3">
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="STATUS"
+                    label="CUSTOM FIELD"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
                   />
-                  <Radio
-                    checked={selectedValue1 === "Inactive"}
+                                    <TextFields
+                    borderRadius="4px"
+                    height="32px"
+                    label=""
+                    placeholder="Select case development custom field"
+                    width="375px"
                     
-                    onChange={handleChange1 }
-                    onClick={(event) =>
-                      {setStatus(event.target.value)}
-                      
-                      
-                    }                  
-                    value="Inactive"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "E" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                        
-                      },
-                     
-                    }}
-                  />{" "}
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Inactive"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                      
-                    />
-                  </label>
-                  <Radio
-                    checked={selectedValue1 === "Active" }
-                    onChange={handleChange1}
-                    onClick={(event) => {
-                      setStatus(event.target.value);
-                      //event.target.style.color = 'red'; 
-                    }}
-                    value="Active"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "D" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                      },
-                    }}
-                  />{" "}
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Active"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
+                  />
+                </div>
+                <div className="row4">
+                  <SUBTITLE1
+                    fontFamily="Poppins"
+                    fontSize={12}
+                    fontWeight={500}
+                    label="CUSTOM FIELD 2"
+                    letterSpacing={0}
+                    lineHeight="18px"
+                    variant="primary"
+                  />
+                                    <TextFields
+                    borderRadius="4px"
+                    height="32px"
+                    label=""
+                    placeholder="Select case development custom field"
+                    width="375px"
                     
-                    />
-                  </label>
+                  />
                 </div>
               </div>
             </div>
@@ -391,4 +313,4 @@ const AddBtn = () => {
   );
 };
 
-export default AddBtn;
+export default forwardRef(AddBtn) ;

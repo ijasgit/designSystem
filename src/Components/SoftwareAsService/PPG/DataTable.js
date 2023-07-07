@@ -20,7 +20,11 @@ import { useNavigate } from "react-router-dom";
 import { addSoftware } from "../../Featuers/SoftwareSlice";
 import { useDispatch } from "react-redux";
 import CreateNewPortfolio from "../PPG/CreateNewPortfolio";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import "../../NavBar/NavBar.css"
+import { useRef } from "react";
 const DataTable = (props) => {
+  const childRef=useRef()
   const nav = useNavigate();
   const data = useSelector((state) => state.software.ppgDataTable);
   const { variant = "primary", height, width, ...rest } = props;
@@ -28,7 +32,6 @@ const DataTable = (props) => {
  
 
   useEffect(() => {
-    console.log(data);
     setRows(data || []);
   }, [data]);
 
@@ -70,7 +73,23 @@ const DataTable = (props) => {
             <HiSortDescending className="icon" />
             <TbShare2 className="icon" />{" "}
           </div>
-          <AddBtn />
+          <div style={{ display: "flex", flexDirection: "row",justifyContent:"center",position:"relative"  }}>
+            <AddBtn ref={childRef} />
+            <div
+              style={{
+                position: "absolute",
+                paddingTop: "3px",
+                left: "12px",
+                cursor: "pointer",
+              }}
+              onClick={()=>childRef.current.handleOpen()}
+            >
+              <AddOutlinedIcon
+                className="addout-1"
+                fontSize="small"
+              ></AddOutlinedIcon>
+            </div>
+          </div>
         </div>
       </div>
           <TableContainer component={Paper}>
@@ -82,9 +101,11 @@ const DataTable = (props) => {
                     <span style={{ marginLeft: "15px" }}>ID</span>
                   </TableCell>
                   <TableCell>Name</TableCell>
+                  
                   <TableCell align="right">Status</TableCell>
+                  <TableCell align="right">Type</TableCell>
+
                   <TableCell align="right">Created date</TableCell>
-                  <TableCell align="right">Manager</TableCell>
                   <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
@@ -114,10 +135,10 @@ const DataTable = (props) => {
                     >
                       {row.status}
                     </TableCell>
+                    <TableCell>{}</TableCell>
                     <TableCell align="right">
                       {row.date && row.date.toLocaleString()}
                     </TableCell>
-                    <TableCell align="right">{row.manager}</TableCell>
 
                     <TableCell align="right">
                       {row.protein}

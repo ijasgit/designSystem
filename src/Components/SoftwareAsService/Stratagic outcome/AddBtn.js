@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,forwardRef,useImperativeHandle } from "react";
 import { TextareaAutosize } from "@mui/base";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import TextFields from "../../../Stories/Text Fields/TextFields";
@@ -20,7 +20,7 @@ import {addStratagic} from "../../Featuers/StratagicSlice"
 
 
 
-const AddBtn = () => {
+const AddBtn = (props,ref) => {
   
        const diapatch= useDispatch ();
        console.log(diapatch)
@@ -36,7 +36,6 @@ const AddBtn = () => {
        const handleSave = () => {
         const formattedDate = format(date, 'MMM dd, hh:mm a');
 
-        // console.log("working scsc")
         
     
         diapatch(
@@ -81,7 +80,10 @@ const AddBtn = () => {
       const handleChange1 = (event) => {
         setSelectedValue1(event.target.value);
       };
-    
+
+      useImperativeHandle(ref,()=>({
+        handleOpen
+      }))
   return (
     <div>
       {" "}
@@ -388,4 +390,4 @@ const AddBtn = () => {
   );
 };
 
-export default AddBtn;
+export default forwardRef(AddBtn) ;

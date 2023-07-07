@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect,forwardRef,useImperativeHandle } from "react";
 import { TextareaAutosize } from "@mui/base";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import TextFields from "../../Stories/Text Fields/TextFields";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -20,7 +19,11 @@ import { format } from 'date-fns';
 
 
 
-const AddBtn = () => {
+const AddBtn = (props,ref) => {
+  
+  useImperativeHandle(ref,()=>({
+    handleOpen
+  }))
   
        const diapatch= useDispatch ();
       //  console.log(diapatch)
@@ -85,12 +88,7 @@ const AddBtn = () => {
       {" "}
       <div className="btn-1">
         <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen}  />
-        <div style={{ position: "absolute", top: "3px", left: "540px" ,cursor:"pointer"}} onClick={handleOpen} >
-          <AddOutlinedIcon
-            className="addout-1"
-            fontSize="small"
-          ></AddOutlinedIcon>
-        </div>
+        
       </div>
       <Modal
         open={open}
@@ -385,4 +383,4 @@ const AddBtn = () => {
   );
 };
 
-export default AddBtn;
+export default forwardRef(AddBtn);

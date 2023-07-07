@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useRef}  from "react";
 import "./CreateNewPortfolio.css";
 import "../../../Components/NavBar/NavBar.css";
 import image from "../../../Components/NavBar/Image/port-icon.svg";
 import AddBtn from "../Stratagic outcome/AddBtn";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+
 const CreateNewPortfolio = () => {
+  const childRef=useRef()
 
 
 
@@ -46,11 +49,23 @@ const CreateNewPortfolio = () => {
             </span>
           </p>
           <br />
-         
-          <div > <AddBtn/></div>
-        
-           
-          
+          <div style={{ display: "flex", flexDirection: "row",justifyContent:"center",position:"relative"  }}>
+            <AddBtn ref={childRef} />
+            <div
+              style={{
+                position: "absolute",
+                paddingTop: "3px",
+                left: "514px",
+                cursor: "pointer",
+              }}
+              onClick={()=>childRef.current.handleOpen()}
+            >
+              <AddOutlinedIcon
+                className="addout-1"
+                fontSize="small"
+              ></AddOutlinedIcon>
+            </div>
+          </div>
           
   
         </div>

@@ -30,7 +30,7 @@ const TabComp = (props) => {
   };
 
   const getTabName=(label)=>{
-console.log(label)
+
 const tabName=label
 dispatch(
   addLabel({

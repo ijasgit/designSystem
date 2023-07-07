@@ -42,4 +42,3 @@ root.render(
 
 reportWebVitals();
 
-// console.log(window.location.pathname)
