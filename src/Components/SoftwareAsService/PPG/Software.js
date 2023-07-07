@@ -10,7 +10,6 @@ const Software = () => {
   return (
     <div>
       <div>
-        {" "}
         <p style={{ margin: "27px 0px 36px 13px" }}>{Title}</p>
       </div>
       <div>

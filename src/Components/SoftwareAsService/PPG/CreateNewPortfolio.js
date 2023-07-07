@@ -6,7 +6,6 @@ import AddBtn from "../PPG/AddBtn";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 const CreateNewPortfolio = () => {
 const childRef=useRef()
-  // const userList = useSelector ((state)=>state.users.value)
 
 
 
@@ -23,17 +22,9 @@ const childRef=useRef()
   };
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [selectedValue1, setSelectedValue1] = React.useState("e");
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-  const handleChange1 = (event) => {
-    setSelectedValue1(event.target.value);
-  };
   return (
     <div>
       <div className="soft-1">
