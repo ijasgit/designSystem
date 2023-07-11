@@ -17,6 +17,7 @@ import{useDispatch,useSelector} from 'react-redux';
 import { useState } from "react";
 import { format } from 'date-fns';
 import {addStratagic} from "../../Featuers/StratagicSlice"
+import "./CreateNewPortfolio.css"
 
 
 
@@ -111,7 +112,7 @@ const AddBtn = (props,ref) => {
                   fontFamily="Poppins"
                   fontSize={16}
                   fontWeight={500}
-                  label="Create New Portfolio"
+                  label=" Create New Strategy Outcome "
                   letterSpacing={0}
                   lineHeight="24px"
                   variant="primary"
@@ -150,7 +151,7 @@ const AddBtn = (props,ref) => {
                     //   style={{ width: 375}}
                     size="small"
                     variant="outlined"
-                    placeholder="Enter Portfolio Name"
+                    placeholder="Enter Strategy Outcome Name"
                     onChange={(event) =>
                       {setName(event.target.value)}
                       
@@ -176,7 +177,7 @@ const AddBtn = (props,ref) => {
                   />
              
                   <TextareaAutosize
-                    placeholder="Enter Portfolio Description"
+                    placeholder="Enter Strategy Description"
                     maxRows="8"
                     minRows="8"
                     style={{
@@ -216,7 +217,7 @@ const AddBtn = (props,ref) => {
                 }}
               >
                 <div className="row1" style={{ marginTop: " 28px" }}>
-                  <SUBTITLE1
+                <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
@@ -224,26 +225,30 @@ const AddBtn = (props,ref) => {
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
+                    
                   />
                   <TextFields
                     borderRadius="4px"
                     height="32px"
                     label=""
-                    placeholder="Select case development custom field"
+                    placeholder="Select custom field"
                     width="375px"
+                    className="stratagic-customfield"
                     onChange={(event) =>
-                      {setManager(event.target.value)}
-                      
+                      {setManager(event.target.value)}                     
                       
                     }
                   />
+                  
+                 
                 </div>
+                
                 <div className="row2">
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="ACCESS"
+                    label="Display Globaly"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
@@ -267,7 +272,7 @@ const AddBtn = (props,ref) => {
                       fontFamily="Lato"
                       fontSize={12}
                       fontWeight={400}
-                      lable="Private"
+                      lable="Hide"
                       letterSpacing={0}
                       lineHeight="14px"
                       variant="primary"
@@ -291,7 +296,7 @@ const AddBtn = (props,ref) => {
                       fontFamily="Lato"
                       fontSize={12}
                       fontWeight={400}
-                      lable="Public"
+                      lable="Show"
                       letterSpacing={0}
                       lineHeight="14px"
                       variant="primary"
@@ -370,6 +375,7 @@ const AddBtn = (props,ref) => {
                     
                     />
                   </label>
+               
                 </div>
               </div>
             </div>

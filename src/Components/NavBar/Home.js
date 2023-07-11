@@ -14,17 +14,22 @@ const Home = () => {
   // console.log(isData,"isdata")
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <NavBar />
       <div>
-        <p style={{ margin: "27px 0px 36px 13px" }}>Portfolio</p>
-      </div>
-      {data && data.length ? (
         <div>
-          <DataTable />
+          <div>
+            <p style={{ margin: "27px 0px 36px 13px" }}>Portfolio</p>
+          </div>
+          {data && data.length ? (
+            <div>
+              <DataTable />
+            </div>
+          ) : (
+            <CreateNewPortfolio />
+          )}
         </div>
-      ) : (
-        <CreateNewPortfolio />
-      )}
+      </div>
     </div>
   );
 };
