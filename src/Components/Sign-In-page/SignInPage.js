@@ -23,8 +23,10 @@ export default function SignInSide() {
   const isXsScreen = useMediaQuery(theme.breakpoints.only("xs")); //media quary for card
 
   const [data, setData] = useState([]);
+
  // const navigate = useNavigate();
   useEffect(() => {
+
     fetchData();
   }, []);
 
@@ -39,24 +41,26 @@ export default function SignInSide() {
   };
   
   const handleSubmit = (data) => {
-   
+    const data1=data
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-
-    if (username === "" && password === "") {
-      alert("enter all details");
-    } else {
-      const bool = data.filter((item) => item.username === username);
+    console.log(data1,"got it")
   
-      if (bool.length > 0 && bool[0].username === username && bool[0].password === password) {
-       // navigate("/home");4
-       window.location.replace('/home');
+    if (username === "" || password === "") {
+      alert("Enter both username and password");
+    } else {
+ 
+    const matchedUser = data1.filter((item) => item.usersname === username && item.password === password);
+
+      if (matchedUser.length > 0) {
+        window.location.replace('/home');
       } else {
         console.log("Error: Invalid username or password");
       }
     }
   };
   
+  // handleSubmit(data);
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid

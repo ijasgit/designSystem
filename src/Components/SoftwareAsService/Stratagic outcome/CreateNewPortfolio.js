@@ -55,7 +55,7 @@ const CreateNewPortfolio = () => {
               style={{
                 position: "absolute",
                 paddingTop: "3px",
-                left: "514px",
+                left: "537px",
                 cursor: "pointer",
               }}
               onClick={()=>childRef.current.handleOpen()}

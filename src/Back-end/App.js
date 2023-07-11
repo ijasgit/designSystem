@@ -6,8 +6,8 @@ const { Pool } = pkg;
 const client = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "my_newdb",
-  password: "test",
+  database: "postgres",
+  password: "Sarathi@123",
   port: 5432,
 });
 
