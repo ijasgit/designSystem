@@ -23,6 +23,8 @@ import CreateNewPortfolio from "../PPG/CreateNewPortfolio";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../NavBar/NavBar.css"
 import { useRef } from "react";
+
+
 const DataTable = (props) => {
   const childRef=useRef()
   const nav = useNavigate();
@@ -43,16 +45,6 @@ const DataTable = (props) => {
 
   const diapatch= useDispatch ();
 
-  const NavtoSoftware = (name) => {
-    console.log(name)
-    const Name=name
-    diapatch(
-      addSoftware({
-       name:Name
-      })
-    );
-    nav("/software")
-  };
   return (
     <div>
     
@@ -123,7 +115,7 @@ const DataTable = (props) => {
                     <TableCell
                       component="th"
                       scope="row"
-                      onClick={()=>NavtoSoftware(row.name)}
+                      
                     >
                       {row.name}
                     </TableCell>

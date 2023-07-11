@@ -42,16 +42,7 @@ const DataTable = (props) => {
 
   const diapatch= useDispatch ();
 
-  const NavtoSoftware = (name) => {
-    console.log(name)
-    const Name=name
-    diapatch(
-      addStratagicName({
-       name:Name
-      })
-    );
-    nav("/software")
-  };
+
   return (
     <div>
     
@@ -120,7 +111,7 @@ const DataTable = (props) => {
                     <TableCell
                       component="th"
                       scope="row"
-                      onClick={()=>NavtoSoftware(row.name)}
+                   
                     >
                       {row.name}
                     </TableCell>

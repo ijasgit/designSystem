@@ -14,7 +14,7 @@ const client = new Pool({
 const app = express()
 app.get("/api/data", async (req, res) => {
 
-  client.query('SELECT * FROM public."my_newdb"', (err, result) => {
+  client.query('SELECT * FROM public."Authentication"', (err, result) => {
 
     if (err) {
 

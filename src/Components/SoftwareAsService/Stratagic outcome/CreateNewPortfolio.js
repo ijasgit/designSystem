@@ -1,6 +1,6 @@
 import React,{useRef}  from "react";
 import "./CreateNewPortfolio.css";
-import "../../../Components/NavBar/NavBar.css";
+import "../../NavBar/NavBar.css";
 import image from "../../../Components/NavBar/Image/port-icon.svg";
 import AddBtn from "../Stratagic outcome/AddBtn";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
@@ -23,17 +23,11 @@ const CreateNewPortfolio = () => {
   };
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [selectedValue1, setSelectedValue1] = React.useState("e");
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-  const handleChange1 = (event) => {
-    setSelectedValue1(event.target.value);
-  };
+
   return (
     <div>
       <div className="stratagic-1">
@@ -55,7 +49,7 @@ const CreateNewPortfolio = () => {
               style={{
                 position: "absolute",
                 paddingTop: "3px",
-                left: "537px",
+                left:"537px",
                 cursor: "pointer",
               }}
               onClick={()=>childRef.current.handleOpen()}
