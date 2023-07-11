@@ -46,9 +46,9 @@ export default function SignInSide() {
     if (username === "" && password === "") {
       alert("enter all details");
     } else {
-      const bool = data.filter((item) => item.username === username);
+      const bool = data.filter((item) => item.usersname === username);
   
-      if (bool.length > 0 && bool[0].username === username && bool[0].password === password) {
+      if (bool.length > 0 && bool[0].usersname === username && bool[0].password === password) {
        // navigate("/home");4
        window.location.replace('/home');
       } else {

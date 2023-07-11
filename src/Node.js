@@ -20,7 +20,7 @@ const Node = () => {
   return (
     <div>
       {data.map((item, index) => (
-        <div>
+        <div key={index} >
           <h1>{item.username}</h1>
           <h1>{item.password}</h1>
         </div>
