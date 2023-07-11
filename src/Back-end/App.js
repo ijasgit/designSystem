@@ -6,7 +6,7 @@ const { Pool } = pkg;
 const client = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "my_newdb",
+  database: "postgres",
   password: "test",
   port: 5432,
 });
@@ -14,7 +14,7 @@ const client = new Pool({
 const app = express()
 app.get("/api/data", async (req, res) => {
 
-  client.query('SELECT * FROM public."my_newdb"', (err, result) => {
+  client.query('SELECT * FROM public."Authentication"', (err, result) => {
 
     if (err) {
 
