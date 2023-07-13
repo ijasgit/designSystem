@@ -4,6 +4,7 @@ export default {
   title: "Text fields/Text Fields",
   component: TextFields,
   tags: ["autodocs"],
+  argTypes: { onClick: { action: 'clicke' } },
 };
 
 export const primaryCard = {
@@ -12,6 +13,9 @@ export const primaryCard = {
     height: "32px",
     width: "375px",
     borderRadius:"4px",
-    placeholder:""
+    placeholder:"",
+    options:[{}],
+    onClick:"",
+    id:""
   },
 };
