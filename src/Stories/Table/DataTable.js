@@ -106,9 +106,9 @@ const DataTable = (props) => {
       {data && data.length && (
           <div style={{ width: "1161px", marginLeft: "31px",overflow: 'auto', maxHeight: '400px' }}>
             <TableContainer component={Paper}>
-              <Table aria-label="simple table" stickyHeader >
+              <Table aria-label="simple table"  >
                 <TableHead>
-                  <TableRow>
+                  <TableRow >
                     <TableCell>
                       {" "}
                       <span style={{ marginLeft: "15px" }}>ID</span>

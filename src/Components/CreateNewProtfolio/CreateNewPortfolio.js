@@ -7,7 +7,7 @@ import AddBtn from "../Add button -create new member/AddBtn";
 import Buttons from "../../Stories/Buttons/Buttons";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 const CreateNewPortfolio = ({handleSave, handleOpen, open, handleClose}) => {
-const childRef=useRef()
+
   return (
     <div>
       <div className="data-1">
