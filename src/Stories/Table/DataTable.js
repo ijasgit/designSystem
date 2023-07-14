@@ -10,11 +10,11 @@ import Paper from "@mui/material/Paper";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import SearchBar from "../Search Bar/SearchBar";
+// import SearchBar from "../Search Bar/SearchBar";
 import AddBtn from "../../Components/Add button -create new member/AddBtn";
-import { GiSettingsKnobs } from "react-icons/gi";
-import { TbShare2 } from "react-icons/tb";
-import { HiSortDescending } from "react-icons/hi";
+// import { GiSettingsKnobs } from "react-icons/gi";
+// import { TbShare2 } from "react-icons/tb";
+// import { HiSortDescending } from "react-icons/hi";
 import "../../Stories/Table/DataTable.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -72,13 +72,13 @@ const DataTable = (props) => {
           margin: "0px 32px 21px 32px",
         }}
       >
-        <SearchBar />
+        {/* <SearchBar /> */}
         <div style={{ display: "flex", columnGap: "32px" }}>
-          <div style={{ display: "flex", columnGap: "12px" }}>
+          {/* <div style={{ display: "flex", columnGap: "12px" }}>
             <GiSettingsKnobs className="icon" />
             <HiSortDescending className="icon" />
             <TbShare2 className="icon" />{" "}
-          </div>
+          </div> */}
           <div
             style={{
               position: "relative",
@@ -95,13 +95,16 @@ const DataTable = (props) => {
               }}
               onClick={() => childRef.current.handleOpen()}
             >
-              
+              {/* <AddOutlinedIcon
+                className="addout-1"
+                fontSize="small"
+              ></AddOutlinedIcon> */}
             </div>
           </div>
         </div>
       </div>
-      {rows && rows.length && (
-          <div style={{ width: "1161px", marginLeft: "31px",overflow: 'auto', maxHeight: '400px' }}>
+      {data && data.length && (
+          <div style={{ width: "1161px", marginLeft: "31px",overflow: 'auto', maxHeight: '485px' }}>
             <TableContainer component={Paper}>
               <Table aria-label="simple table"  >
                 <TableHead>

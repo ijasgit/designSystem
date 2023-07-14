@@ -9,6 +9,11 @@ import AddBtn from "../Add button -create new member/AddBtn";
 //import Buttons from "../../Stories/Buttons/Buttons";
 import Buttons from "../../Stories/Buttons/Buttons";
 import { useSelector } from "react-redux";
+import SearchBar from "../../Stories/Search Bar/SearchBar";
+import { GiSettingsKnobs } from "react-icons/gi";
+import { TbShare2 } from "react-icons/tb";
+import { HiSortDescending } from "react-icons/hi";
+// import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import CircularProgress from "@mui/joy/CircularProgress";
 
 const Home = () => {
@@ -63,19 +68,49 @@ const Home = () => {
             <div
               style={{
                 display: "flex",
+
                 justifyContent: "center",
+
                 marginTop: "230px",
               }}
             >
-              <CircularProgress size="lg"/>
+              <CircularProgress size="lg" />
             </div>
           ) : data && data.length ? (
-            <div>
-              <Buttons
-                label="Add Portfolio"
-                variant="primary"
-                onClick={handleOpen}
-              />
+            <div style={{ direction: "flex" }}>
+              <div style={{ display: "flex", columnGap: "12px" }}>
+                <div style={{ marginLeft: "30px" }}>
+                  <SearchBar
+                    backgroundColor="#f3f3f3"
+                    borderRadius="4px"
+                    fontSize={15}
+                    height="30px"
+                    placeholder="Search"
+                    varient="small"
+                    width="250px"
+                  />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    columnGap: "12px",
+                    marginLeft: "600px",
+                  }}
+                >
+                  <GiSettingsKnobs className="icon" />
+                  <HiSortDescending className="icon" />
+                  <TbShare2 className="icon" />
+                </div>
+                <div>
+                  <Buttons
+                    label="Add Portfolio"
+                    variant="primary"
+                    onClick={handleOpen}
+                    className="home-page-btn1"
+                  />
+                </div>
+              </div>
               <DataTable data={data} />
             </div>
           ) : (
