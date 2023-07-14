@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./NavBar.css";
 import SideNav from "./SideNav";
@@ -9,13 +9,17 @@ import AddBtn from "../Add button -create new member/AddBtn";
 //import Buttons from "../../Stories/Buttons/Buttons";
 import Buttons from "../../Stories/Buttons/Buttons";
 import { useSelector } from "react-redux";
+import SearchBar from "../../Stories/Search Bar/SearchBar";
+import { GiSettingsKnobs } from "react-icons/gi";
+import { TbShare2 } from "react-icons/tb";
+import { HiSortDescending } from "react-icons/hi";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 const Home = () => {
-  const [data,setData]=useState("") 
+  const [data, setData] = useState("");
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -25,31 +29,30 @@ const Home = () => {
 
   const fetchPortfolio = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await axios.get("/api/portfolio");
       setData(response.data);
-      setLoading(false)
-      console.log(response.data, "working");
+      setLoading(false);
+      console.log(response.data, "work");
     } catch (error) {
       console.error("Error fetching data:", error.response);
     }
   };
   const handleSave = async (data1) => {
     try {
-      setData([])
+      setData([]);
       const response = await axios.post("/api/portfolio", {
         data: data1,
       });
       console.log(response);
-      fetchPortfolio()
+      fetchPortfolio();
       // Handle the response from the server
     } catch (error) {
       console.error(error);
       // Handle any errors that occurred during the request
     }
-  handleClose()
+    handleClose();
   };
-
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -58,19 +61,58 @@ const Home = () => {
         <div>
           <div>
             <p style={{ margin: "27px 0px 36px 13px" }}>Portfolio</p>
-          </div>{
-            loading ? <h1>loading..</h1>: (data && data.length) ? (
-              <div>
-                 <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen} />
-                <DataTable data={data} />
+          </div>
+          {loading ? (
+            <h1>loading..</h1>
+          ) : data && data.length ? (
+            <div style={{ direction: "flex" }}>
+              <div style={{ display: "flex", columnGap: "12px" }}>
+                <div style={{ marginLeft: "30px" }}>
+                  <SearchBar
+                    backgroundColor="#f3f3f3"
+                    borderRadius="4px"
+                    fontSize={15}
+                    height="30px"
+                    placeholder="Search"
+                    varient="small"
+                    width="250px"
+                  />
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    columnGap: "12px",
+                    marginLeft: "600px",
+                  }}
+                >
+                  <GiSettingsKnobs className="icon" />
+                  <HiSortDescending className="icon" />
+                  <TbShare2 className="icon" />
+                </div>
+                <div>
+                  <Buttons
+                    label="Add Portfolio"
+                    variant="primary"
+                    onClick={handleOpen}
+                    className="home-page-btn1"
+                  />
+                 
+                </div>
               </div>
-            ) : (
-              <CreateNewPortfolio handleSave={handleSave} handleClose={handleClose} handleOpen={handleOpen} />
-            )}
-          
-         
+              <DataTable data={data} />
+            </div>
+          ) : (
+            <CreateNewPortfolio
+              handleSave={handleSave}
+              handleClose={handleClose}
+              handleOpen={handleOpen}
+            />
+          )}
+
+          <div></div>
         </div>
-        <AddBtn open={open} handleSave={handleSave} handleClose={handleClose}  />
+        <AddBtn open={open} handleSave={handleSave} handleClose={handleClose} />
       </div>
     </div>
   );
