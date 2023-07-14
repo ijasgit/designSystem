@@ -95,10 +95,7 @@ const DataTable = (props) => {
               }}
               onClick={() => childRef.current.handleOpen()}
             >
-              <AddOutlinedIcon
-                className="addout-1"
-                fontSize="small"
-              ></AddOutlinedIcon>
+              
             </div>
           </div>
         </div>
