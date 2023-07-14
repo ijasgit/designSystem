@@ -103,7 +103,7 @@ const DataTable = (props) => {
           </div>
         </div>
       </div>
-      {data && data.length && (
+      {rows && rows.length && (
           <div style={{ width: "1161px", marginLeft: "31px",overflow: 'auto', maxHeight: '400px' }}>
             <TableContainer component={Paper}>
               <Table aria-label="simple table"  >

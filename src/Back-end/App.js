@@ -22,12 +22,10 @@ app.get("/api/data", async (req, res) => {
     } else {
       console.log("Query result:", result.rows);
       const result1 = result.rows;
-    res.send(result1);
+      res.send(result1);
     }
   });
 });
-
-
 
 app.get("/api/users", async (req, res) => {
   client.query('SELECT * FROM "users"', (err, result) => {
@@ -36,11 +34,10 @@ app.get("/api/users", async (req, res) => {
     } else {
       console.log("Query result:", result.rows);
       const portfolioOwner = result.rows;
-    res.send(portfolioOwner);
+      res.send(portfolioOwner);
     }
   });
 });
-
 
 app.get("/api/portfolio", async (req, res) => {
   client.query('SELECT * FROM "portfolio"', (err, result) => {
@@ -49,33 +46,25 @@ app.get("/api/portfolio", async (req, res) => {
     } else {
       console.log("Query result:", result.rows);
       const portfolioOwner = result.rows;
-    res.send(portfolioOwner);
+      res.send(portfolioOwner);
     }
   });
 });
 
-
-
-
-
-
-
-app.post('/api/portfolio', async(req, res) => {
+app.post("/api/portfolio", async (req, res) => {
   const dataName = req.body.data.name;
   const dataDescription = req.body.data.description;
 
   const dataOwner = req.body.data.owner;
-const uuid=v4()
+  const uuid = v4();
 
-  console.log(dataName)
-  const query = 'INSERT INTO portfolio (uuid, name, description,portfolio_owner) VALUES ($1, $2,$3,$4)';
-    const values = [uuid,dataName, dataDescription,dataOwner ];
-
-    await client.query(query, values);
-
-  res.json({ message: 'Data received successfully' });
+  console.log(dataName);
+  const query =
+    "INSERT INTO portfolio (uuid, name, description,portfolio_owner) VALUES ($1, $2,$3,$4)";
+  const values = [uuid, dataName, dataDescription, dataOwner];
+  await client.query(query, values);
+  res.json({ message: "Data received successfully" });
 });
-
 
 const port = process.env.PORT || 8081;
 
