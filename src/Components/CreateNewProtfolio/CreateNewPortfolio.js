@@ -4,9 +4,10 @@ import "./CreateNewPortfolio.css";
 import "../../Components/NavBar/NavBar.css";
 import image from "../../Components/NavBar/Image/port-icon.svg";
 import AddBtn from "../Add button -create new member/AddBtn";
+import Buttons from "../../Stories/Buttons/Buttons";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-const CreateNewPortfolio = () => {
-const childRef=useRef()
+const CreateNewPortfolio = ({handleSave, handleOpen, open, handleClose}) => {
+
   return (
     <div>
       <div className="data-1">
@@ -23,7 +24,10 @@ const childRef=useRef()
           </p>
           <br />
           <div style={{ display: "flex", flexDirection: "row",justifyContent:"center",position:"relative"  }}>
-            <AddBtn ref={childRef} />
+          <div className="btn-1">
+        <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen} />
+      </div>
+            <AddBtn open={open} handleSave={handleSave} handleClose={handleClose}  />
             <div
               style={{
                 position: "absolute",
@@ -31,7 +35,7 @@ const childRef=useRef()
                 left: "538px",
                 cursor: "pointer",
               }}
-              onClick={()=>childRef.current.handleOpen()}
+              // onClick={handleOpen}
             >
               <AddOutlinedIcon
                 className="addout-1"

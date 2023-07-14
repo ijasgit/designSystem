@@ -1,5 +1,12 @@
-import React, { useEffect, forwardRef, useImperativeHandle } from "react";
+import React, {
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from "react";
 import { TextareaAutosize } from "@mui/base";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import TextFields from "../../Stories/Text Fields/TextFields";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -12,97 +19,46 @@ import { lightBlue } from "@mui/material/colors";
 import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
 import Buttons from "../../Stories/Buttons/Buttons";
 import "../../Components/NavBar/NavBar.css";
-// import { addUser } from "../Featuers/User";
-// import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-// import { format } from "date-fns";
+import { addUser } from "../Featuers/User";
+import { useDispatch, useSelector } from "react-redux";
+import { format } from "date-fns";
 import axios from "axios";
 
-const AddBtn = (props, ref) => {
-
-
-
-  const [data, setdata] = useState([]);
-    
+const AddBtn = ({handleSave, open, handleClose}) => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetchUser();
+    fetchUsers();
   }, []);
 
-  const fetchUser = async () => {
+  const fetchUsers = async () => {
     try {
       const response = await axios.get("/api/users");
-      
-      setdata(response.data);
-      console.log(response.data, "response done");
+      setData(response.data);
+
+      console.log(response.data, "working");
     } catch (error) {
       console.error("Error fetching data:", error.response);
     }
   };
+  console.log(data, "data");
 
-  const defprops = {
-    options: data,
-    getOptionLabel: (options) => {
-      console.log(data);
-      return data.options.uuid;
-    }
-  };
-  // console.log(defprops.options.uuid)
- 
 
-  useImperativeHandle(ref, () => ({
-    handleOpen,
-  }));
-
-  // const diapatch = useDispatch();
-  //  console.log(diapatch)
-  // const handleSave = () => {
-  //   const formattedDate = format(date, "MMM dd, hh:mm a");
-  
-  //   diapatch(
-  //     addUser({
-  //       id: userList.length + 1,
-  //       name,
-  //       status,
-  //       manager,
-  //       date: formattedDate, // Pass the formatted date here
-  //       show: false,
-  //     })
-  //   );
-  //   setName("");
-
-  //   handleClose();
-  // };
-  // const userList = useSelector((state) => state.users.value);
 
   const [name, setName] = useState("");
-  const [description,setDescription] = useState ("")
+  const [description, setDescription] = useState("");
+  const [owner, setOwner] = useState("");
+
   const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   const [date] = useState(new Date());
- 
-  const handleSave = async () => {
-    // console.log(description,'haii')
 
-    // const formattedDate = format(date, "MMM dd, hh:mm a");
-  
-    try {
-      const response = await axios.post("/api/portfolio", {
-        name:name,
-        description:description,
-        
-        
-      });
-  
-      // console.log(response.name);  
-      // console.log(response.description);  
-   
-    } catch (error) {
-      console.error("Error saving data:", error.response);
-    }
-    setName("");
-   setDescription("");
-    handleClose();
+  const handleSave1 = async (event) => {
+
+    event.preventDefault();
+ 
+    handleSave({ name: name, description: description, owner: ownerUUID })
+
   };
 
   const style = {
@@ -117,11 +73,10 @@ const AddBtn = (props, ref) => {
     borderRadius: "5px",
   };
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+ 
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
+  const [ownerUUID,setUUid]=useState("")
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -130,12 +85,18 @@ const AddBtn = (props, ref) => {
     setSelectedValue1(event.target.value);
   };
 
+  const defprops={
+    options:data,
+    getOptionLabel:(options)=>options.label
+  }
+  const getdata = (value) => {
+    setUUid(value.uuid)
+    console.log(value.uuid, "valyess");
+  };
   return (
     <div>
       {" "}
-      <div className="btn-1">
-        <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen} />
-      </div>
+    
       <Modal
         open={open}
         onClose={handleClose}
@@ -216,16 +177,16 @@ const AddBtn = (props, ref) => {
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
-                    onChange={(event) => {
-                      setDescription(event.target.value);
-                    }}
+                   
                     style={{
                       width: "100%",
                       resize: "none",
                       height: "88px",
                       fontSize: "14px",
                     }}
-                    
+                    onChange={(event) => {
+                      setDescription(event.target.value);
+                    }}
                   />
                 </div>
                 <div className="row3" style={{ marginBottom: " 38px" }}>
@@ -264,25 +225,28 @@ const AddBtn = (props, ref) => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="CUSTOM FIELD"
+                    label="OWNER"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
                   />
-                
-                  <TextFields
-                    borderRadius="4px"
-                    height="32px"
-                    label=""
-                    options={data}
-                    placeholder="Select case development custom field"
-                    width="375px"
-                    onChange={(event) => {
-                      setManager(event.target.value);
-                    }}
-                    
+
+                  <Autocomplete
+                    // options={data}
+                    // // getOptionLabel={""}
+                    {...defprops}
+                    sx={{ height: "32px", width: "375px", borderRadius: "4px" }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        placeholder="Select case development custom field"
+                        size="small"
+                      />
+                    )}
+                    onChange={(event,value)=>getdata(value)}
                   />
                 </div>
+               
                 <div className="row2">
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -416,12 +380,7 @@ const AddBtn = (props, ref) => {
             <Buttons
               label="Save"
               variant="primary"
-              onClick={handleSave}
-              //  onClick={()=>{diapatch( addUser({
-              //   id: userList[userList.length -1 ].id + 1, name,  status ,manager,date
-              // }))
-              // handleClose()
-              // }}
+              onClick={handleSave1}       
             />
           </div>
         </Box>
@@ -430,4 +389,4 @@ const AddBtn = (props, ref) => {
   );
 };
 
-export default forwardRef(AddBtn);
+export default AddBtn;

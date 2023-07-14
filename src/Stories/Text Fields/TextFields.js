@@ -10,13 +10,17 @@ const TextFields = (props) => {
     borderRadius = "4px",
     placeholder,
     options,
+    onClick,
+    id
   } = props;
   return (
     <div>
       <Autocomplete
        options={options}
       
-        
+    
+        onClick={onClick}
+       getOptionLabel={""}
         sx={{ width: width, borderRadius }}
         renderInput={(params) => (
           <TextField
@@ -25,7 +29,8 @@ const TextFields = (props) => {
             placeholder={placeholder}
             label={label}
             size="small"
-        
+            onChange={onClick}
+                
           />
         )}
       />
