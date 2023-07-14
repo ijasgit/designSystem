@@ -12,6 +12,7 @@ export const primaryCard = {
     height: "32px",
     width: "375px",
     borderRadius:"4px",
-    placeholder:""
+    placeholder:"",
+    options:[{}],
   },
 };

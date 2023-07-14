@@ -1,4 +1,4 @@
-import React, { useEffect,forwardRef,useImperativeHandle } from "react";
+import React, { useEffect, forwardRef, useImperativeHandle } from "react";
 import { TextareaAutosize } from "@mui/base";
 import TextFields from "../../Stories/Text Fields/TextFields";
 import Box from "@mui/material/Box";
@@ -6,89 +6,135 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import HeadingPoppins from "../../Stories/Typography/Heading-poppins/HeadingPoppins";
 import SUBTITLE1 from "../../Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
-import { TextField,  } from "@mui/material";
+import { TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import { lightBlue } from "@mui/material/colors";
 import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
 import Buttons from "../../Stories/Buttons/Buttons";
 import "../../Components/NavBar/NavBar.css";
-import { addUser } from "../Featuers/User";
-import{useDispatch,useSelector} from 'react-redux';
+// import { addUser } from "../Featuers/User";
+// import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { format } from 'date-fns';
+// import { format } from "date-fns";
+import axios from "axios";
+
+const AddBtn = (props, ref) => {
 
 
 
-const AddBtn = (props,ref) => {
+  const [data, setdata] = useState([]);
+    
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  const fetchUser = async () => {
+    try {
+      const response = await axios.get("/api/users");
+      
+      setdata(response.data);
+      console.log(response.data, "response done");
+    } catch (error) {
+      console.error("Error fetching data:", error.response);
+    }
+  };
+
+  const defprops = {
+    options: data,
+    getOptionLabel: (options) => {
+      console.log(data);
+      return data.options.uuid;
+    }
+  };
+  // console.log(defprops.options.uuid)
+ 
+
+  useImperativeHandle(ref, () => ({
+    handleOpen,
+  }));
+
+  // const diapatch = useDispatch();
+  //  console.log(diapatch)
+  // const handleSave = () => {
+  //   const formattedDate = format(date, "MMM dd, hh:mm a");
   
-  useImperativeHandle(ref,()=>({
-    handleOpen
-  }))
+  //   diapatch(
+  //     addUser({
+  //       id: userList.length + 1,
+  //       name,
+  //       status,
+  //       manager,
+  //       date: formattedDate, // Pass the formatted date here
+  //       show: false,
+  //     })
+  //   );
+  //   setName("");
+
+  //   handleClose();
+  // };
+  // const userList = useSelector((state) => state.users.value);
+
+  const [name, setName] = useState("");
+  const [description,setDescription] = useState ("")
+  const [status, setStatus] = useState("");
+  const [manager, setManager] = useState("Kapil Dev");
+  const [date] = useState(new Date());
+ 
+  const handleSave = async () => {
+    // console.log(description,'haii')
+
+    // const formattedDate = format(date, "MMM dd, hh:mm a");
   
-       const diapatch= useDispatch ();
-      //  console.log(diapatch)
-       const userList =useSelector((state)=>state.users.value)
-
-       
-       const [name,setName] = useState ('');
-       const[status,setStatus] =  useState ("");      
-       const [manager,setManager] = useState ("Kapil Dev");
-       const [date] = useState(new Date());
-
-
-       const handleSave = () => {
-        const formattedDate = format(date, 'MMM dd, hh:mm a');
+    try {
+      const response = await axios.post("/api/portfolio", {
+        name:name,
+        description:description,
         
-    
-        diapatch(
-          addUser({
-            id:userList.length+1 ,
-            name,
-            status,
-            manager,
-            date: formattedDate, // Pass the formatted date here
-            show:false,
-          })
-        );
-        setName('');
-  
-       handleClose();
-      };
-         
         
+      });
+  
+      // console.log(response.name);  
+      // console.log(response.description);  
+   
+    } catch (error) {
+      console.error("Error saving data:", error.response);
+    }
+    setName("");
+   setDescription("");
+    handleClose();
+  };
 
-       
-    const style = {
-        position: "absolute",
-        width: "878px",
-        height: "460px",
-        left: "217px",
-        top: "130px",
-    
-        background: "#FFFFFF",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.15)",
-        borderRadius: "5px",
-      };
-    
-      const [open, setOpen] = useState(false);
-      const handleOpen = () => setOpen(true);
-      const handleClose = () => setOpen(false);
-      const [selectedValue, setSelectedValue] = useState("a");
-      const [selectedValue1, setSelectedValue1] = useState("e");
-    
-      const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-      };
-      const handleChange1 = (event) => {
-        setSelectedValue1(event.target.value);
-      };
-    
+  const style = {
+    position: "absolute",
+    width: "878px",
+    height: "460px",
+    left: "217px",
+    top: "130px",
+
+    background: "#FFFFFF",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.15)",
+    borderRadius: "5px",
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [selectedValue, setSelectedValue] = useState("a");
+  const [selectedValue1, setSelectedValue1] = useState("e");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+  const handleChange1 = (event) => {
+    setSelectedValue1(event.target.value);
+  };
+
   return (
     <div>
       {" "}
       <div className="btn-1">
-        <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen}  />
-        
+        <Buttons label="Add Portfolio" variant="primary" onClick={handleOpen} />
       </div>
       <Modal
         open={open}
@@ -144,10 +190,9 @@ const AddBtn = (props,ref) => {
                     size="small"
                     variant="outlined"
                     placeholder="Enter Portfolio Name"
-                    onChange={(event) =>
-                      {setName(event.target.value)}
-                      
-                    }
+                    onChange={(event) => {
+                      setName(event.target.value);
+                    }}
                     inputProps={{
                       style: {
                         height: "20px",
@@ -167,21 +212,24 @@ const AddBtn = (props,ref) => {
                     lineHeight="18px"
                     variant="primary"
                   />
-             
                   <TextareaAutosize
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
+                    onChange={(event) => {
+                      setDescription(event.target.value);
+                    }}
                     style={{
                       width: "100%",
                       resize: "none",
                       height: "88px",
                       fontSize: "14px",
                     }}
+                    
                   />
                 </div>
                 <div className="row3" style={{ marginBottom: " 38px" }}>
-                  {" "}
+                 
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -197,6 +245,9 @@ const AddBtn = (props,ref) => {
                     label=""
                     placeholder="Select Field"
                     width="375px"
+                    options ={[{label:'select feild'}]}
+                    
+                    
                   />
                 </div>
               </div>
@@ -218,17 +269,18 @@ const AddBtn = (props,ref) => {
                     lineHeight="18px"
                     variant="primary"
                   />
+                
                   <TextFields
                     borderRadius="4px"
                     height="32px"
                     label=""
+                    options={data}
                     placeholder="Select case development custom field"
                     width="375px"
-                    onChange={(event) =>
-                      {setManager(event.target.value)}
-                      
-                      
-                    }
+                    onChange={(event) => {
+                      setManager(event.target.value);
+                    }}
+                    
                   />
                 </div>
                 <div className="row2">
@@ -251,7 +303,6 @@ const AddBtn = (props,ref) => {
                       color: "default"[800],
                       "&.Mui-checked": {
                         color: lightBlue[600],
-                        
                       },
                     }}
                   />{" "}
@@ -303,13 +354,10 @@ const AddBtn = (props,ref) => {
                   />
                   <Radio
                     checked={selectedValue1 === "Inactive"}
-                    
-                    onChange={handleChange1 }
-                    onClick={(event) =>
-                      {setStatus(event.target.value)}
-                      
-                      
-                    }                  
+                    onChange={handleChange1}
+                    onClick={(event) => {
+                      setStatus(event.target.value);
+                    }}
                     value="Inactive"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "E" }}
@@ -317,9 +365,7 @@ const AddBtn = (props,ref) => {
                       color: "default"[800],
                       "&.Mui-checked": {
                         color: lightBlue[600],
-                        
                       },
-                     
                     }}
                   />{" "}
                   <label>
@@ -331,15 +377,14 @@ const AddBtn = (props,ref) => {
                       letterSpacing={0}
                       lineHeight="14px"
                       variant="primary"
-                      
                     />
                   </label>
                   <Radio
-                    checked={selectedValue1 === "Active" }
+                    checked={selectedValue1 === "Active"}
                     onChange={handleChange1}
                     onClick={(event) => {
                       setStatus(event.target.value);
-                      //event.target.style.color = 'red'; 
+                      //event.target.style.color = 'red';
                     }}
                     value="Active"
                     name="radio-buttons"
@@ -360,7 +405,6 @@ const AddBtn = (props,ref) => {
                       letterSpacing={0}
                       lineHeight="14px"
                       variant="primary"
-                    
                     />
                   </label>
                 </div>
@@ -369,13 +413,16 @@ const AddBtn = (props,ref) => {
           </div>
           <div className="footer">
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
-            <Buttons label="Save" variant="primary"  onClick={handleSave} 
-            //  onClick={()=>{diapatch( addUser({
-            //   id: userList[userList.length -1 ].id + 1, name,  status ,manager,date 
-            // }))
-            // handleClose()
-            // }} 
-             />
+            <Buttons
+              label="Save"
+              variant="primary"
+              onClick={handleSave}
+              //  onClick={()=>{diapatch( addUser({
+              //   id: userList[userList.length -1 ].id + 1, name,  status ,manager,date
+              // }))
+              // handleClose()
+              // }}
+            />
           </div>
         </Box>
       </Modal>
