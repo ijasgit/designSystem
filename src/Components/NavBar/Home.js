@@ -13,7 +13,9 @@ import SearchBar from "../../Stories/Search Bar/SearchBar";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { TbShare2 } from "react-icons/tb";
 import { HiSortDescending } from "react-icons/hi";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+// import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import CircularProgress from "@mui/joy/CircularProgress";
+
 const Home = () => {
   const [data, setData] = useState("");
 
@@ -63,7 +65,17 @@ const Home = () => {
             <p style={{ margin: "27px 0px 36px 13px" }}>Portfolio</p>
           </div>
           {loading ? (
-            <h1>loading..</h1>
+            <div
+              style={{
+                display: "flex",
+
+                justifyContent: "center",
+
+                marginTop: "230px",
+              }}
+            >
+              <CircularProgress size="lg" />
+            </div>
           ) : data && data.length ? (
             <div style={{ direction: "flex" }}>
               <div style={{ display: "flex", columnGap: "12px" }}>
@@ -97,7 +109,6 @@ const Home = () => {
                     onClick={handleOpen}
                     className="home-page-btn1"
                   />
-                 
                 </div>
               </div>
               <DataTable data={data} />
