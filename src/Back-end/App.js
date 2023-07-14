@@ -11,7 +11,7 @@ const client = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
-  password: "Sarathi@123",
+  password: "test",
   port: 5432,
 });
 
@@ -19,7 +19,7 @@ const app = express()
 app.use(express.json())
 app.get("/api/data", async (req, res) => {
 
-  client.query('SELECT * FROM public."my_newdb"', (err, result) => {
+  client.query('SELECT * FROM public."Authentication"', (err, result) => {
 
     if (err) {
       console.error("Error executing query:", err);

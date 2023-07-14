@@ -82,6 +82,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
   };
   const handleChange1 = (event) => {
     setSelectedValue1(event.target.value);
+    console.log(status,"values")
   };
 
   const defprops={
@@ -245,65 +246,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                   />
                 </div>
                
-                <div className="row2">
-                  <SUBTITLE1
-                    fontFamily="Poppins"
-                    fontSize={12}
-                    fontWeight={500}
-                    label="ACCESS"
-                    letterSpacing={0}
-                    lineHeight="18px"
-                    variant="primary"
-                  />
-                  <Radio
-                    checked={selectedValue === "b"}
-                    onChange={handleChange}
-                    value="b"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "B" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                      },
-                    }}
-                  />{" "}
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Private"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                    />
-                  </label>
-                  <Radio
-                    checked={selectedValue === "c"}
-                    onChange={handleChange}
-                    value="c"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "C" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                      },
-                    }}
-                  />
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Public"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                    />
-                  </label>
-                </div>
+                
                 <div className="row3">
                   <SUBTITLE1
                     fontFamily="Poppins"
