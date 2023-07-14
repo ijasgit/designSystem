@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import HeadingPoppins from "../../Stories/Typography/Heading-poppins/HeadingPoppins";
 import SUBTITLE1 from "../../Stories/Typography/SUBTITLE1-POPPINS/SUBTITLE1";
+import { TextField } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import { lightBlue } from "@mui/material/colors";
 import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
@@ -176,6 +177,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
+                   
                     style={{
                       width: "100%",
                       resize: "none",
@@ -188,7 +190,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                   />
                 </div>
                 <div className="row3" style={{ marginBottom: " 38px" }}>
-                  {" "}
+                 
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -204,6 +206,9 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     label=""
                     placeholder="Select Field"
                     width="375px"
+                    options ={[{label:'select feild'}]}
+                    
+                    
                   />
                 </div>
               </div>
@@ -240,28 +245,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     onChange={(event,value)=>getdata(value)}
                   />
                 </div>
-                <div className="row1" style={{ marginTop: " 28px" }}>
-                  <SUBTITLE1
-                    fontFamily="Poppins"
-                    fontSize={12}
-                    fontWeight={500}
-                    label="CUSTOM FIELD"
-                    letterSpacing={0}
-                    lineHeight="18px"
-                    variant="primary"
-                  />
-                  <TextFields
-                    borderRadius="4px"
-                    height="32px"
-                    label=""
-                    placeholder="Select case development custom field"
-                    width="375px"
-                    options={[{ label: "no data" }]}
-                    onChange={(event) => {
-                      setManager(event.target.value);
-                    }}
-                  />
-                </div>
+               
                 <div className="row2">
                   <SUBTITLE1
                     fontFamily="Poppins"

@@ -16,13 +16,15 @@ const TextFields = (props) => {
   return (
     <div>
       <Autocomplete
+       options={options}
       
-        options={options}
+    
         onClick={onClick}
        getOptionLabel={""}
         sx={{ width: width, borderRadius }}
         renderInput={(params) => (
           <TextField
+          
             {...params}
             placeholder={placeholder}
             label={label}
