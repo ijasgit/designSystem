@@ -51,6 +51,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
   const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   const [date] = useState(new Date());
+  console.log(status)
 
   const handleSave1 = async (event) => {
 
@@ -161,7 +162,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     }}
                   />
                 </div>
-                <div className="row2">
+                <div className="row2" style={{marginTop:"5px"}}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -187,39 +188,8 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                       setDescription(event.target.value);
                     }}
                   />
-                </div>
-                <div className="row3" style={{ marginBottom: " 38px" }}>
-                 
-                  <SUBTITLE1
-                    fontFamily="Poppins"
-                    fontSize={12}
-                    fontWeight={500}
-                    label="REGION"
-                    letterSpacing={0}
-                    lineHeight="18px"
-                    variant="primary"
-                  />
-                  <TextFields
-                    borderRadius="4px"
-                    height=""
-                    label=""
-                    placeholder="Select Field"
-                    width="375px"
-                    options ={[{label:'select feild'}]}
-                    
-                    
-                  />
-                </div>
-              </div>
-              <div
-                className="col2"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  rowGap: "24px",
-                }}
-              >
-                <div className="row1" style={{ marginTop: " 28px" }}>
+                </div>   
+                <div className="row3" >
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -233,7 +203,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                   <Autocomplete
                    
                     {...defprops}
-                    sx={{ height: "32px", width: "375px", borderRadius: "4px" }}
+                    sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -245,66 +215,43 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                   />
                 </div>
                
-                <div className="row2">
+              </div>
+              <div
+                className="col2"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  rowGap: "24px",
+                }}
+              >
+               <div className="row1" style={{ marginTop: " 28px" }}>
+                  {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="ACCESS"
+                    label="MANAGER"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
                   />
-                  <Radio
-                    checked={selectedValue === "b"}
-                    onChange={handleChange}
-                    value="b"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "B" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
-                      },
-                    }}
-                  />{" "}
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Private"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                    />
-                  </label>
-                  <Radio
-                    checked={selectedValue === "c"}
-                    onChange={handleChange}
-                    value="c"
-                    name="radio-buttons"
-                    inputProps={{ "aria-label": "C" }}
-                    sx={{
-                      color: "default"[800],
-                      "&.Mui-checked": {
-                        color: lightBlue[600],
+                  <TextField
+                    id="outlined-basic"
+                    //   style={{ width: 375}}
+                    size="small"
+                    variant="outlined"
+                    placeholder="Select Manager"
+                  
+                    inputProps={{
+                      style: {
+                        height: "20px",
+                        width: "355px",
                       },
                     }}
                   />
-                  <label>
-                    <LinkLato
-                      fontFamily="Lato"
-                      fontSize={12}
-                      fontWeight={400}
-                      lable="Public"
-                      letterSpacing={0}
-                      lineHeight="14px"
-                      variant="primary"
-                    />
-                  </label>
                 </div>
-                <div className="row3">
+             
+                <div className="row3" style={{marginTop:"30px"}}>
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -373,7 +320,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
               </div>
             </div>
           </div>
-          <div className="footer">
+          <div className="footer" style={{marginTop:"20px"}}>
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
             <Buttons
               label="Save"
