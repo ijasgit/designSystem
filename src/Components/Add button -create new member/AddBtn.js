@@ -241,7 +241,7 @@ const[statuscond,setstatuscond]=useState(false)
                       setDescription(event.target.value);
                     }}
                   />
-                  {descond?  <p style={p}>*Enter Description </p>:null} 
+                  {descond?  <p style={{...p,marginTop:"-5px"}}>*Enter Description </p>:null} 
                 </div>   
                 <div className="row3" >
                   <SUBTITLE1
@@ -276,7 +276,7 @@ const[statuscond,setstatuscond]=useState(false)
                   }
                   }}
                   />
-                  {ownercond?  <p style={p}>*Select owner </p>:null} 
+                  {ownercond?  <p style={{...p ,marginTop:"10px"}}>*Select owner </p>:null} 
 
                 </div>
                
@@ -384,7 +384,7 @@ const[statuscond,setstatuscond]=useState(false)
                     />
                   </label>
                 </div>
-                {statuscond?  <p style={p}>*Select Status </p>:null} 
+                {statuscond?  <p style={{...p,marginTop:"-25px"}}>*Select Status </p>:null} 
 
               </div>
             </div>
