@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import axios from "axios";
 
-const AddBtn = ({handleSave, open, handleClose}) => {
+const AddBtn = ({ handleSave, open, handleClose }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -42,23 +42,27 @@ const AddBtn = ({handleSave, open, handleClose}) => {
   };
   console.log(data, "data");
 
-
-
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [owner, setOwner] = useState("");
 
   const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
+
   const [date] = useState(new Date());
-  console.log(status)
+  const formattedDate = format(date, "MMM dd, hh:mm a");
+  console.log(formattedDate);
 
   const handleSave1 = async (event) => {
-
     event.preventDefault();
- 
-    handleSave({ name: name, description: description, owner: ownerUUID })
 
+    handleSave({
+      name: name,
+      description: description,
+      owner: ownerUUID,
+      status: status,
+      formattedDate: formattedDate,
+    });
   };
 
   const style = {
@@ -73,10 +77,9 @@ const AddBtn = ({handleSave, open, handleClose}) => {
     borderRadius: "5px",
   };
 
- 
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
-  const [ownerUUID,setUUid]=useState("")
+  const [ownerUUID, setUUid] = useState("");
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -85,18 +88,17 @@ const AddBtn = ({handleSave, open, handleClose}) => {
     setSelectedValue1(event.target.value);
   };
 
-  const defprops={
-    options:data,
-    getOptionLabel:(options)=>options.label
-  }
+  const defprops = {
+    options: data,
+    getOptionLabel: (options) => options.label,
+  };
   const getdata = (value) => {
-    setUUid(value.uuid)
+    setUUid(value.uuid);
     console.log(value.uuid, "valyess");
   };
   return (
     <div>
       {" "}
-    
       <Modal
         open={open}
         onClose={handleClose}
@@ -162,7 +164,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     }}
                   />
                 </div>
-                <div className="row2" style={{marginTop:"5px"}}>
+                <div className="row2" style={{ marginTop: "5px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -177,7 +179,6 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
-                   
                     style={{
                       width: "100%",
                       resize: "none",
@@ -188,8 +189,8 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                       setDescription(event.target.value);
                     }}
                   />
-                </div>   
-                <div className="row3" >
+                </div>
+                <div className="row3">
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -201,7 +202,6 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                   />
 
                   <Autocomplete
-                   
                     {...defprops}
                     sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
@@ -211,10 +211,13 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                         size="small"
                       />
                     )}
-                    onChange={(event,value)=>getdata(value)}
+                    onChange={(event, value) => {
+                      if (value && value.uuid) {
+                        getdata(value);
+                      } 
+                    }}
                   />
                 </div>
-               
               </div>
               <div
                 className="col2"
@@ -224,7 +227,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                   rowGap: "24px",
                 }}
               >
-               <div className="row1" style={{ marginTop: " 28px" }}>
+                <div className="row1" style={{ marginTop: " 28px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -241,7 +244,6 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     size="small"
                     variant="outlined"
                     placeholder="Select Manager"
-                  
                     inputProps={{
                       style: {
                         height: "20px",
@@ -250,8 +252,8 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     }}
                   />
                 </div>
-             
-                <div className="row3" style={{marginTop:"30px"}}>
+
+                <div className="row3" style={{ marginTop: "30px" }}>
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -320,13 +322,9 @@ const AddBtn = ({handleSave, open, handleClose}) => {
               </div>
             </div>
           </div>
-          <div className="footer" style={{marginTop:"20px"}}>
+          <div className="footer" style={{ marginTop: "20px" }}>
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
-            <Buttons
-              label="Save"
-              variant="primary"
-              onClick={handleSave1}       
-            />
+            <Buttons label="Save" variant="primary" onClick={handleSave1} />
           </div>
         </Box>
       </Modal>

@@ -50,7 +50,7 @@ export default function SignInSide() {
       alert("Enter both username and password");
     } else {
  
-    const matchedUser = data1.filter((item) => item.username === username && item.password === password);
+    const matchedUser = data1.filter((item) => item.usersname === username && item.password === password);
 
       if (matchedUser.length > 0) {
         window.location.replace('/home');

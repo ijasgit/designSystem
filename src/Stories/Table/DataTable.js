@@ -148,7 +148,7 @@ const DataTable = (props) => {
                         {row.status}
                       </TableCell>
                       <TableCell align="right">
-                        {row.date && row.date.toLocaleString()}
+                        {row.create_date}
                       </TableCell>
                       <TableCell align="right">{row.manager}</TableCell>
 

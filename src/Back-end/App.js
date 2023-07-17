@@ -58,14 +58,16 @@ app.get("/api/portfolio", async (req, res) => {
 app.post("/api/portfolio", async (req, res) => {
   const dataName = req.body.data.name;
   const dataDescription = req.body.data.description;
-
+  const create_date = req.body.data.formattedDate
   const dataOwner = req.body.data.owner;
+  const dataStatus =req.body.data.status
   const uuid = v4();
+  console.log(create_date)
 
   console.log(dataName);
   const query =
-    "INSERT INTO portfolio (uuid, name, description,portfolio_owner) VALUES ($1, $2,$3,$4)";
-  const values = [uuid, dataName, dataDescription, dataOwner];
+    "INSERT INTO portfolio (uuid, name, description,portfolio_owner,status,create_date) VALUES ($1, $2,$3,$4,$5,$6)";
+  const values = [uuid, dataName, dataDescription, dataOwner,dataStatus,create_date];
   await client.query(query, values);
   res.json({ message: "Data received successfully" });
 });
