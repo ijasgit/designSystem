@@ -22,6 +22,7 @@ import { addSoftware } from "../../Components/Featuers/SoftwareSlice";
 import { useDispatch } from "react-redux";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
+import { blue } from "@mui/material/colors";
 
 const DataTable = (props) => {
   const childRef = useRef();
@@ -63,6 +64,15 @@ const DataTable = (props) => {
     );
     nav("/software");
   };
+
+const p={ 
+  color:"blue",
+  cursor: "pointer",
+  textDecoration: "underline",
+
+}
+
+
   return (
     <div>
       <div
@@ -136,7 +146,7 @@ const DataTable = (props) => {
                         scope="row"
                         onClick={() => NavtoSoftware(row.name)}
                       >
-                        {row.name}
+                       <p style={p}>{row.name} </p>
                       </TableCell>
                       <TableCell
                         align="right"
@@ -158,9 +168,8 @@ const DataTable = (props) => {
                         {row.show ? (
                           <Paper>
                             <MenuList>
-                              <MenuItem>Profile</MenuItem>
-                              <MenuItem>My account</MenuItem>
-                              <MenuItem>Logout</MenuItem>
+                              <MenuItem>Delete</MenuItem>
+                           
                             </MenuList>
                           </Paper>
                         ) : null}
