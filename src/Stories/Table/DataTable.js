@@ -23,6 +23,7 @@ import { useDispatch } from "react-redux";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 
+
 const DataTable = (props) => {
   const childRef = useRef();
   const nav = useNavigate();
@@ -51,6 +52,8 @@ const DataTable = (props) => {
       console.error("Error fetching data:", error.response);
     }
   };
+   
+    
 
   const diapatch = useDispatch();
 
@@ -63,6 +66,9 @@ const DataTable = (props) => {
     );
     nav("/software");
   };
+
+
+  
   return (
     <div>
       <div
@@ -136,7 +142,7 @@ const DataTable = (props) => {
                         scope="row"
                         onClick={() => NavtoSoftware(row.name)}
                       >
-                        {row.name}
+                        <p style={{color:"blue",cursor:"pointer" }}className="link-hover" >{row.name}</p>
                       </TableCell>
                       <TableCell
                         align="right"
