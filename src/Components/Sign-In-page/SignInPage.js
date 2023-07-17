@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-//import { useNavigate } from "react-router";
 import { AiOutlineEye } from "react-icons/ai";
 import image from "../NavBar/Image/logo.png";
 import "./signIn.css";
@@ -24,40 +23,39 @@ export default function SignInSide() {
 
   const [data, setData] = useState([]);
 
- // const navigate = useNavigate();
-  useEffect(() => {
 
-    fetchData();
-  }, []);
+  // useEffect(() => {
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/api/data");
-      setData(response.data);
-      console.log(response.data)
-    } catch (error) {
-      console.error("Error fetching data:", error.response);
-    }
-  };
+  //   fetchData();
+  // }, []);
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("/api/data");
+  //     setData(response.data);
+  //     console.log(response.data)
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error.response);
+  //   }
+  // };
   
-  const handleSubmit = (data) => {
-    const data1=data
+  const handleSubmit = async() => {
+    
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    console.log(data1,"got it")
-  
-    if (username === "" || password === "") {
-      alert("Enter both username and password");
-    } else {
- 
-    const matchedUser = data1.filter((item) => item.username === username && item.password === password);
-
-      if (matchedUser.length > 0) {
-        window.location.replace('/home');
-      } else {
-        console.log("Error: Invalid username or password");
-      }
+    console.log(username,password,"got it")
+    const response = await axios.post("/api/login",{
+      username: username,
+      password: password
+    });
+    let isValid = response.data;
+    if(isValid){
+     window.location.replace('/home')
     }
+    else{
+      alert("errorrr")
+    }
+
   };
   
   // handleSubmit(data);

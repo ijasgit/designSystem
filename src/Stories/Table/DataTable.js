@@ -165,7 +165,7 @@ const DataTable = (props) => {
                         {row.show ? (
                           <Paper>
                             <MenuList>
-                              <MenuItem>Delete</MenuItem>
+                              <MenuItem >Delete</MenuItem>
                            
                             </MenuList>
                           </Paper>
