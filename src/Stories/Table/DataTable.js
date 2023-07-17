@@ -24,6 +24,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 import { blue } from "@mui/material/colors";
 
+
 const DataTable = (props) => {
   const childRef = useRef();
   const nav = useNavigate();
@@ -52,6 +53,8 @@ const DataTable = (props) => {
       console.error("Error fetching data:", error.response);
     }
   };
+   
+    
 
   const diapatch = useDispatch();
 
@@ -65,14 +68,8 @@ const DataTable = (props) => {
     nav("/software");
   };
 
-const p={ 
-  color:"blue",
-  cursor: "pointer",
-  textDecoration: "underline",
 
-}
-
-
+  
   return (
     <div>
       <div
@@ -146,7 +143,7 @@ const p={
                         scope="row"
                         onClick={() => NavtoSoftware(row.name)}
                       >
-                       <p style={p}>{row.name} </p>
+                        <p style={{color:"blue",cursor:"pointer" }}className="link-hover" >{row.name}</p>
                       </TableCell>
                       <TableCell
                         align="right"
