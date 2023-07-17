@@ -47,17 +47,59 @@ const AddBtn = ({handleSave, open, handleClose}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [owner, setOwner] = useState("");
-
   const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
+  const [selectedValue, setSelectedValue] = useState("a");
+  const [selectedValue1, setSelectedValue1] = useState("e");
+  const [ownerUUID,setUUid]=useState("")
   const [date] = useState(new Date());
-  console.log(status)
+const[namecond,setnamecond]=useState(false)
+const[descond,setdescond]=useState(false)
+const[ownercond,setownercond]=useState(false)
+const[statuscond,setstatuscond]=useState(false)
 
   const handleSave1 = async (event) => {
 
     event.preventDefault();
+    if(name==""){
+      console.log("name is empty")
+      setnamecond(true)
+    }
+    else{
+      setnamecond(false)
+    }
+    if(description==""){
+      console.log("description is empty")
+      setdescond(true)
+    }
+    else{
+      setdescond(false)
+    }
+    if(owner==""){
+      console.log("owner is empty")
+      setownercond(true)
+    }
+    else{
+      setownercond(false)
+    }
+    if(status==""){
+      console.log("status is empty")
+      setstatuscond(true)
+    }
+    else{
+      setstatuscond(false)
+    }
+    if(name!=""&&description!=""&&status!=""&&owner!=""&&ownerUUID!="")
+    {
+      handleSave({ name: name, description: description, owner: ownerUUID,status:status })
+      setnamecond(false)
+      setdescond(false)
+      setownercond(false)
+      setstatuscond(false)
+
+    }
  
-    handleSave({ name: name, description: description, owner: ownerUUID })
+ 
 
   };
 
@@ -73,10 +115,15 @@ const AddBtn = ({handleSave, open, handleClose}) => {
     borderRadius: "5px",
   };
 
- 
-  const [selectedValue, setSelectedValue] = useState("a");
-  const [selectedValue1, setSelectedValue1] = useState("e");
-  const [ownerUUID,setUUid]=useState("")
+
+  
+ const p={
+    fontSize: "12px",
+    color: "red",
+    margin:"0px"
+
+  }
+
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -92,6 +139,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
   }
   const getdata = (value) => {
     setUUid(value.uuid)
+    setOwner(value.label)
     console.log(value.uuid, "valyess");
   };
   return (
@@ -162,6 +210,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                       },
                     }}
                   />
+               {namecond?  <p style={p}>*Enter name</p>:null} 
                 </div>
                 <div className="row2" style={{marginTop:"5px"}}>
                   {" "}
@@ -189,6 +238,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                       setDescription(event.target.value);
                     }}
                   />
+                  {descond?  <p style={p}>*Enter Description </p>:null} 
                 </div>   
                 <div className="row3" >
                   <SUBTITLE1
@@ -214,6 +264,8 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     )}
                     onChange={(event,value)=>getdata(value)}
                   />
+                                    {ownercond?  <p style={p}>*Select owner </p>:null} 
+
                 </div>
                
               </div>
@@ -250,6 +302,8 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                       },
                     }}
                   />
+                            
+
                 </div>
              
                 <div className="row3" style={{marginTop:"30px"}}>
@@ -318,6 +372,8 @@ const AddBtn = ({handleSave, open, handleClose}) => {
                     />
                   </label>
                 </div>
+                {statuscond?  <p style={p}>*Select Status </p>:null} 
+
               </div>
             </div>
           </div>

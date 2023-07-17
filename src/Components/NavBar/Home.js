@@ -41,6 +41,7 @@ const Home = () => {
     }
   };
   const handleSave = async (data1) => {
+    console.log(data1)
     try {
       setData([]);
       const response = await axios.post("/api/portfolio", {
@@ -54,6 +55,8 @@ const Home = () => {
       // Handle any errors that occurred during the request
     }
     handleClose();
+
+    
   };
 
   return (

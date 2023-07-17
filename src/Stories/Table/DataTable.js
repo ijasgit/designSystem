@@ -56,11 +56,11 @@ const DataTable = (props) => {
 
   const NavtoSoftware = (name) => {
     const Name = name;
-    // diapatch(
-    //   addSoftware({
-    //     name: Name,
-    //   })
-    // );
+    diapatch(
+      addSoftware({
+        name: Name,
+      })
+    );
     nav("/software");
   };
   return (
@@ -109,10 +109,10 @@ const DataTable = (props) => {
               <Table aria-label="simple table"  >
                 <TableHead>
                   <TableRow >
-                    <TableCell>
+                    {/* <TableCell>
                       {" "}
                       <span style={{ marginLeft: "15px" }}>ID</span>
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell>Name</TableCell>
                     <TableCell align="right">Status</TableCell>
                     <TableCell align="right">Created date</TableCell>
@@ -126,11 +126,11 @@ const DataTable = (props) => {
                       key={index}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell>
+                      {/* <TableCell>
                         <div style={{ display: "flex" }}>
                           <TableCell>{row.id}</TableCell>
                         </div>
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell
                         component="th"
                         scope="row"
@@ -148,7 +148,7 @@ const DataTable = (props) => {
                         {row.status}
                       </TableCell>
                       <TableCell align="right">
-                        {row.date && row.date.toLocaleString()}
+                        {row.create_date}
                       </TableCell>
                       <TableCell align="right">{row.manager}</TableCell>
 

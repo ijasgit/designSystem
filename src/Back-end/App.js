@@ -3,6 +3,7 @@ import express from "express";
 import pkg from "pg";
 import { v4 } from "uuid";
 
+
 const { Pool } = pkg;
 
 
@@ -60,12 +61,26 @@ app.post("/api/portfolio", async (req, res) => {
   const dataDescription = req.body.data.description;
 
   const dataOwner = req.body.data.owner;
+  const dataStatus = req.body.data.status;
+
   const uuid = v4();
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString('en-US', {
+   
+    month: 'long',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    
+  
+  });
+  
+  console.log(formattedDate);
 
   console.log(dataName);
   const query =
-    "INSERT INTO portfolio (uuid, name, description,portfolio_owner) VALUES ($1, $2,$3,$4)";
-  const values = [uuid, dataName, dataDescription, dataOwner];
+    "INSERT INTO portfolio (uuid, name, description,portfolio_owner,status,create_date) VALUES ($1, $2,$3,$4,$5,$6)";
+  const values = [uuid, dataName, dataDescription, dataOwner,dataStatus,formattedDate];
   await client.query(query, values);
   res.json({ message: "Data received successfully" });
 });
