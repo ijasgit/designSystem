@@ -261,7 +261,7 @@ const AddBtn = (props,ref) => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="CUSTOM FIELD"
+                    label="Role 1 user"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
@@ -275,25 +275,7 @@ const AddBtn = (props,ref) => {
                     
                   />
                 </div>
-                <div className="row4">
-                  <SUBTITLE1
-                    fontFamily="Poppins"
-                    fontSize={12}
-                    fontWeight={500}
-                    label="CUSTOM FIELD 2"
-                    letterSpacing={0}
-                    lineHeight="18px"
-                    variant="primary"
-                  />
-                                    <TextFields
-                    borderRadius="4px"
-                    height="32px"
-                    label=""
-                    placeholder="Select case development custom field"
-                    width="375px"
-                    
-                  />
-                </div>
+                
               </div>
             </div>
           </div>

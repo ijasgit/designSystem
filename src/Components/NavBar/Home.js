@@ -41,26 +41,22 @@ const Home = () => {
     }
   };
   const handleSave = async (data1) => {
-     
-    if(data1.name!=""&& data1.description!="" && data1.status!=""&&data1.owner!=""){
-      try {
-        setData([]);
-        const response = await axios.post("/api/portfolio", {
-          data: data1,
-        });
-        console.log(response);
-        fetchPortfolio();
-        // Handle the response from the server
-      } catch (error) {
-        console.error(error);
-        // Handle any errors that occurred during the request
-      }
-      handleClose();
-
-    }else{
-      alert('please enter details')
+    console.log(data1)
+    try {
+      setData([]);
+      const response = await axios.post("/api/portfolio", {
+        data: data1,
+      });
+      console.log(response);
+      fetchPortfolio();
+      // Handle the response from the server
+    } catch (error) {
+      console.error(error);
+      // Handle any errors that occurred during the request
     }
-   
+    handleClose();
+
+    
   };
 
   return (
