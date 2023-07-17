@@ -22,8 +22,9 @@ import { addUser } from "../Featuers/User";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import axios from "axios";
+import { ConstructionOutlined } from "@mui/icons-material";
 
-const AddBtn = ({ handleSave, open, handleClose }) => {
+const AddBtn = ({handleSave, open, handleClose}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -42,27 +43,67 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
   };
   console.log(data, "data");
 
+
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [owner, setOwner] = useState("");
-
   const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
-
+  const [selectedValue, setSelectedValue] = useState("a");
+  const [selectedValue1, setSelectedValue1] = useState("e");
+  const [ownerUUID,setUUid]=useState("")
   const [date] = useState(new Date());
-  const formattedDate = format(date, "MMM dd, hh:mm a");
-  console.log(formattedDate);
+  const formattedDate=format(date,"MMM dd,hh:mm a")
+const[namecond,setnamecond]=useState(false)
+const[descond,setdescond]=useState(false)
+const[ownercond,setownercond]=useState(false)
+const[statuscond,setstatuscond]=useState(false)
 
   const handleSave1 = async (event) => {
-    event.preventDefault();
 
-    handleSave({
-      name: name,
-      description: description,
-      owner: ownerUUID,
-      status: status,
-      formattedDate: formattedDate,
-    });
+    event.preventDefault();
+    if(name==""){
+      console.log("name is empty")
+      setnamecond(true)
+    }
+    else{
+      setnamecond(false)
+    }
+    if(description==""){
+      console.log("description is empty")
+      setdescond(true)
+    }
+    else{
+      setdescond(false)
+    }
+    if(owner==""){
+      console.log("owner is empty")
+      setownercond(true)
+    }
+    else{
+      setownercond(false)
+    
+    }
+    if(status==""){
+      console.log("status is empty")
+      setstatuscond(true)
+    }
+    else{
+      setstatuscond(false)
+    }
+    if(name!=""&&description!=""&&status!=""&&owner!=""&&ownerUUID!="")
+    {
+      handleSave({ name: name, description: description, owner: ownerUUID,status:status,formattedDate:formattedDate })
+      setnamecond(false)
+      setdescond(false)
+      setownercond(false)
+      setstatuscond(false)
+
+    }
+ 
+ 
+
   };
 
   const style = {
@@ -77,28 +118,37 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
     borderRadius: "5px",
   };
 
-  const [selectedValue, setSelectedValue] = useState("a");
-  const [selectedValue1, setSelectedValue1] = useState("e");
-  const [ownerUUID, setUUid] = useState("");
+
+  
+ const p={
+    fontSize: "12px",
+    color: "red",
+    margin:"0px"
+
+  }
+
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
   const handleChange1 = (event) => {
     setSelectedValue1(event.target.value);
+    console.log(status,"values")
   };
 
-  const defprops = {
-    options: data,
-    getOptionLabel: (options) => options.label,
-  };
+  const defprops={
+    options:data,
+    getOptionLabel:(options)=>options.label
+  }
   const getdata = (value) => {
-    setUUid(value.uuid);
-    console.log(value.uuid, "valyess");
+    setUUid(value.uuid)
+    setOwner(value.label)
+    console.log(value.uuid,value.label, "valyess");
   };
   return (
     <div>
       {" "}
+    
       <Modal
         open={open}
         onClose={handleClose}
@@ -163,8 +213,9 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                       },
                     }}
                   />
+               {namecond?  <p style={p}>*Enter name</p>:null} 
                 </div>
-                <div className="row2" style={{ marginTop: "5px" }}>
+                <div className="row2" style={{marginTop:"5px"}}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -179,6 +230,7 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
+                   
                     style={{
                       width: "100%",
                       resize: "none",
@@ -189,8 +241,9 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                       setDescription(event.target.value);
                     }}
                   />
-                </div>
-                <div className="row3">
+                  {descond?  <p style={p}>*Enter Description </p>:null} 
+                </div>   
+                <div className="row3" >
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -202,6 +255,7 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                   />
 
                   <Autocomplete
+                   
                     {...defprops}
                     sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
@@ -211,13 +265,21 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                         size="small"
                       />
                     )}
-                    onChange={(event, value) => {
-                      if (value && value.uuid) {
-                        getdata(value);
-                      } 
-                    }}
+                    onChange={(event,value)=>{if(value&&value.uuid){
+                      getdata(value)
+                      // setOwner("")
+                      console.log(owner)
+                      
+                    }
+                  else{
+                    setOwner("")
+                  }
+                  }}
                   />
+                  {ownercond?  <p style={p}>*Select owner </p>:null} 
+
                 </div>
+               
               </div>
               <div
                 className="col2"
@@ -227,7 +289,7 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                   rowGap: "24px",
                 }}
               >
-                <div className="row1" style={{ marginTop: " 28px" }}>
+               <div className="row1" style={{ marginTop: " 28px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -244,6 +306,7 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                     size="small"
                     variant="outlined"
                     placeholder="Select Manager"
+                  
                     inputProps={{
                       style: {
                         height: "20px",
@@ -251,9 +314,11 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                       },
                     }}
                   />
-                </div>
+                            
 
-                <div className="row3" style={{ marginTop: "30px" }}>
+                </div>
+             
+                <div className="row3" style={{marginTop:"30px"}}>
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -319,12 +384,18 @@ const AddBtn = ({ handleSave, open, handleClose }) => {
                     />
                   </label>
                 </div>
+                {statuscond?  <p style={p}>*Select Status </p>:null} 
+
               </div>
             </div>
           </div>
-          <div className="footer" style={{ marginTop: "20px" }}>
+          <div className="footer" style={{marginTop:"20px"}}>
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
-            <Buttons label="Save" variant="primary" onClick={handleSave1} />
+            <Buttons
+              label="Save"
+              variant="primary"
+              onClick={handleSave1}       
+            />
           </div>
         </Box>
       </Modal>
