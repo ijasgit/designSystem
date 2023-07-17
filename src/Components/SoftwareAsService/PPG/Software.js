@@ -6,11 +6,14 @@ import NavBar from "../../NavBar/NavBar";
 
 const Software = () => {
   const data = useSelector((state) => state.software.value);
+  const tabName = useSelector((state) => state.routeLabel.value[0].name);
+
+
   const Title = data[0].name;
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <NavBar />
+      <NavBar tabName={tabName} />
       <div>
         <div>
           <p style={{ margin: "27px 0px 36px 13px" }}>{Title}</p>

@@ -36,12 +36,12 @@ const AddBtn = ({handleSave, open, handleClose}) => {
       const response = await axios.get("/api/users");
       setData(response.data);
 
-      console.log(response.data, "working");
+
     } catch (error) {
       console.error("Error fetching data:", error.response);
     }
   };
-  console.log(data, "data");
+
 
 
 
@@ -64,21 +64,21 @@ const[statuscond,setstatuscond]=useState(false)
 
     event.preventDefault();
     if(name==""){
-      console.log("name is empty")
+    
       setnamecond(true)
     }
     else{
       setnamecond(false)
     }
     if(description==""){
-      console.log("description is empty")
+    
       setdescond(true)
     }
     else{
       setdescond(false)
     }
     if(owner==""){
-      console.log("owner is empty")
+
       setownercond(true)
     }
     else{
@@ -86,7 +86,7 @@ const[statuscond,setstatuscond]=useState(false)
     
     }
     if(status==""){
-      console.log("status is empty")
+
       setstatuscond(true)
     }
     else{
@@ -133,7 +133,7 @@ const[statuscond,setstatuscond]=useState(false)
   };
   const handleChange1 = (event) => {
     setSelectedValue1(event.target.value);
-    console.log(status,"values")
+
   };
 
   const defprops={
@@ -143,7 +143,7 @@ const[statuscond,setstatuscond]=useState(false)
   const getdata = (value) => {
     setUUid(value.uuid)
     setOwner(value.label)
-    console.log(value.uuid,value.label, "valyess");
+
   };
   return (
     <div>
@@ -268,7 +268,7 @@ const[statuscond,setstatuscond]=useState(false)
                     onChange={(event,value)=>{if(value&&value.uuid){
                       getdata(value)
                       // setOwner("")
-                      console.log(owner)
+                     
                       
                     }
                   else{

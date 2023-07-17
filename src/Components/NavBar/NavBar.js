@@ -5,12 +5,17 @@ import NotificationsTwoToneIcon from "@mui/icons-material/NotificationsTwoTone";
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addLabel } from "../../Components/Featuers/RoutesLabelSlice";
+import { useDispatch } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({tabName}) => {
+  const dispatch=useDispatch()
+
   const navto = useNavigate();
   const data = useSelector((state) => state.software.value[0].name);
   const [path, setPath] = useState(window.location.pathname);
-  const tabName = useSelector((state) => state.routeLabel.value[0].name);
+
+  // const tabName = useSelector((state) => state.routeLabel.value[0].name);
 
   useEffect(() => {
     setPath(window.location.pathname);
@@ -19,7 +24,11 @@ const NavBar = () => {
   const routenav = () => {
     // history.push('/path-to-component');
     navto("/home");
-    console.log("routing");
+    dispatch(
+      addLabel({
+      name: "PPG"
+      }))
+  
   };
 
   return (

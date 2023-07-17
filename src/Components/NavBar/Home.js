@@ -35,7 +35,7 @@ const Home = () => {
       const response = await axios.get("/api/portfolio");
       setData(response.data);
       setLoading(false);
-      console.log(response.data, "working");
+
     } catch (error) {
       console.error("Error fetching data:", error.response);
     }
