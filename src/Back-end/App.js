@@ -84,12 +84,77 @@ app.post("/api/login", async (req, res) => {
     res.send(false);
   }
 });
-  // res.json({
-  //   message: "Data received successfully 123466",
-  //   dataPassword,
-  //   dataUserName
-  // })
-// });
+
+app.post("/api/deleterow/", async (req, res) => {
+  const dataId = req.body.id;
+  await client.connect();
+  const query = "DELETE FROM portfolio WHERE uuid = $1";
+  await client.query(query, [dataId]);
+  console.log("Row deleted successfully!");
+  res.send("Row deleted successfully!");
+});
+
+app.get("/api/edit/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+  console.log(uuid, "hello partha");
+  await client.connect();
+  const query =
+    "SELECT name,description,portfolio_owner,status,create_date FROM portfolio WHERE uuid = $1 LIMIT 1";
+  client.query(query, [uuid], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+    } else {
+      console.log("Query result:", result);
+      const portfolioOwner = result.rows;
+      res.send(portfolioOwner);
+    }
+  });
+});
+
+app.get("/api/ownername", async (req, res) => {
+  const ownername = req.query.id;
+  console.log(ownername, "ownername");
+  await client.connect();
+  const query = "SELECT label FROM users WHERE uuid = $1";
+  client.query(query, [ownername], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+    } else {
+      console.log("Query result:", result);
+      const ownername = result.rows;
+      res.send(ownername);
+    }
+  });
+});
+
+app.put("/api/put", async (req, res) => {
+  const uuid = req.query.id;
+  const name = req.body.name;
+  const description = req.body.description;
+  const owneruuid=req.body.owneruuid;
+  console.log("inside");
+  console.log(name);
+  console.log(description);
+
+  await client.connect();
+  const query = `
+  UPDATE portfolio 
+  SET name = $1, description = $2 , portfolio_owner=$3
+  WHERE uuid = $4
+  RETURNING *
+`;
+
+  client.query(query, [name, description,owneruuid, uuid], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+    } else {
+      console.log("Query result:", result);
+      const portfolioOwner = result.rows;
+      console.log(portfolioOwner, "jee");
+      res.send(portfolioOwner);
+    }
+  });
+});
 
 const port = process.env.PORT || 8081;
 

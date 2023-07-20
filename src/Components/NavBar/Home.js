@@ -15,15 +15,39 @@ import { TbShare2 } from "react-icons/tb";
 import { HiSortDescending } from "react-icons/hi";
 // import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import CircularProgress from "@mui/joy/CircularProgress";
+import { set } from "date-fns";
 
 const Home = () => {
   const [data, setData] = useState("");
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [editedData, seteditData] = useState();
+  const [Ename, setEname] = useState("");
+  const [Edescription, setdescription] = useState("");
+  const [Eportfolio_owner, setportfolio_owner] = useState("");
+  const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [Estatus, setstatus] = useState("");
+  // const [Edate, setdate] = useState("");
+  const [uuid, setuuid] = useState("");
+
+  const handleOpen = () => {
+    setOpen(true);
+    console.log(Ename, "ename");
+    if (Ename == null) {
+      setEname("");
+      console.log(Ename, "ename cod");
+    }
+  };
+  const handleClose = () => {
+    setOpen(false);
+    setEname("");
+    setdescription("");
+    setuuid("");
+    setportfolio_ownerName("")
+    setportfolio_owner("")
+  };
 
   useEffect(() => {
     fetchPortfolio();
@@ -31,36 +55,100 @@ const Home = () => {
 
   const fetchPortfolio = async () => {
     try {
+      setData([]);
       setLoading(true);
       const response = await axios.get("/api/portfolio");
       setData(response.data);
+      console.log(data, "dataas");
       setLoading(false);
-
     } catch (error) {
       console.error("Error fetching data:", error.response);
     }
   };
   const handleSave = async (data1) => {
-     
-    if(data1.name!=""&& data1.description!="" && data1.status!=""&&data1.owner!=""){
-      try {
-        setData([]);
-        const response = await axios.post("/api/portfolio", {
-          data: data1,
-        });
-        console.log(response);
-        fetchPortfolio();
-        // Handle the response from the server
-      } catch (error) {
-        console.error(error);
-        // Handle any errors that occurred during the request
+    console.log(data1, "data1");
+    if (!uuid) {
+      if (
+        data1.name != "" &&
+        data1.description != "" &&
+        data1.status != "" &&
+        data1.owner != ""
+      ) {
+        try {
+          setData([]);
+          const response = await axios.post("/api/portfolio", {
+            data: data1,
+          });
+          console.log(response);
+          fetchPortfolio();
+          // Handle the response from the server
+        } catch (error) {
+          console.error(error);
+          // Handle any errors that occurred during the request
+        }
+        handleClose();
+      } else {
+        alert("please enter details");
       }
-      handleClose();
-
-    }else{
-      alert('please enter details')
+    } else {
+      console.log("old data");
+      console.log(Ename);
+      console.log(Edescription);
+      const response = await axios.put(`/api/put?id=${uuid}`, {
+        name: Ename, 
+        description: Edescription,
+        owneruuid:Eportfolio_owner
+       });
+      console.log(response.data, "put");
+      handleClose()
+      fetchPortfolio()
     }
-   
+  };
+
+  const deleterow = async (uuid) => {
+    const id = uuid;
+    console.log("its working coool", uuid);
+    try {
+      await axios.post("/api/deleterow/", { id: id });
+      fetchPortfolio();
+      // Handle the response from the server
+    } catch (error) {
+      console.error(error);
+      // Handle any errors that occurred during the request
+    }
+  };
+  const handleSetEname = (name) => {
+    setEname(name);
+  };
+  const handleSetDes = (name) => {
+    setdescription(name);
+  };
+  const handlestatus=(status)=>{
+setstatus(status)
+  }
+  const handleownername=(ownerdata)=>{
+    // setportfolio_ownerName(status)
+    console.log(ownerdata,"ownerdata")
+    setportfolio_ownerName(ownerdata.label)
+    setportfolio_owner(ownerdata.uuid)
+      }
+
+  const editrow = async (uuid) => {
+    const response = await axios.get(`/api/edit/${uuid}`);
+    console.log(response.data);
+    setuuid(uuid);
+    setEname(response.data[0].name);
+    setdescription(response.data[0].description);
+    setstatus(response.data[0].status);
+    setportfolio_owner(response.data[0].portfolio_owner);
+  
+   console.log(Eportfolio_owner,"hello edit")
+    const responseOfOwner=await axios.get(`/api/ownername?id=${Eportfolio_owner}`)
+    console.log(responseOfOwner.data[0].label,"hii");
+    setportfolio_ownerName(responseOfOwner.data[0].label)
+    handleOpen();
+
+  
   };
 
   return (
@@ -118,7 +206,7 @@ const Home = () => {
                   />
                 </div>
               </div>
-              <DataTable data={data} />
+              <DataTable data={data} deleterow={deleterow} editrow={editrow} />
             </div>
           ) : (
             <CreateNewPortfolio
@@ -128,7 +216,22 @@ const Home = () => {
             />
           )}
         </div>
-        <AddBtn open={open} handleSave={handleSave} handleClose={handleClose} />
+        <AddBtn
+          open={open}
+          handleSave={handleSave}
+          handleClose={handleClose}
+          editedData={editedData}
+          Ename={Ename}
+          Edescription={Edescription}
+          Eportfolio_owner={Eportfolio_owner}
+          Eportfolio_ownerName={Eportfolio_ownerName}
+          Estatus={Estatus}
+     
+          handleSetEname={handleSetEname}
+          handlestatus={handlestatus}
+          handleSetDes={handleSetDes}
+          handleownername={handleownername}
+        />
       </div>
     </div>
   );

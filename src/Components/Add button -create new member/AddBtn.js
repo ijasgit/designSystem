@@ -1,7 +1,5 @@
 import React, {
   useEffect,
-  forwardRef,
-  useImperativeHandle,
   useState,
 } from "react";
 import { TextareaAutosize } from "@mui/base";
@@ -18,17 +16,26 @@ import { lightBlue } from "@mui/material/colors";
 import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
 import Buttons from "../../Stories/Buttons/Buttons";
 import "../../Components/NavBar/NavBar.css";
-import { addUser } from "../Featuers/User";
-import { useDispatch, useSelector } from "react-redux";
+
 import { format } from "date-fns";
 import axios from "axios";
-import { ConstructionOutlined } from "@mui/icons-material";
 
-const AddBtn = ({handleSave, open, handleClose}) => {
+const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus}) => {
   const [data, setData] = useState([]);
+console.log(Eportfolio_owner,"owner uuid")
+// if(Eportfolio_owner){
+
+// }
+  // const [name, setName] = useState('');
+//  console.log(name,"nameey")
+
 
   useEffect(() => {
     fetchUsers();
+if(Eportfolio_owner!==""){
+console.log("works")
+}
+  
   }, []);
 
   const fetchUsers = async () => {
@@ -42,13 +49,7 @@ const AddBtn = ({handleSave, open, handleClose}) => {
     }
   };
 
-
-
-
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [owner, setOwner] = useState("");
-  const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
@@ -61,23 +62,23 @@ const[ownercond,setownercond]=useState(false)
 const[statuscond,setstatuscond]=useState(false)
 
   const handleSave1 = async (event) => {
-
+ console.log("sacing")
     event.preventDefault();
-    if(name==""){
+    if(Ename==""){
     
       setnamecond(true)
     }
     else{
       setnamecond(false)
     }
-    if(description==""){
+    if(Edescription==""){
     
       setdescond(true)
     }
     else{
       setdescond(false)
     }
-    if(owner==""){
+    if(Eportfolio_ownerName==""){
 
       setownercond(true)
     }
@@ -85,16 +86,16 @@ const[statuscond,setstatuscond]=useState(false)
       setownercond(false)
     
     }
-    if(status==""){
+    if(Estatus==""){
 
       setstatuscond(true)
     }
     else{
       setstatuscond(false)
     }
-    if(name!=""&&description!=""&&status!=""&&owner!=""&&ownerUUID!="")
+    if(Ename!=""&&Edescription!=""&&Estatus!=""&&Eportfolio_ownerName!=""&&Eportfolio_owner!="")
     {
-      handleSave({ name: name, description: description, owner: ownerUUID,status:status,formattedDate:formattedDate })
+      handleSave({ name: Ename, description: Edescription, owner: Eportfolio_owner,status:Estatus,formattedDate:formattedDate,ownername:Eportfolio_ownerName })
       setnamecond(false)
       setdescond(false)
       setownercond(false)
@@ -138,7 +139,8 @@ const[statuscond,setstatuscond]=useState(false)
 
   const defprops={
     options:data,
-    getOptionLabel:(options)=>options.label
+    getOptionLabel:(options)=>options.label,
+
   }
   const getdata = (value) => {
     setUUid(value.uuid)
@@ -199,12 +201,12 @@ const[statuscond,setstatuscond]=useState(false)
                   />
                   <TextField
                     id="outlined-basic"
-                    //   style={{ width: 375}}
+                    value={Ename?Ename:''}
                     size="small"
                     variant="outlined"
                     placeholder="Enter Portfolio Name"
                     onChange={(event) => {
-                      setName(event.target.value);
+                      handleSetEname(event.target.value);
                     }}
                     inputProps={{
                       style: {
@@ -230,7 +232,8 @@ const[statuscond,setstatuscond]=useState(false)
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
-                   
+                    value={Edescription?Edescription:''}
+
                     style={{
                       width: "100%",
                       resize: "none",
@@ -238,7 +241,7 @@ const[statuscond,setstatuscond]=useState(false)
                       fontSize: "14px",
                     }}
                     onChange={(event) => {
-                      setDescription(event.target.value);
+                      handleSetDes(event.target.value);
                     }}
                   />
                   {descond?  <p style={{...p,marginTop:"-5px"}}>*Enter Description </p>:null} 
@@ -255,18 +258,21 @@ const[statuscond,setstatuscond]=useState(false)
                   />
 
                   <Autocomplete
-                   
+             
                     {...defprops}
+                  value={Eportfolio_ownerName?{label:Eportfolio_ownerName}:{label:""}}
                     sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
                         placeholder="Select case development custom field"
                         size="small"
+                     
+                   
                       />
                     )}
                     onChange={(event,value)=>{if(value&&value.uuid){
-                      getdata(value)
+                      handleownername(value)
                       // setOwner("")
                      
                       
@@ -332,7 +338,7 @@ const[statuscond,setstatuscond]=useState(false)
                     checked={selectedValue1 === "Inactive"}
                     onChange={handleChange1}
                     onClick={(event) => {
-                      setStatus(event.target.value);
+                      handlestatus(event.target.value);
                     }}
                     value="Inactive"
                     name="radio-buttons"
@@ -359,7 +365,7 @@ const[statuscond,setstatuscond]=useState(false)
                     checked={selectedValue1 === "Active"}
                     onChange={handleChange1}
                     onClick={(event) => {
-                      setStatus(event.target.value);
+                      handlestatus(event.target.value);
                       //event.target.style.color = 'red';
                     }}
                     value="Active"

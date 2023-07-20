@@ -24,18 +24,26 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "../../Components/NavBar/NavBar.css";
 import { blue } from "@mui/material/colors";
 
-
 const DataTable = (props) => {
   const childRef = useRef();
   const nav = useNavigate();
+  
 
-  const { variant = "primary", height, width, data, ...rest } = props;
+  const { variant = "primary", height, width, data,deleterow,editrow , ...rest} = props;
   const [rows, setRows] = useState(data);
 
-  // useEffect(() => {
-  //   fetchPortfolio();
+  console.log(rows,"newrows")
 
-  // }, []);
+  const delete1row = (uuid,index) => {
+    deleterow(uuid);
+   // data[index].show =false
+   // setRows(data);
+  };
+
+  const edit1row=(uuid)=>{
+    editrow(uuid)
+   
+  }
 
   const check = (id, index) => {
     let data = rows.slice();
@@ -43,18 +51,16 @@ const DataTable = (props) => {
     setRows(data);
   };
 
-  const fetchPortfolio = async () => {
-    try {
-      const response = await axios.get("/api/portfolio");
-      setRows(response.data);
+  // const fetchPortfolio = async () => {
+  //   try {
+  //     const response = await axios.get("/api/portfolio");
+  //     setRows(response.data);
 
-      console.log(response.data, "working");
-    } catch (error) {
-      console.error("Error fetching data:", error.response);
-    }
-  };
-   
-    
+  //     console.log(response.data, "working");
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error.response);
+  //   }
+  // };
 
   const diapatch = useDispatch();
 
@@ -68,8 +74,6 @@ const DataTable = (props) => {
     nav("/software");
   };
 
-
-  
   return (
     <div>
       <div
@@ -92,8 +96,8 @@ const DataTable = (props) => {
               display: "flex",
             }}
           >
-            <AddBtn ref={childRef} />
-            <div
+            {/* <AddBtn ref={childRef} /> */}
+            {/* <div
               style={{
                 position: "absolute",
                 paddingTop: "3px",
@@ -101,83 +105,95 @@ const DataTable = (props) => {
                 cursor: "pointer",
               }}
               onClick={() => childRef.current.handleOpen()}
-            >
+            > */}
               {/* <AddOutlinedIcon
                 className="addout-1"
                 fontSize="small"
               ></AddOutlinedIcon> */}
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
       {data && data.length && (
-          <div style={{ width: "1161px", marginLeft: "31px",overflow: 'auto', maxHeight: '485px' }}>
-            <TableContainer component={Paper}>
-              <Table aria-label="simple table"  >
-                <TableHead>
-                  <TableRow >
-                    {/* <TableCell>
+        <div
+          style={{
+            width: "1161px",
+            marginLeft: "31px",
+            overflow: "auto",
+            maxHeight: "485px",
+          }}
+        >
+          <TableContainer component={Paper}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  {/* <TableCell>
                       {" "}
                       <span style={{ marginLeft: "15px" }}>ID</span>
                     </TableCell> */}
-                    <TableCell>Name</TableCell>
-                    <TableCell align="right">Status</TableCell>
-                    <TableCell align="right">Created date</TableCell>
-                    <TableCell align="right">Manager</TableCell>
-                    <TableCell align="right"></TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row, index) => (
-                    <TableRow
-                      key={index}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      {/* <TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell align="right">Status</TableCell>
+                  <TableCell align="right">Created date</TableCell>
+                  <TableCell align="right">Manager</TableCell>
+                  <TableCell align="right"></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    {/* <TableCell>
                         <div style={{ display: "flex" }}>
                           <TableCell>{row.id}</TableCell>
                         </div>
                       </TableCell> */}
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        onClick={() => NavtoSoftware(row.name)}
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      onClick={() => NavtoSoftware(row.name)}
+                    >
+                      <p
+                        style={{ color: "blue", cursor: "pointer" }}
+                        className="link-hover"
                       >
-                        <p style={{color:"blue",cursor:"pointer" }}className="link-hover" >{row.name}</p>
-                      </TableCell>
-                      <TableCell
-                        align="right"
-                        style={{
-                          color:
-                            row.status === "Active" ? "#15AC52" : "#C03767",
-                        }}
-                      >
-                        {row.status}
-                      </TableCell>
-                      <TableCell align="right">
-                        {row.create_date}
-                      </TableCell>
-                      <TableCell align="right">{row.manager}</TableCell>
+                        {row.name}
+                      </p>
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      style={{
+                        color: row.status === "Active" ? "#15AC52" : "#C03767",
+                      }}
+                    >
+                      {row.status}
+                    </TableCell>
+                    <TableCell align="right">{row.create_date}</TableCell>
+                    <TableCell align="right">{row.manager}</TableCell>
 
-                      <TableCell align="right">
-                        {row.protein}
-                        <MoreHorizIcon onClick={() => check(row.id, index)} />
-                        {row.show ? (
-                          <Paper>
-                            <MenuList>
-                              <MenuItem >Delete</MenuItem>
-                           
-                            </MenuList>
-                          </Paper>
-                        ) : null}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </div>
+                    <TableCell align="right">
+                      {row.protein}
+                      <MoreHorizIcon onClick={() => check(row.id, index)} />
+                      {row.show ? (
+                        
+                        <Paper>
+                         {console.log(row,"shiww")}
+                          <MenuList>
+                          <MenuItem onClick={()=>edit1row(row.uuid)}>Edit</MenuItem>
+                            <MenuItem onClick={()=>delete1row(row.uuid,index)}>Delete</MenuItem>
+                        
 
+                          </MenuList>
+                        </Paper>
+                      ) : null}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
       )}
     </div>
   );
