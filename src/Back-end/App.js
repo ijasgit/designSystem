@@ -143,17 +143,21 @@ app.put("/api/put", async (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
   const owneruuid=req.body.owneruuid;
+  const status = req.body.status
+
+  console.log(status)
+
 
 
   // await client.connect();
   const query = `
   UPDATE portfolio 
-  SET name = $1, description = $2,portfolio_owner=$3
-  WHERE uuid = $4
+  SET name = $1, description = $2,portfolio_owner=$3,status=$4
+  WHERE uuid = $5
   RETURNING *
 `;
 
-  client.query(query, [name, description,owneruuid, uuid], (err, result) => {
+  client.query(query, [name, description,owneruuid,status, uuid], (err, result) => {
     if (err) {
       console.error("Error executing query:", err);
     } else {

@@ -32,6 +32,7 @@ const Home = () => {
   console.log(Eportfolio_ownerName,"Eportfolio_ownerName got it")
 
   const [Estatus, setstatus] = useState("");
+  console.log(Estatus,"status got it")
   const [uuid, setuuid] = useState("");
 
   const handleOpen = () => {
@@ -91,7 +92,8 @@ const Home = () => {
       const response = await axios.put(`/api/put?id=${uuid}`, {
         name: Ename, 
         description: Edescription,
-        owneruuid:Eportfolio_owner
+        owneruuid:Eportfolio_owner,
+        status:Estatus,
        });
       handleClose()
       fetchPortfolio()
@@ -116,7 +118,7 @@ const Home = () => {
     setdescription(name);
   };
   const handlestatus=(status)=>{
-setstatus(status)
+  setstatus(status)
   
   }
   const handleownername=(ownerdata)=>{
