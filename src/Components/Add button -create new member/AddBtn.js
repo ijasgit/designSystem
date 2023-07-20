@@ -24,86 +24,85 @@ import { format } from "date-fns";
 import axios from "axios";
 import { ConstructionOutlined } from "@mui/icons-material";
 
-const AddBtn = ({handleSave, open, handleClose}) => {
+const AddBtn = ({ handleSave, open, handleClose, userData }) => {
+
+  const [userData1,setData1]=useState(userData)
+  console.log(userData1,"user data from home")
+
+ 
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get("/api/users");
-      setData(response.data);
-
-
-    } catch (error) {
-      console.error("Error fetching data:", error.response);
-    }
-  };
-
-
-
-
-  const [name, setName] = useState("");
+  const [name, setName] = useState();
+  const [eName,seteName] = useState ()
   const [description, setDescription] = useState("");
   const [owner, setOwner] = useState("");
   const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
-  const [ownerUUID,setUUid]=useState("")
+  const [ownerUUID, setUUid] = useState("");
   const [date] = useState(new Date());
-  const formattedDate=format(date,"MMM dd,hh:mm a")
-const[namecond,setnamecond]=useState(false)
-const[descond,setdescond]=useState(false)
-const[ownercond,setownercond]=useState(false)
-const[statuscond,setstatuscond]=useState(false)
+  const formattedDate = format(date, "MMM dd,hh:mm a");
+  const [namecond, setnamecond] = useState(false);
+  const [descond, setdescond] = useState(false);
+  const [ownercond, setownercond] = useState(false);
+  const [statuscond, setstatuscond] = useState(false);
+
+  useEffect(() => {
+    fetchUsers();
+   
+   
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("/api/users");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error.response);
+    }
+  };
 
   const handleSave1 = async (event) => {
-
     event.preventDefault();
-    if(name==""){
-    
-      setnamecond(true)
+    if (name == "") {
+      setnamecond(true);
+    } else {
+      setnamecond(false);
     }
-    else{
-      setnamecond(false)
+    if (description == "") {
+      setdescond(true);
+    } else {
+      setdescond(false);
     }
-    if(description==""){
-    
-      setdescond(true)
+    if (owner == "") {
+      setownercond(true);
+    } else {
+      setownercond(false);
     }
-    else{
-      setdescond(false)
+    if (status == "") {
+      setstatuscond(true);
+    } else {
+      setstatuscond(false);
     }
-    if(owner==""){
-
-      setownercond(true)
+    if (
+      name != "" &&
+      description != "" &&
+      status != "" &&
+      owner != "" &&
+      ownerUUID != ""
+    ) {
+      handleSave({
+        name: name,
+        description: description,
+        owner: ownerUUID,
+        status: status,
+        formattedDate: formattedDate,
+      });
+      setnamecond(false);
+      setdescond(false);
+      setownercond(false);
+      setstatuscond(false);
     }
-    else{
-      setownercond(false)
-    
-    }
-    if(status==""){
-
-      setstatuscond(true)
-    }
-    else{
-      setstatuscond(false)
-    }
-    if(name!=""&&description!=""&&status!=""&&owner!=""&&ownerUUID!="")
-    {
-      handleSave({ name: name, description: description, owner: ownerUUID,status:status,formattedDate:formattedDate })
-      setnamecond(false)
-      setdescond(false)
-      setownercond(false)
-      setstatuscond(false)
-
-    }
- 
- 
-
   };
 
   const style = {
@@ -118,37 +117,30 @@ const[statuscond,setstatuscond]=useState(false)
     borderRadius: "5px",
   };
 
-
-  
- const p={
+  const p = {
     fontSize: "12px",
     color: "red",
-    margin:"0px"
-
-  }
-
+    margin: "0px",
+  };
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
   const handleChange1 = (event) => {
     setSelectedValue1(event.target.value);
-
   };
 
-  const defprops={
-    options:data,
-    getOptionLabel:(options)=>options.label
-  }
+  const defprops = {
+    options: data,
+    getOptionLabel: (options) => options.label,
+  };
   const getdata = (value) => {
-    setUUid(value.uuid)
-    setOwner(value.label)
-
+    setUUid(value.uuid);
+    setOwner(value.label);
   };
   return (
     <div>
-      {" "}
-    
+     
       <Modal
         open={open}
         onClose={handleClose}
@@ -193,13 +185,16 @@ const[statuscond,setstatuscond]=useState(false)
                     fontSize={12}
                     fontWeight={500}
                     label="NAME"
+                    // value={name}
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
+                    // value={eName}
                   />
                   <TextField
                     id="outlined-basic"
                     //   style={{ width: 375}}
+                    value={userData}
                     size="small"
                     variant="outlined"
                     placeholder="Enter Portfolio Name"
@@ -213,9 +208,9 @@ const[statuscond,setstatuscond]=useState(false)
                       },
                     }}
                   />
-               {namecond?  <p style={p}>*Enter name</p>:null} 
+                  {namecond ? <p style={p}>*Enter name</p> : null}
                 </div>
-                <div className="row2" style={{marginTop:"5px"}}>
+                <div className="row2" style={{ marginTop: "5px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -230,7 +225,6 @@ const[statuscond,setstatuscond]=useState(false)
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
-                   
                     style={{
                       width: "100%",
                       resize: "none",
@@ -241,9 +235,13 @@ const[statuscond,setstatuscond]=useState(false)
                       setDescription(event.target.value);
                     }}
                   />
-                  {descond?  <p style={{...p,marginTop:"-5px"}}>*Enter Description </p>:null} 
-                </div>   
-                <div className="row3" >
+                  {descond ? (
+                    <p style={{ ...p, marginTop: "-5px" }}>
+                      *Enter Description{" "}
+                    </p>
+                  ) : null}
+                </div>
+                <div className="row3">
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -255,7 +253,6 @@ const[statuscond,setstatuscond]=useState(false)
                   />
 
                   <Autocomplete
-                   
                     {...defprops}
                     sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
@@ -265,21 +262,19 @@ const[statuscond,setstatuscond]=useState(false)
                         size="small"
                       />
                     )}
-                    onChange={(event,value)=>{if(value&&value.uuid){
-                      getdata(value)
-                      // setOwner("")
-                     
-                      
-                    }
-                  else{
-                    setOwner("")
-                  }
-                  }}
+                    onChange={(event, value) => {
+                      if (value && value.uuid) {
+                        getdata(value);
+                        // setOwner("")
+                      } else {
+                        setOwner("");
+                      }
+                    }}
                   />
-                  {ownercond?  <p style={{...p ,marginTop:"10px"}}>*Select owner </p>:null} 
-
+                  {ownercond ? (
+                    <p style={{ ...p, marginTop: "10px" }}>*Select owner </p>
+                  ) : null}
                 </div>
-               
               </div>
               <div
                 className="col2"
@@ -289,7 +284,7 @@ const[statuscond,setstatuscond]=useState(false)
                   rowGap: "24px",
                 }}
               >
-               <div className="row1" style={{ marginTop: " 28px" }}>
+                <div className="row1" style={{ marginTop: " 28px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -306,7 +301,6 @@ const[statuscond,setstatuscond]=useState(false)
                     size="small"
                     variant="outlined"
                     placeholder="Select Manager"
-                  
                     inputProps={{
                       style: {
                         height: "20px",
@@ -314,11 +308,9 @@ const[statuscond,setstatuscond]=useState(false)
                       },
                     }}
                   />
-                            
-
                 </div>
-             
-                <div className="row3" style={{marginTop:"30px"}}>
+
+                <div className="row3" style={{ marginTop: "30px" }}>
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -384,18 +376,15 @@ const[statuscond,setstatuscond]=useState(false)
                     />
                   </label>
                 </div>
-                {statuscond?  <p style={{...p,marginTop:"-25px"}}>*Select Status </p>:null} 
-
+                {statuscond ? (
+                  <p style={{ ...p, marginTop: "-25px" }}>*Select Status </p>
+                ) : null}
               </div>
             </div>
           </div>
-          <div className="footer" style={{marginTop:"20px"}}>
+          <div className="footer" style={{ marginTop: "20px" }}>
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
-            <Buttons
-              label="Save"
-              variant="primary"
-              onClick={handleSave1}       
-            />
+            <Buttons label="Save" variant="primary" onClick={handleSave1} />
           </div>
         </Box>
       </Modal>

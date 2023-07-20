@@ -18,9 +18,11 @@ import CircularProgress from "@mui/joy/CircularProgress";
 
 const Home = () => {
   const [data, setData] = useState("");
-
+  // console.log(propsEditData)
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const[userData,setUserdata] = useState()
+  console.log(userData,"user data")
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -35,20 +37,23 @@ const Home = () => {
       const response = await axios.get("/api/portfolio");
       setData(response.data);
       setLoading(false);
-
     } catch (error) {
       console.error("Error fetching data:", error.response);
     }
   };
   const handleSave = async (data1) => {
-     
-    if(data1.name!=""&& data1.description!="" && data1.status!=""&&data1.owner!=""){
+    if (
+      data1.name != "" &&
+      data1.description != "" &&
+      data1.status != "" &&
+      data1.owner != ""
+    ) {
       try {
         setData([]);
         const response = await axios.post("/api/portfolio", {
           data: data1,
         });
-        console.log(response);
+        // console.log(response);
         fetchPortfolio();
         // Handle the response from the server
       } catch (error) {
@@ -56,11 +61,25 @@ const Home = () => {
         // Handle any errors that occurred during the request
       }
       handleClose();
+    } else {
+      alert("please enter details");
+    }
+  };
+ 
+  //call back  function
 
-    }else{
-      alert('please enter details')
+  const editRow = async (uuid) => {
+    try {
+      const response = await axios.get(`/api/portfolio?uuid=${uuid}`);
+      console.log(response.data);
+     setUserdata(response.data)
+      handleOpen();
+    } catch (error) {
+      // Handle errors if any
+      console.error("Error fetching data:", error);
     }
    
+
   };
 
   return (
@@ -85,7 +104,7 @@ const Home = () => {
             </div>
           ) : data && data.length ? (
             <div style={{ direction: "flex" }}>
-              <div style={{ display: "flex", columnGap: "12px" }}>
+              <div style={{ display: "flex", columnGap: "12px"}}>
                 <div style={{ marginLeft: "30px" }}>
                   <SearchBar
                     backgroundColor="#f3f3f3"
@@ -118,7 +137,7 @@ const Home = () => {
                   />
                 </div>
               </div>
-              <DataTable data={data} />
+              <DataTable data={data} editRow={editRow}  />
             </div>
           ) : (
             <CreateNewPortfolio
@@ -128,7 +147,13 @@ const Home = () => {
             />
           )}
         </div>
-        <AddBtn open={open} handleSave={handleSave} handleClose={handleClose} />
+        <AddBtn
+          open={open}
+          handleSave={handleSave}
+          handleClose={handleClose}
+          userData={userData}
+         
+        />
       </div>
     </div>
   );

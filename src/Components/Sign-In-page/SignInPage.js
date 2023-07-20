@@ -24,40 +24,45 @@ export default function SignInSide() {
 
   const [data, setData] = useState([]);
 
- // const navigate = useNavigate();
-  useEffect(() => {
+  // useEffect(() => {
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/api/data");
-      setData(response.data);
-      console.log(response.data)
-    } catch (error) {
-      console.error("Error fetching data:", error.response);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("/api/data");
+  //     setData(response.data);
+  //     console.log(response.data)
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error.response);
+  //   }
+  // };
   
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     const data1=data
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     console.log(data1,"got it")
-  
-    if (username === "" || password === "") {
-      alert("Enter both username and password");
-    } else {
- 
-    const matchedUser = data1.filter((item) => item.username === username && item.password === password);
 
-      if (matchedUser.length > 0) {
-        window.location.replace('/home');
+    
+      const response = await axios.post("/api/login", {
+        username: username,
+        password: password,
+      });
+     
+      if (response.data) {
+        
+        window.location.replace ("/home") ;
       } else {
-        console.log("Error: Invalid username or password");
+        
+        alert("Authentication failed. Please try again.");
       }
-    }
+      
+  
+    
+  
+ 
   };
   
   // handleSubmit(data);
