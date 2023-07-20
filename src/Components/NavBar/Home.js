@@ -134,16 +134,16 @@ setstatus(status)
       }
 
   const editrow = async (uuid) => {
-    const response = await axios.get(`/api/edit/${uuid}`);
+    const response = await axios.get(`/api/edit?id=${uuid}`);
     console.log(response.data);
     setuuid(uuid);
     setEname(response.data[0].name);
     setdescription(response.data[0].description);
     setstatus(response.data[0].status);
-    setportfolio_owner(response.data[0].portfolio_owner);
+    // setportfolio_owner(response.data[0].portfolio_owner);
   
    console.log(Eportfolio_owner,"hello edit")
-    const responseOfOwner=await axios.get(`/api/ownername?id=${Eportfolio_owner}`)
+    const responseOfOwner=await axios.get(`/api/ownername?id=${response.data[0].portfolio_owner}`)
     console.log(responseOfOwner.data[0].label,"hii");
     setportfolio_ownerName(responseOfOwner.data[0].label)
     handleOpen();

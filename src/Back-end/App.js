@@ -94,8 +94,8 @@ app.post("/api/deleterow/", async (req, res) => {
   res.send("Row deleted successfully!");
 });
 
-app.get("/api/edit/:uuid", async (req, res) => {
-  const uuid = req.params.uuid;
+app.get("/api/edit", async (req, res) => {
+  const uuid = req.query.id;
   console.log(uuid, "hello partha");
   await client.connect();
   const query =
@@ -114,7 +114,7 @@ app.get("/api/edit/:uuid", async (req, res) => {
 app.get("/api/ownername", async (req, res) => {
   const ownername = req.query.id;
   console.log(ownername, "ownername");
-  await client.connect();
+  try{await client.connect();
   const query = "SELECT label FROM users WHERE uuid = $1";
   client.query(query, [ownername], (err, result) => {
     if (err) {
@@ -124,7 +124,10 @@ app.get("/api/ownername", async (req, res) => {
       const ownername = result.rows;
       res.send(ownername);
     }
-  });
+  })}
+  catch(error){
+    console.log(error)
+  } 
 });
 
 app.put("/api/put", async (req, res) => {
