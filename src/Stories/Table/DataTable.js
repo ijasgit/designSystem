@@ -32,7 +32,7 @@ const DataTable = (props) => {
   const { variant = "primary", height, width, data,deleterow,editrow , ...rest} = props;
   const [rows, setRows] = useState(data);
 
-  console.log(rows,"newrows")
+  // console.log(rows,"newrows")
 
   const delete1row = (uuid,index) => {
     deleterow(uuid);
@@ -42,6 +42,7 @@ const DataTable = (props) => {
 
   const edit1row=(uuid)=>{
     editrow(uuid)
+    console.log(editrow,"edit ")
    
   }
 

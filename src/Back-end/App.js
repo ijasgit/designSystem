@@ -143,18 +143,15 @@ app.get("/api/ownername", async (req, res) => {
 });
 
 app.put("/api/put", async (req, res) => {
-  const uuid = req.query.uuid;
+  const uuid = req.query.id;
   const name = req.body.name;
   const description = req.body.description;
   const owneruuid=req.body.owneruuid;
-  console.log("inside");
-  console.log(name);
-  console.log(description,"dicscription");
 
   await client.connect();
   const query = `
   UPDATE portfolio 
-  SET name = $1, description = $2 , portfolio_owner=$3
+  SET name = $1, description = $2,portfolio_owner=$3
   WHERE uuid = $4
   RETURNING *
 `;

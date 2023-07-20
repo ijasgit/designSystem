@@ -24,9 +24,13 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [editedData, seteditData] = useState();
   const [Ename, setEname] = useState("");
+  console.log(Ename,"ename got it")
   const [Edescription, setdescription] = useState("");
+  console.log(Edescription,"Edescription got it")
   const [Eportfolio_owner, setportfolio_owner] = useState("");
+  console.log(Eportfolio_owner,"Eportfolio_owner got it")
   const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
+  console.log(Eportfolio_ownerName,"Eportfolio_ownerName got it")
 
   const [Estatus, setstatus] = useState("");
   // const [Edate, setdate] = useState("");
@@ -91,15 +95,14 @@ const Home = () => {
         alert("please enter details");
       }
     } else {
-      console.log("old data");
-      console.log(Ename);
-      console.log(Edescription);
+      
       const response = await axios.put(`/api/put?id=${uuid}`, {
         name: Ename, 
         description: Edescription,
         owneruuid:Eportfolio_owner
        });
       console.log(response.data, "put");
+      
       handleClose()
       fetchPortfolio()
     }
@@ -125,6 +128,7 @@ const Home = () => {
   };
   const handlestatus=(status)=>{
 setstatus(status)
+  
   }
   const handleownername=(ownerdata)=>{
     // setportfolio_ownerName(status)
@@ -134,8 +138,9 @@ setstatus(status)
       }
 
   const editrow = async (uuid) => {
+    console.log(uuid,"home uuid gotit")
     const response = await axios.get(`/api/edit?id=${uuid}`);
-    console.log(response.data);
+    console.log(response.data,"responce . data");
     setuuid(uuid);
     setEname(response.data[0].name);
     setdescription(response.data[0].description);
