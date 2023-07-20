@@ -78,13 +78,8 @@ app.post("/api/login", async (req, res) => {
   const dataUserName = req.body.username;
   const dataPassword = req.body.password;
 
-<<<<<<< HEAD
-  await client.connect();
-  const query = 'SELECT password FROM "my_newdb" WHERE username = $1';
-=======
   // await client.connect();
   const query = 'SELECT password FROM "Authentication" WHERE username = $1';
->>>>>>> 2f54aed50b7c20f70eba5ddd7265a1eb888c699e
   const result = await client.query(query, [dataUserName]);
 
   if (result.rows.length > 0) {
