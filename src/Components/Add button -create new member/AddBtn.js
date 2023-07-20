@@ -20,7 +20,7 @@ import "../../Components/NavBar/NavBar.css";
 import { format } from "date-fns";
 import axios from "axios";
 
-const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus}) => {
+const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus}) => {
   const [data, setData] = useState([]);
 console.log(Eportfolio_owner,"owner uuid")
 // if(Eportfolio_owner){
@@ -83,20 +83,13 @@ console.log("works")
     
       setnamecond(true)
     }
-    if (description == "") {
-      setdescond(true);
-    } else {
-      setdescond(false);
-    }
+   
     if(Edescription==""){
     
       setdescond(true)
     }
-    if (status == "") {
-      setstatuscond(true);
-    } else {
-      setstatuscond(false);
-    }
+  
+    
     if(Eportfolio_ownerName==""){
 
       setownercond(true)
