@@ -38,6 +38,7 @@ const DataTable = (props) => {
 
   const edit1row=(uuid)=>{
     editrow(uuid)
+    console.log(editrow,"edit ")
    
   }
 

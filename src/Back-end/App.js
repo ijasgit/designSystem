@@ -9,7 +9,7 @@ const client = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
-  password: "test",
+  password: "Sarathi@123",
   port: 5432,
 });
 
@@ -149,7 +149,7 @@ app.put("/api/put", async (req, res) => {
   // await client.connect();
   const query = `
   UPDATE portfolio 
-  SET name = $1, description = $2 , portfolio_owner=$3
+  SET name = $1, description = $2,portfolio_owner=$3
   WHERE uuid = $4
   RETURNING *
 `;

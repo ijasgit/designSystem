@@ -21,8 +21,11 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [editedData, seteditData] = useState();
   const [Ename, setEname] = useState("");
+  console.log(Ename,"ename got it")
   const [Edescription, setdescription] = useState("");
+  console.log(Edescription,"Edescription got it")
   const [Eportfolio_owner, setportfolio_owner] = useState("");
+  console.log(Eportfolio_owner,"Eportfolio_owner got it")
   const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
   const [Estatus, setstatus] = useState("");
   const [uuid, setuuid] = useState("");
@@ -104,6 +107,7 @@ const Home = () => {
   };
   const handlestatus=(status)=>{
 setstatus(status)
+  
   }
   const handleownername=(ownerdata)=>{
     setportfolio_ownerName(ownerdata.label)
@@ -111,6 +115,7 @@ setstatus(status)
       }
 
   const editrow = async (uuid) => {
+    console.log(uuid,"home uuid gotit")
     const response = await axios.get(`/api/edit?id=${uuid}`);
     setuuid(uuid);
     setEname(response.data[0].name);
