@@ -59,9 +59,7 @@ app.post("/api/portfolio", async (req, res) => {
   const dataOwner = req.body.data.owner;
   const dataStatus = req.body.data.status;
   const uuid = v4();
-  console.log(create_date);
 
-  console.log(dataName);
   const query =
     "INSERT INTO portfolio (uuid, name, description,portfolio_owner,status,create_date) VALUES ($1, $2,$3,$4,$5,$6)";
   const values = [
@@ -79,7 +77,6 @@ app.post("/api/portfolio", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const dataUserName = req.body.username;
   const dataPassword = req.body.password;
-  console.log(dataPassword, dataUserName);
 
   // await client.connect();
   const query = 'SELECT password FROM "Authentication" WHERE username = $1';
@@ -102,13 +99,11 @@ app.post("/api/deleterow/", async (req, res) => {
   // await client.connect();
   const query = "DELETE FROM portfolio WHERE uuid = $1";
   await client.query(query, [dataId]);
-  console.log("Row deleted successfully!");
   res.send("Row deleted successfully!");
 });
 
 app.get("/api/edit", async (req, res) => {
   const uuid = req.query.id;
-  console.log(uuid, "hello partha");
   // await client.connect();
   const query =
     "SELECT name,description,portfolio_owner,status,create_date FROM portfolio WHERE uuid = $1 LIMIT 1";
@@ -148,9 +143,7 @@ app.put("/api/put", async (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
   const owneruuid=req.body.owneruuid;
-  console.log("inside");
-  console.log(name);
-  console.log(description);
+
 
   // await client.connect();
   const query = `
@@ -166,7 +159,6 @@ app.put("/api/put", async (req, res) => {
     } else {
       console.log("Query result:", result);
       const portfolioOwner = result.rows;
-      console.log(portfolioOwner, "jee");
       res.send(portfolioOwner);
     }
   });

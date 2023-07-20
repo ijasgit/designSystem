@@ -25,19 +25,15 @@ import "../../Components/NavBar/NavBar.css";
 import { blue } from "@mui/material/colors";
 
 const DataTable = (props) => {
-  const childRef = useRef();
   const nav = useNavigate();
   
 
   const { variant = "primary", height, width, data,deleterow,editrow , ...rest} = props;
   const [rows, setRows] = useState(data);
 
-  console.log(rows,"newrows")
 
   const delete1row = (uuid,index) => {
     deleterow(uuid);
-   // data[index].show =false
-   // setRows(data);
   };
 
   const edit1row=(uuid)=>{
@@ -51,16 +47,7 @@ const DataTable = (props) => {
     setRows(data);
   };
 
-  // const fetchPortfolio = async () => {
-  //   try {
-  //     const response = await axios.get("/api/portfolio");
-  //     setRows(response.data);
 
-  //     console.log(response.data, "working");
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error.response);
-  //   }
-  // };
 
   const diapatch = useDispatch();
 
@@ -83,34 +70,15 @@ const DataTable = (props) => {
           margin: "0px 32px 21px 32px",
         }}
       >
-        {/* <SearchBar /> */}
         <div style={{ display: "flex", columnGap: "32px" }}>
-          {/* <div style={{ display: "flex", columnGap: "12px" }}>
-            <GiSettingsKnobs className="icon" />
-            <HiSortDescending className="icon" />
-            <TbShare2 className="icon" />{" "}
-          </div> */}
+    
           <div
             style={{
               position: "relative",
               display: "flex",
             }}
           >
-            {/* <AddBtn ref={childRef} /> */}
-            {/* <div
-              style={{
-                position: "absolute",
-                paddingTop: "3px",
-                left: "6px",
-                cursor: "pointer",
-              }}
-              onClick={() => childRef.current.handleOpen()}
-            > */}
-              {/* <AddOutlinedIcon
-                className="addout-1"
-                fontSize="small"
-              ></AddOutlinedIcon> */}
-            {/* </div> */}
+           
           </div>
         </div>
       </div>
@@ -127,10 +95,7 @@ const DataTable = (props) => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  {/* <TableCell>
-                      {" "}
-                      <span style={{ marginLeft: "15px" }}>ID</span>
-                    </TableCell> */}
+                  
                   <TableCell>Name</TableCell>
                   <TableCell align="right">Status</TableCell>
                   <TableCell align="right">Created date</TableCell>
@@ -144,11 +109,7 @@ const DataTable = (props) => {
                     key={index}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    {/* <TableCell>
-                        <div style={{ display: "flex" }}>
-                          <TableCell>{row.id}</TableCell>
-                        </div>
-                      </TableCell> */}
+                   
                     <TableCell
                       component="th"
                       scope="row"
@@ -178,7 +139,6 @@ const DataTable = (props) => {
                       {row.show ? (
                         
                         <Paper>
-                         {console.log(row,"shiww")}
                           <MenuList>
                           <MenuItem onClick={()=>edit1row(row.uuid)}>Edit</MenuItem>
                             <MenuItem onClick={()=>delete1row(row.uuid,index)}>Delete</MenuItem>
