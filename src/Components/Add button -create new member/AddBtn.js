@@ -1,7 +1,5 @@
 import React, {
   useEffect,
-  forwardRef,
-  useImperativeHandle,
   useState,
 } from "react";
 import { TextareaAutosize } from "@mui/base";
@@ -18,24 +16,40 @@ import { lightBlue } from "@mui/material/colors";
 import LinkLato from "../../Stories/Typography/Link-Lato/LinkLato";
 import Buttons from "../../Stories/Buttons/Buttons";
 import "../../Components/NavBar/NavBar.css";
-import { addUser } from "../Featuers/User";
-import { useDispatch, useSelector } from "react-redux";
+
 import { format } from "date-fns";
 import axios from "axios";
-import { ConstructionOutlined } from "@mui/icons-material";
 
-const AddBtn = ({ handleSave, open, handleClose, userData }) => {
-
-  const [userData1,setData1]=useState(userData)
-  console.log(userData1,"user data from home")
-
- 
+const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus}) => {
   const [data, setData] = useState([]);
-  const [name, setName] = useState();
-  const [eName,seteName] = useState ()
-  const [description, setDescription] = useState("");
+console.log(Eportfolio_owner,"owner uuid")
+// if(Eportfolio_owner){
+
+// }
+  // const [name, setName] = useState('');
+//  console.log(name,"nameey")
+
+
+  useEffect(() => {
+    fetchUsers();
+if(Eportfolio_owner!==""){
+console.log("works")
+}
+  
+  }, []);
+
+  // const fetchUsers = async () => {
+  //   try {
+  //     const response = await axios.get("/api/users");
+  //     setData(response.data);
+
+
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error.response);
+  //   }
+  // };
+
   const [owner, setOwner] = useState("");
-  const [status, setStatus] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
@@ -63,46 +77,53 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
   };
 
   const handleSave1 = async (event) => {
+ console.log("sacing")
     event.preventDefault();
-    if (name == "") {
-      setnamecond(true);
-    } else {
-      setnamecond(false);
+    if(Ename==""){
+    
+      setnamecond(true)
     }
     if (description == "") {
       setdescond(true);
     } else {
       setdescond(false);
     }
-    if (owner == "") {
-      setownercond(true);
-    } else {
-      setownercond(false);
+    if(Edescription==""){
+    
+      setdescond(true)
     }
     if (status == "") {
       setstatuscond(true);
     } else {
       setstatuscond(false);
     }
-    if (
-      name != "" &&
-      description != "" &&
-      status != "" &&
-      owner != "" &&
-      ownerUUID != ""
-    ) {
-      handleSave({
-        name: name,
-        description: description,
-        owner: ownerUUID,
-        status: status,
-        formattedDate: formattedDate,
-      });
-      setnamecond(false);
-      setdescond(false);
-      setownercond(false);
-      setstatuscond(false);
+    if(Eportfolio_ownerName==""){
+
+      setownercond(true)
     }
+    else{
+      setownercond(false)
+    
+    }
+    if(Estatus==""){
+
+      setstatuscond(true)
+    }
+    else{
+      setstatuscond(false)
+    }
+    if(Ename!=""&&Edescription!=""&&Estatus!=""&&Eportfolio_ownerName!=""&&Eportfolio_owner!="")
+    {
+      handleSave({ name: Ename, description: Edescription, owner: Eportfolio_owner,status:Estatus,formattedDate:formattedDate,ownername:Eportfolio_ownerName })
+      setnamecond(false)
+      setdescond(false)
+      setownercond(false)
+      setstatuscond(false)
+
+    }
+ 
+ 
+
   };
 
   const style = {
@@ -130,10 +151,11 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
     setSelectedValue1(event.target.value);
   };
 
-  const defprops = {
-    options: data,
-    getOptionLabel: (options) => options.label,
-  };
+  const defprops={
+    options:data,
+    getOptionLabel:(options)=>options.label,
+
+  }
   const getdata = (value) => {
     setUUid(value.uuid);
     setOwner(value.label);
@@ -193,13 +215,12 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
                   />
                   <TextField
                     id="outlined-basic"
-                    //   style={{ width: 375}}
-                    value={userData}
+                    value={Ename?Ename:''}
                     size="small"
                     variant="outlined"
                     placeholder="Enter Portfolio Name"
                     onChange={(event) => {
-                      setName(event.target.value);
+                      handleSetEname(event.target.value);
                     }}
                     inputProps={{
                       style: {
@@ -225,6 +246,8 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
+                    value={Edescription?Edescription:''}
+
                     style={{
                       width: "100%",
                       resize: "none",
@@ -232,7 +255,7 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
                       fontSize: "14px",
                     }}
                     onChange={(event) => {
-                      setDescription(event.target.value);
+                      handleSetDes(event.target.value);
                     }}
                   />
                   {descond ? (
@@ -253,23 +276,29 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
                   />
 
                   <Autocomplete
+             
                     {...defprops}
+                  value={Eportfolio_ownerName?{label:Eportfolio_ownerName}:{label:""}}
                     sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
                         placeholder="Select case development custom field"
                         size="small"
+                     
+                   
                       />
                     )}
-                    onChange={(event, value) => {
-                      if (value && value.uuid) {
-                        getdata(value);
-                        // setOwner("")
-                      } else {
-                        setOwner("");
-                      }
-                    }}
+                    onChange={(event,value)=>{if(value&&value.uuid){
+                      handleownername(value)
+                      // setOwner("")
+                     
+                      
+                    }
+                  else{
+                    setOwner("")
+                  }
+                  }}
                   />
                   {ownercond ? (
                     <p style={{ ...p, marginTop: "10px" }}>*Select owner </p>
@@ -324,7 +353,7 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
                     checked={selectedValue1 === "Inactive"}
                     onChange={handleChange1}
                     onClick={(event) => {
-                      setStatus(event.target.value);
+                      handlestatus(event.target.value);
                     }}
                     value="Inactive"
                     name="radio-buttons"
@@ -351,7 +380,7 @@ const AddBtn = ({ handleSave, open, handleClose, userData }) => {
                     checked={selectedValue1 === "Active"}
                     onChange={handleChange1}
                     onClick={(event) => {
-                      setStatus(event.target.value);
+                      handlestatus(event.target.value);
                       //event.target.style.color = 'red';
                     }}
                     value="Active"

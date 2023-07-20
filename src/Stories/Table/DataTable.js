@@ -22,18 +22,28 @@ import { useNavigate } from "react-router-dom";
 import { addSoftware } from "../../Components/Featuers/SoftwareSlice";
 import { useDispatch } from "react-redux";
 import "../../Components/NavBar/NavBar.css";
+import { blue } from "@mui/material/colors";
 
 const DataTable = (props) => {
   const childRef = useRef();
   const nav = useNavigate();
+  
 
-  const { variant = "primary", height, width, data,editRow ,...rest } = props;
+  const { variant = "primary", height, width, data,deleterow,editrow , ...rest} = props;
   const [rows, setRows] = useState(data);
 
-  useEffect(() => {
-    fetchPortfolio();
+  console.log(rows,"newrows")
+
+  const delete1row = (uuid,index) => {
+    deleterow(uuid);
+   // data[index].show =false
+   // setRows(data);
+  };
+
+  const edit1row=(uuid)=>{
+    editrow(uuid)
    
-  }, []);
+  }
 
   const check = (id, index) => {
     let data = rows.slice();
@@ -41,27 +51,16 @@ const DataTable = (props) => {
     setRows(data);
   };
 
-  const fetchPortfolio = async () => {
-    try {
-      const response = await axios.get("/api/portfolio");
-      setRows(response.data);
-      
+  // const fetchPortfolio = async () => {
+  //   try {
+  //     const response = await axios.get("/api/portfolio");
+  //     setRows(response.data);
 
-      console.log(response.data, "working");
-    } catch (error) {
-      console.error("Error fetching data:", error.response);
-    }
-  };
-  const deleteRow = async (uuid, index) => {
-    try {
-      await axios.delete(`/api/portfolio/${uuid}`);
-      const updatedRows = rows.filter((row, i) => i !== index);
-      setRows(updatedRows);
-      console.log("Row deleted successfully");
-    } catch (error) {
-      console.error("Error deleting row:", error.response);
-    }
-  };
+  //     console.log(response.data, "working");
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error.response);
+  //   }
+  // };
 
   const diapatch = useDispatch();
 
@@ -75,13 +74,6 @@ const DataTable = (props) => {
     nav("/software");
   };
 
-  //call back function 
-   
-   const edit1Row = ( uuid,index) => {   
-    editRow(uuid) 
-
-   }
-  
   return (
     <div>
       <div
@@ -104,8 +96,8 @@ const DataTable = (props) => {
               display: "flex",
             }}
           >
-            <AddBtn ref={childRef} />
-            <div
+            {/* <AddBtn ref={childRef} /> */}
+            {/* <div
               style={{
                 position: "absolute",
                 paddingTop: "3px",
@@ -113,12 +105,12 @@ const DataTable = (props) => {
                 cursor: "pointer",
               }}
               onClick={() => childRef.current.handleOpen()}
-            >
+            > */}
               {/* <AddOutlinedIcon
                 className="addout-1"
                 fontSize="small"
               ></AddOutlinedIcon> */}
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
@@ -184,16 +176,14 @@ const DataTable = (props) => {
                       {row.protein}
                       <MoreHorizIcon onClick={() => check(row.id, index)} />
                       {row.show ? (
+                        
                         <Paper>
+                         {console.log(row,"shiww")}
                           <MenuList>
-                            <MenuItem 
-                            onClick={ () => edit1Row(row.uuid,index)} >  Edit                                            
-                            </MenuItem>  
-                            <MenuItem
-                             onClick={() => deleteRow(row.uuid, index)}>
-                              Delete
-                            </MenuItem>
-                            
+                          <MenuItem onClick={()=>edit1row(row.uuid)}>Edit</MenuItem>
+                            <MenuItem onClick={()=>delete1row(row.uuid,index)}>Delete</MenuItem>
+                        
+
                           </MenuList>
                         </Paper>
                       ) : null}
@@ -203,7 +193,7 @@ const DataTable = (props) => {
               </TableBody>
             </Table>
           </TableContainer>
-        </div> 
+        </div>
       )}
     </div>
   );

@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-//import { useNavigate } from "react-router";
 import { AiOutlineEye } from "react-icons/ai";
 import image from "../NavBar/Image/logo.png";
 import "./signIn.css";
@@ -23,6 +22,7 @@ export default function SignInSide() {
   const isXsScreen = useMediaQuery(theme.breakpoints.only("xs")); //media quary for card
 
   const [data, setData] = useState([]);
+
 
   // useEffect(() => {
 
@@ -39,30 +39,23 @@ export default function SignInSide() {
   //   }
   // };
   
-  const handleSubmit = async (data) => {
-    const data1=data
+  const handleSubmit = async() => {
+    
     const username = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    console.log(data1,"got it")
+    console.log(username,password,"got it")
+    const response = await axios.post("/api/login",{
+      username: username,
+      password: password
+    });
+    let isValid = response.data;
+    if(isValid){
+     window.location.replace('/home')
+    }
+    else{
+      alert("errorrr")
+    }
 
-    
-      const response = await axios.post("/api/login", {
-        username: username,
-        password: password,
-      });
-     
-      if (response.data) {
-        
-        window.location.replace ("/home") ;
-      } else {
-        
-        alert("Authentication failed. Please try again.");
-      }
-      
-  
-    
-  
- 
   };
   
   // handleSubmit(data);

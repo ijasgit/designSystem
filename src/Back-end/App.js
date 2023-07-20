@@ -9,49 +9,12 @@ const client = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
-  password: "Sarathi@123",
+  password: "test",
   port: 5432,
 });
 
 const app = express();
 app.use(express.json());
-
-app.post("/api/login", async (req, res) => {
-  const datauserName = req.body.username;
-  console.log(datauserName);
-  const dataPassword = req.body.password;
-  console.log(dataPassword);
-
-  client.query(
-    'SELECT password FROM "my_newdb" WHERE usersname = $1',
-    [datauserName],
-    (err, result) => {
-      if (result.rows.length > 0) {
-        const storedPassword = result.rows[0].password;
-
-        if (dataPassword === storedPassword) {
-          console.log(true);
-          res.send(true);
-        }
-      } else {
-        res.send(false);
-        console.log(false);
-      }
-    }
-  );
-
-  // if (result.rows.length > 0) {
-  //   const storedPassword = result.rows[0].password;
-
-  //   if (dataPassword === storedPassword) {
-  //     res.json({ success: true });
-  //   } else {
-  //     res.json({ success: false });
-  //   }
-  // } else {
-  //   res.json({ success: false });
-  // }
-});
 
 app.get("/api/users", async (req, res) => {
   client.query('SELECT * FROM "users"', (err, result) => {
@@ -111,6 +74,98 @@ app.post("/api/portfolio", async (req, res) => {
   ];
   await client.query(query, values);
   res.json({ message: "Data received successfully" });
+});
+
+app.post("/api/login", async (req, res) => {
+  const dataUserName = req.body.username;
+  const dataPassword = req.body.password;
+  console.log(dataPassword, dataUserName);
+
+  await client.connect();
+  const query = 'SELECT password FROM "Authentication" WHERE username = $1';
+  const result = await client.query(query, [dataUserName]);
+
+  if (result.rows.length > 0) {
+    const dbPassword = result.rows[0].password;
+    if (dbPassword === dataPassword) {
+      res.send(true);
+    } else {
+      res.send(false);
+    }
+  } else {
+    res.send(false);
+  }
+});
+
+app.post("/api/deleterow/", async (req, res) => {
+  const dataId = req.body.id;
+  await client.connect();
+  const query = "DELETE FROM portfolio WHERE uuid = $1";
+  await client.query(query, [dataId]);
+  console.log("Row deleted successfully!");
+  res.send("Row deleted successfully!");
+});
+
+app.get("/api/edit/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+  console.log(uuid, "hello partha");
+  await client.connect();
+  const query =
+    "SELECT name,description,portfolio_owner,status,create_date FROM portfolio WHERE uuid = $1 LIMIT 1";
+  client.query(query, [uuid], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+    } else {
+      console.log("Query result:", result);
+      const portfolioOwner = result.rows;
+      res.send(portfolioOwner);
+    }
+  });
+});
+
+app.get("/api/ownername", async (req, res) => {
+  const ownername = req.query.id;
+  console.log(ownername, "ownername");
+  await client.connect();
+  const query = "SELECT label FROM users WHERE uuid = $1";
+  client.query(query, [ownername], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+    } else {
+      console.log("Query result:", result);
+      const ownername = result.rows;
+      res.send(ownername);
+    }
+  });
+});
+
+app.put("/api/put", async (req, res) => {
+  const uuid = req.query.id;
+  const name = req.body.name;
+  const description = req.body.description;
+  const owneruuid=req.body.owneruuid;
+  console.log("inside");
+  console.log(name);
+  console.log(description);
+
+  await client.connect();
+  const query = `
+  UPDATE portfolio 
+  SET name = $1, description = $2 , portfolio_owner=$3
+  WHERE uuid = $4
+  RETURNING *
+`;
+
+  client.query(query, [name, description,owneruuid, uuid], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+    } else {
+      console.log("Query result:", result);
+      const portfolioOwner = result.rows;
+      console.log(portfolioOwner, "jee");
+      res.send(portfolioOwner);
+    }
+  });
 });
 
 const port = process.env.PORT || 8081;
