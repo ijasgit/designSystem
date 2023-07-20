@@ -83,20 +83,12 @@ console.log("works")
     
       setnamecond(true)
     }
-    if (description == "") {
-      setdescond(true);
-    } else {
-      setdescond(false);
-    }
+    
     if(Edescription==""){
     
       setdescond(true)
     }
-    if (status == "") {
-      setstatuscond(true);
-    } else {
-      setstatuscond(false);
-    }
+    
     if(Eportfolio_ownerName==""){
 
       setownercond(true)
