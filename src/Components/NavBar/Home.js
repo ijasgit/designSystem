@@ -19,7 +19,7 @@ import { set } from "date-fns";
 
 const Home = () => {
   const [data, setData] = useState("");
-
+  // console.log(propsEditData)
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [editedData, seteditData] = useState();
@@ -173,7 +173,7 @@ setstatus(status)
             </div>
           ) : data && data.length ? (
             <div style={{ direction: "flex" }}>
-              <div style={{ display: "flex", columnGap: "12px" }}>
+              <div style={{ display: "flex", columnGap: "12px"}}>
                 <div style={{ marginLeft: "30px" }}>
                   <SearchBar
                     backgroundColor="#f3f3f3"

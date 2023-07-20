@@ -38,28 +38,43 @@ console.log("works")
   
   }, []);
 
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get("/api/users");
-      setData(response.data);
+  // const fetchUsers = async () => {
+  //   try {
+  //     const response = await axios.get("/api/users");
+  //     setData(response.data);
 
 
-    } catch (error) {
-      console.error("Error fetching data:", error.response);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error.response);
+  //   }
+  // };
 
   const [owner, setOwner] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
-  const [ownerUUID,setUUid]=useState("")
+  const [ownerUUID, setUUid] = useState("");
   const [date] = useState(new Date());
-  const formattedDate=format(date,"MMM dd,hh:mm a")
-const[namecond,setnamecond]=useState(false)
-const[descond,setdescond]=useState(false)
-const[ownercond,setownercond]=useState(false)
-const[statuscond,setstatuscond]=useState(false)
+  const formattedDate = format(date, "MMM dd,hh:mm a");
+  const [namecond, setnamecond] = useState(false);
+  const [descond, setdescond] = useState(false);
+  const [ownercond, setownercond] = useState(false);
+  const [statuscond, setstatuscond] = useState(false);
+
+  useEffect(() => {
+    fetchUsers();
+   
+   
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("/api/users");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error.response);
+    }
+  };
 
   const handleSave1 = async (event) => {
  console.log("sacing")
@@ -68,15 +83,19 @@ const[statuscond,setstatuscond]=useState(false)
     
       setnamecond(true)
     }
-    else{
-      setnamecond(false)
+    if (description == "") {
+      setdescond(true);
+    } else {
+      setdescond(false);
     }
     if(Edescription==""){
     
       setdescond(true)
     }
-    else{
-      setdescond(false)
+    if (status == "") {
+      setstatuscond(true);
+    } else {
+      setstatuscond(false);
     }
     if(Eportfolio_ownerName==""){
 
@@ -119,22 +138,17 @@ const[statuscond,setstatuscond]=useState(false)
     borderRadius: "5px",
   };
 
-
-  
- const p={
+  const p = {
     fontSize: "12px",
     color: "red",
-    margin:"0px"
-
-  }
-
+    margin: "0px",
+  };
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
   const handleChange1 = (event) => {
     setSelectedValue1(event.target.value);
-
   };
 
   const defprops={
@@ -143,14 +157,12 @@ const[statuscond,setstatuscond]=useState(false)
 
   }
   const getdata = (value) => {
-    setUUid(value.uuid)
-    setOwner(value.label)
-
+    setUUid(value.uuid);
+    setOwner(value.label);
   };
   return (
     <div>
-      {" "}
-    
+     
       <Modal
         open={open}
         onClose={handleClose}
@@ -195,9 +207,11 @@ const[statuscond,setstatuscond]=useState(false)
                     fontSize={12}
                     fontWeight={500}
                     label="NAME"
+                    // value={name}
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
+                    // value={eName}
                   />
                   <TextField
                     id="outlined-basic"
@@ -215,9 +229,9 @@ const[statuscond,setstatuscond]=useState(false)
                       },
                     }}
                   />
-               {namecond?  <p style={p}>*Enter name</p>:null} 
+                  {namecond ? <p style={p}>*Enter name</p> : null}
                 </div>
-                <div className="row2" style={{marginTop:"5px"}}>
+                <div className="row2" style={{ marginTop: "5px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -244,9 +258,13 @@ const[statuscond,setstatuscond]=useState(false)
                       handleSetDes(event.target.value);
                     }}
                   />
-                  {descond?  <p style={{...p,marginTop:"-5px"}}>*Enter Description </p>:null} 
-                </div>   
-                <div className="row3" >
+                  {descond ? (
+                    <p style={{ ...p, marginTop: "-5px" }}>
+                      *Enter Description{" "}
+                    </p>
+                  ) : null}
+                </div>
+                <div className="row3">
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -282,10 +300,10 @@ const[statuscond,setstatuscond]=useState(false)
                   }
                   }}
                   />
-                  {ownercond?  <p style={{...p ,marginTop:"10px"}}>*Select owner </p>:null} 
-
+                  {ownercond ? (
+                    <p style={{ ...p, marginTop: "10px" }}>*Select owner </p>
+                  ) : null}
                 </div>
-               
               </div>
               <div
                 className="col2"
@@ -295,7 +313,7 @@ const[statuscond,setstatuscond]=useState(false)
                   rowGap: "24px",
                 }}
               >
-               <div className="row1" style={{ marginTop: " 28px" }}>
+                <div className="row1" style={{ marginTop: " 28px" }}>
                   {" "}
                   <SUBTITLE1
                     fontFamily="Poppins"
@@ -312,7 +330,6 @@ const[statuscond,setstatuscond]=useState(false)
                     size="small"
                     variant="outlined"
                     placeholder="Select Manager"
-                  
                     inputProps={{
                       style: {
                         height: "20px",
@@ -320,11 +337,9 @@ const[statuscond,setstatuscond]=useState(false)
                       },
                     }}
                   />
-                            
-
                 </div>
-             
-                <div className="row3" style={{marginTop:"30px"}}>
+
+                <div className="row3" style={{ marginTop: "30px" }}>
                   <SUBTITLE1
                     fontFamily="Poppins"
                     fontSize={12}
@@ -390,18 +405,15 @@ const[statuscond,setstatuscond]=useState(false)
                     />
                   </label>
                 </div>
-                {statuscond?  <p style={{...p,marginTop:"-25px"}}>*Select Status </p>:null} 
-
+                {statuscond ? (
+                  <p style={{ ...p, marginTop: "-25px" }}>*Select Status </p>
+                ) : null}
               </div>
             </div>
           </div>
-          <div className="footer" style={{marginTop:"20px"}}>
+          <div className="footer" style={{ marginTop: "20px" }}>
             <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
-            <Buttons
-              label="Save"
-              variant="primary"
-              onClick={handleSave1}       
-            />
+            <Buttons label="Save" variant="primary" onClick={handleSave1} />
           </div>
         </Box>
       </Modal>

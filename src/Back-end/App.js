@@ -1,5 +1,5 @@
 import { set } from "date-fns";
-import express from "express";
+import express, { query } from "express";
 import pkg from "pg";
 import { v4 } from "uuid";
 
@@ -26,6 +26,18 @@ app.get("/api/users", async (req, res) => {
       res.send(portfolioOwner);
     }
   });
+});
+app.delete("/api/portfolio/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+
+  try {
+    const query = 'DELETE FROM "portfolio" WHERE uuid = $1';
+    await client.query(query, [uuid]);
+    res.json({ message: "Row deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting row:", error);
+    res.status(500).json({ error: "Error deleting row" });
+  }
 });
 
 app.get("/api/portfolio", async (req, res) => {
