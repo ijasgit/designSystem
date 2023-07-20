@@ -60,10 +60,18 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     
       setnamecond(true)
     }
+    else{
+      setnamecond(false)
+
+    }
     
     if(Edescription==""){
     
       setdescond(true)
+    }
+    else{
+      setdescond(false)
+
     }
     
     if(Eportfolio_ownerName==""){
@@ -81,14 +89,18 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     else{
       setstatuscond(false)
     }
-    if(Ename!=""&&Edescription!=""&&Estatus!=""&&Eportfolio_ownerName!=""&&Eportfolio_owner!="")
+    if(Ename!=""&&Edescription!=""&&Estatus!=""&&Eportfolio_ownerName!="")
     {
+      console.log(Ename,Edescription,Estatus,Eportfolio_owner)
       handleSave({ name: Ename, description: Edescription, owner: Eportfolio_owner,status:Estatus,formattedDate:formattedDate,ownername:Eportfolio_ownerName })
       setnamecond(false)
       setdescond(false)
       setownercond(false)
       setstatuscond(false)
 
+    }
+    else{
+      console.log("not woring")
     }
  
  
@@ -184,7 +196,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                   />
                   <TextField
                     id="outlined-basic"
-                    value={Ename?Ename:''}
+                    value={Ename}
                     size="small"
                     variant="outlined"
                     placeholder="Enter Portfolio Name"
@@ -215,7 +227,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     placeholder="Enter Portfolio Description"
                     maxRows="8"
                     minRows="8"
-                    value={Edescription?Edescription:''}
+                    value={Edescription}
 
                     style={{
                       width: "100%",
@@ -247,7 +259,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                   <Autocomplete
              
                     {...defprops}
-                  value={Eportfolio_ownerName?{label:Eportfolio_ownerName}:{label:""}}
+                  value={{label:Eportfolio_ownerName}}
                     sx={{ height: "32px", width: "400px", borderRadius: "4px" }}
                     renderInput={(params) => (
                       <TextField

@@ -6,14 +6,12 @@ import NavBar from "./NavBar";
 import CreateNewPortfolio from "../CreateNewProtfolio/CreateNewPortfolio";
 import DataTable from "../../Stories/Table/DataTable";
 import AddBtn from "../Add button -create new member/AddBtn";
-//import Buttons from "../../Stories/Buttons/Buttons";
 import Buttons from "../../Stories/Buttons/Buttons";
 import { useSelector } from "react-redux";
 import SearchBar from "../../Stories/Search Bar/SearchBar";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { TbShare2 } from "react-icons/tb";
 import { HiSortDescending } from "react-icons/hi";
-// import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { set } from "date-fns";
 
@@ -26,7 +24,6 @@ const Home = () => {
   const [Edescription, setdescription] = useState("");
   const [Eportfolio_owner, setportfolio_owner] = useState("");
   const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
-
   const [Estatus, setstatus] = useState("");
   const [uuid, setuuid] = useState("");
 
@@ -62,12 +59,8 @@ const Home = () => {
   };
   const handleSave = async (data1) => {
     if (!uuid) {
-      if (
-        data1.name != "" &&
-        data1.description != "" &&
-        data1.status != "" &&
-        data1.owner != ""
-      ) {
+      console.log("yes",data1)
+     
         try {
           setData([]);
           const response = await axios.post("/api/portfolio", {
@@ -80,12 +73,9 @@ const Home = () => {
           // Handle any errors that occurred during the request
         }
         handleClose();
-      } else {
-        alert("please enter details");
-      }
-    } else {
-
-      const response = await axios.put(`/api/put?id=${uuid}`, {
+      } 
+     else {
+      const response1 = await axios.put(`/api/put?id=${uuid}`, {
         name: Ename, 
         description: Edescription,
         owneruuid:Eportfolio_owner
@@ -126,8 +116,10 @@ setstatus(status)
     setEname(response.data[0].name);
     setdescription(response.data[0].description);
     setstatus(response.data[0].status);
+    setportfolio_owner(response.data[0].portfolio_owner)
     const responseOfOwner=await axios.get(`/api/ownername?id=${response.data[0].portfolio_owner}`)
     setportfolio_ownerName(responseOfOwner.data[0].label)
+ 
     handleOpen();
 
   
