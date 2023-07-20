@@ -83,12 +83,11 @@ console.log("works")
     
       setnamecond(true)
     }
-   
+    
     if(Edescription==""){
     
       setdescond(true)
     }
-  
     
     if(Eportfolio_ownerName==""){
 
