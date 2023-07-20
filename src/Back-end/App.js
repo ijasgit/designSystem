@@ -59,9 +59,7 @@ app.post("/api/portfolio", async (req, res) => {
   const dataOwner = req.body.data.owner;
   const dataStatus = req.body.data.status;
   const uuid = v4();
-  console.log(create_date);
 
-  console.log(dataName);
   const query =
     "INSERT INTO portfolio (uuid, name, description,portfolio_owner,status,create_date) VALUES ($1, $2,$3,$4,$5,$6)";
   const values = [
@@ -79,10 +77,14 @@ app.post("/api/portfolio", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const dataUserName = req.body.username;
   const dataPassword = req.body.password;
-  console.log(dataPassword, dataUserName);
 
+<<<<<<< HEAD
   await client.connect();
   const query = 'SELECT password FROM "my_newdb" WHERE username = $1';
+=======
+  // await client.connect();
+  const query = 'SELECT password FROM "Authentication" WHERE username = $1';
+>>>>>>> 2f54aed50b7c20f70eba5ddd7265a1eb888c699e
   const result = await client.query(query, [dataUserName]);
 
   if (result.rows.length > 0) {
@@ -99,17 +101,15 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/deleterow/", async (req, res) => {
   const dataId = req.body.id;
-  await client.connect();
+  // await client.connect();
   const query = "DELETE FROM portfolio WHERE uuid = $1";
   await client.query(query, [dataId]);
-  console.log("Row deleted successfully!");
   res.send("Row deleted successfully!");
 });
 
 app.get("/api/edit", async (req, res) => {
   const uuid = req.query.id;
-  console.log(uuid, "hello partha");
-  await client.connect();
+  // await client.connect();
   const query =
     "SELECT name,description,portfolio_owner,status,create_date FROM portfolio WHERE uuid = $1 LIMIT 1";
   client.query(query, [uuid], (err, result) => {
@@ -126,7 +126,8 @@ app.get("/api/edit", async (req, res) => {
 app.get("/api/ownername", async (req, res) => {
   const ownername = req.query.id;
   console.log(ownername, "ownername");
-  try{await client.connect();
+  try{
+    // await client.connect();
   const query = "SELECT label FROM users WHERE uuid = $1";
   client.query(query, [ownername], (err, result) => {
     if (err) {
@@ -148,7 +149,8 @@ app.put("/api/put", async (req, res) => {
   const description = req.body.description;
   const owneruuid=req.body.owneruuid;
 
-  await client.connect();
+
+  // await client.connect();
   const query = `
   UPDATE portfolio 
   SET name = $1, description = $2,portfolio_owner=$3
@@ -162,7 +164,6 @@ app.put("/api/put", async (req, res) => {
     } else {
       console.log("Query result:", result);
       const portfolioOwner = result.rows;
-      console.log(portfolioOwner, "jee");
       res.send(portfolioOwner);
     }
   });

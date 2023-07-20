@@ -22,32 +22,15 @@ import axios from "axios";
 
 const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus}) => {
   const [data, setData] = useState([]);
-console.log(Eportfolio_owner,"owner uuid")
-// if(Eportfolio_owner){
 
-// }
-  // const [name, setName] = useState('');
-//  console.log(name,"nameey")
 
 
   useEffect(() => {
     fetchUsers();
-if(Eportfolio_owner!==""){
-console.log("works")
-}
   
   }, []);
 
-  // const fetchUsers = async () => {
-  //   try {
-  //     const response = await axios.get("/api/users");
-  //     setData(response.data);
 
-
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error.response);
-  //   }
-  // };
 
   const [owner, setOwner] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
@@ -61,11 +44,6 @@ console.log("works")
   const [ownercond, setownercond] = useState(false);
   const [statuscond, setstatuscond] = useState(false);
 
-  useEffect(() => {
-    fetchUsers();
-   
-   
-  }, []);
 
   const fetchUsers = async () => {
     try {
@@ -77,7 +55,6 @@ console.log("works")
   };
 
   const handleSave1 = async (event) => {
- console.log("sacing")
     event.preventDefault();
     if(Ename==""){
     
@@ -283,9 +260,7 @@ console.log("works")
                       />
                     )}
                     onChange={(event,value)=>{if(value&&value.uuid){
-                      handleownername(value)
-                      // setOwner("")
-                     
+                      handleownername(value)                     
                       
                     }
                   else{
@@ -319,7 +294,6 @@ console.log("works")
                   />
                   <TextField
                     id="outlined-basic"
-                    //   style={{ width: 375}}
                     size="small"
                     variant="outlined"
                     placeholder="Select Manager"
@@ -374,7 +348,6 @@ console.log("works")
                     onChange={handleChange1}
                     onClick={(event) => {
                       handlestatus(event.target.value);
-                      //event.target.style.color = 'red';
                     }}
                     value="Active"
                     name="radio-buttons"
