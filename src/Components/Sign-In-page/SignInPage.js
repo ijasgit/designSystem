@@ -25,20 +25,7 @@ export default function SignInSide() {
 
   const [data, setData] = useState([]);
 
-  // useEffect(() => {
 
-  //   fetchData();
-  // }, []);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("/api/data");
-  //     setData(response.data);
-  //     console.log(response.data)
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error.response);
-  //   }
-  // };
 const[usercond,setusercond]=useState(false)
 const[passwordcond,setpasscond]=useState(false)
 const[invalidEmail,setinvalidEmail]=useState(false)
