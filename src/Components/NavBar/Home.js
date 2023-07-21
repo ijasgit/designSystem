@@ -108,6 +108,7 @@ const Home = () => {
   };
   const handleSetEname = (name) => {
     setEname(name);
+
   };
   const handleSetDes = (name) => {
     setdescription(name);
