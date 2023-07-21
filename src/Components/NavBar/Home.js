@@ -31,6 +31,7 @@ const Home = () => {
   console.log(Estatus,"status got it")
   const [uuid, setuuid] = useState("");
 
+ 
   const handleOpen = () => {
     setOpen(true);
     if (Ename == null) {
@@ -128,7 +129,7 @@ const Home = () => {
     setuuid(uuid);
     setEname(response.data[0].name);
     setdescription(response.data[0].description);
-    setstatus(response.data[0].status);
+    setstatus(response.data[0].status ==='Active'?true:false);
     setportfolio_owner(response.data[0].portfolio_owner)
     const responseOfOwner=await axios.get(`/api/ownername?id=${response.data[0].portfolio_owner}`)
     setportfolio_ownerName(responseOfOwner.data[0].label)
@@ -212,8 +213,7 @@ const Home = () => {
           Edescription={Edescription}
           Eportfolio_owner={Eportfolio_owner}
           Eportfolio_ownerName={Eportfolio_ownerName}
-          Estatus={Estatus}
-     
+          Estatus={Estatus} 
           handleSetEname={handleSetEname}
           handlestatus={handlestatus}
           handleSetDes={handleSetDes}

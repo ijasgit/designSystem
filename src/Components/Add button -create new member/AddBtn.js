@@ -20,7 +20,7 @@ import "../../Components/NavBar/NavBar.css";
 import { format } from "date-fns";
 import axios from "axios";
 
-const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus,}) => {
+const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus,}) => {
   const [data, setData] = useState([]);
 
 
@@ -36,14 +36,15 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     setdescond(false)
     setownercond(false)
     setstatuscond(false)
+  
+
 
   }
 
 
   const [owner, setOwner] = useState("");
-  const [manager, setManager] = useState("Kapil Dev");
   // const [selectedValue, setSelectedValue] = useState("a");
-  const [selectedValue1, setSelectedValue1] = useState("");
+  // const [selectedValue1, setSelectedValue1] = useState(false);
   const [ownerUUID, setUUid] = useState("");
   const [date] = useState(new Date());
   const formattedDate = format(date, "MMM dd,hh:mm a");
@@ -55,7 +56,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
   const [nameInput, setNameInput] = useState("");
   const[discriptionInput,setdiscriptionInput]=useState("");
   const[statusInput,setStatusInput]=useState("")
-
+  console.log()
   
 
   const handleNameInputChange = (event) => {
@@ -88,19 +89,19 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     }
     
   };
-  const handleStatusInputChange = (event) => {
-    const inputValue = event.target.value;
-    setStatusInput(inputValue);
+  // const handleStatusInputChange = (event) => {
+  //   const inputValue = event.target.value;
+  //   setStatusInput(inputValue);
 
-    if(inputValue==""){
+  //   if(inputValue==""){
 
-      setstatuscond(true)
-    }
-    else{
-      setstatuscond(false)
-    }
+  //     setstatuscond(true)
+  //   }
+  //   else{
+  //     setstatuscond(false)
+  //   }
     
-  };
+  // };
  
  
 
@@ -142,14 +143,14 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
       setownercond(false)
     
     }
-    if(Estatus==""){
+    // if(Estatus==""){
 
-      setstatuscond(true)
-    }
-    else{
-      setstatuscond(false)
-    }
-    if(Ename!=""&&Edescription!=""&&Estatus!=""&&Eportfolio_ownerName!="")
+    //   setstatuscond(true)
+    // }
+    // else{
+    //   setstatuscond(false)
+    // }
+    if(Ename!=""&&Edescription!=""&&Eportfolio_ownerName!="")
     {
       console.log(Ename,Edescription,Estatus,Eportfolio_owner,"edited data")
       handleSave({ name: Ename, description: Edescription, owner: Eportfolio_owner,status:Estatus,formattedDate:formattedDate,ownername:Eportfolio_ownerName, })
@@ -185,9 +186,10 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
   };
 
  
-  const handleChange1 = (event) => {
-    setSelectedValue1(event.target.value);
-  };
+  // const handleChange1 = (event) => {
+    
+  //   setSelectedValue1(event.target.value);
+  // };
 
   const defprops={
     options:data,
@@ -391,11 +393,13 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     variant="primary"
                   />
                   <Radio
-                    checked={selectedValue1 === "Inactive"}
-                    onChange={handleChange1}
+                    checked={!Estatus}
+                    // onChange={handleChange1}
+                    
                     onClick={(event) => {
-                      handlestatus(event.target.value);
-                      handleStatusInputChange(event)
+                      handlestatus(false);
+                      // handleStatusInputChange(event)
+
                     }}
                     value="Inactive"
                     name="radio-buttons"
@@ -420,11 +424,11 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     />
                   </label>
                   <Radio
-                    checked={selectedValue1 === "Active"}
-                    onChange={handleChange1}
+                    checked={Estatus}
+                    // onChange={handleChange1}
                     onClick={(event) => {
-                      handlestatus(event.target.value);
-                      handleStatusInputChange(event)
+                      handlestatus(true);
+                      // handleStatusInputChange(event)
                     }}
                     value="Active"
                     name="radio-buttons"
