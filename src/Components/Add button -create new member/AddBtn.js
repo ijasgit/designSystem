@@ -20,14 +20,14 @@ import "../../Components/NavBar/NavBar.css";
 import { format } from "date-fns";
 import axios from "axios";
 
-const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus}) => {
+const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Estatus,Eportfolio_owner,Eportfolio_ownerName,handleownername,handleSetEname,handleSetDes,handlestatus,}) => {
   const [data, setData] = useState([]);
+
 
 
 
   useEffect(() => {
     fetchUsers();
-  
   }, []);
 
 
@@ -35,7 +35,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
   const [owner, setOwner] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
   // const [selectedValue, setSelectedValue] = useState("a");
-  const [selectedValue1, setSelectedValue1] = useState("e");
+  const [selectedValue1, setSelectedValue1] = useState("");
   const [ownerUUID, setUUid] = useState("");
   const [date] = useState(new Date());
   const formattedDate = format(date, "MMM dd,hh:mm a");
@@ -149,10 +149,8 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     else{
       console.log("not woring")
     }
- 
- 
-
   };
+  
 
   const style = {
     position: "absolute",
@@ -394,7 +392,8 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                         color: lightBlue[600],
                       },
                     }}
-                  />{" "}
+                  />  
+               
                   <label>
                     <LinkLato
                       fontFamily="Lato"
@@ -422,7 +421,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                         color: lightBlue[600],
                       },
                     }}
-                  />{" "}
+                  />  
                   <label>
                     <LinkLato
                       fontFamily="Lato"

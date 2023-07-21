@@ -45,6 +45,7 @@ const Home = () => {
     setportfolio_ownerName("")
     setportfolio_owner("");
     setstatus("")
+    
 
   };
 
@@ -191,7 +192,7 @@ const Home = () => {
                   />
                 </div>
               </div>
-              <DataTable data={data} deleterow={deleterow} editrow={editrow} />
+              <DataTable data={data} deleterow={deleterow} editrow={editrow}  />
             </div>
           ) : (
             <CreateNewPortfolio
