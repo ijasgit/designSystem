@@ -86,15 +86,20 @@ app.post("/api/login", async (req, res) => {
   if (result.rows.length > 0) {
     const dbPassword = result.rows[0].password;
     if (dbPassword === dataPassword) {
-      res.send(true);
-      console.log(result,"result123")
+      res.json({message:"incorrect password",cond:true})
+
     } else {
-      res.send(false);
-      console.log(result,"result123")
+
+      // res.send("incorrect password");
+      res.json({message:"Incorrect password",cond:false})
+      console.log("incorrect password")
+ 
     }
   } else {
-    res.send(false);
-    console.log(result,"result123")
+    res.json({message:"Invalid E-mail",cond:false})
+
+    console.log("invalid email")
+
     
   }
 });
