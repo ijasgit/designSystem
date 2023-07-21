@@ -34,7 +34,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
 
   const [owner, setOwner] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
-  const [selectedValue, setSelectedValue] = useState("a");
+  // const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue1, setSelectedValue1] = useState("e");
   const [ownerUUID, setUUid] = useState("");
   const [date] = useState(new Date());
@@ -43,6 +43,53 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
   const [descond, setdescond] = useState(false);
   const [ownercond, setownercond] = useState(false);
   const [statuscond, setstatuscond] = useState(false);
+  const [nameInput, setNameInput] = useState("");
+  const[discriptionInput,setdiscriptionInput]=useState("");
+  const[statusInput,setStatusInput]=useState("")
+
+  
+
+  const handleNameInputChange = (event) => {
+    const inputValue = event.target.value;
+    setNameInput(inputValue);
+
+    if (inputValue === "") {
+      setnamecond(true);
+    } else {
+      setnamecond(false);
+    }
+    
+  };
+ 
+  const handleDiscriptionInputChange = (event) => {
+    const inputValue = event.target.value;
+    setdiscriptionInput(inputValue);
+
+    if(inputValue==""){
+    
+      setdescond(true)
+    }
+    else{
+      setdescond(false)
+
+    }
+    
+  };
+  const handleStatusInputChange = (event) => {
+    const inputValue = event.target.value;
+    setStatusInput(inputValue);
+
+    if(inputValue==""){
+
+      setstatuscond(true)
+    }
+    else{
+      setstatuscond(false)
+    }
+    
+  };
+ 
+ 
 
 
   const fetchUsers = async () => {
@@ -91,8 +138,8 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     }
     if(Ename!=""&&Edescription!=""&&Estatus!=""&&Eportfolio_ownerName!="")
     {
-      console.log(Ename,Edescription,Estatus,Eportfolio_owner)
-      handleSave({ name: Ename, description: Edescription, owner: Eportfolio_owner,status:Estatus,formattedDate:formattedDate,ownername:Eportfolio_ownerName })
+      console.log(Ename,Edescription,Estatus,Eportfolio_owner,"edited data")
+      handleSave({ name: Ename, description: Edescription, owner: Eportfolio_owner,status:Estatus,formattedDate:formattedDate,ownername:Eportfolio_ownerName, })
       setnamecond(false)
       setdescond(false)
       setownercond(false)
@@ -125,9 +172,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     margin: "0px",
   };
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
+ 
   const handleChange1 = (event) => {
     setSelectedValue1(event.target.value);
   };
@@ -202,6 +247,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     placeholder="Enter Portfolio Name"
                     onChange={(event) => {
                       handleSetEname(event.target.value);
+                       handleNameInputChange(event);
                     }}
                     inputProps={{
                       style: {
@@ -237,6 +283,8 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     }}
                     onChange={(event) => {
                       handleSetDes(event.target.value);
+                      handleDiscriptionInputChange(event)
+                     
                     }}
                   />
                   {descond ? (
@@ -271,11 +319,14 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                       />
                     )}
                     onChange={(event,value)=>{if(value&&value.uuid){
-                      handleownername(value)                     
+                      handleownername(value)  
+                      setownercond(false); 
+                                    
                       
                     }
                   else{
                     setOwner("")
+                    setownercond(true); 
                   }
                   }}
                   />
@@ -332,6 +383,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     onChange={handleChange1}
                     onClick={(event) => {
                       handlestatus(event.target.value);
+                      handleStatusInputChange(event)
                     }}
                     value="Inactive"
                     name="radio-buttons"
@@ -359,6 +411,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
                     onChange={handleChange1}
                     onClick={(event) => {
                       handlestatus(event.target.value);
+                      handleStatusInputChange(event)
                     }}
                     value="Active"
                     name="radio-buttons"

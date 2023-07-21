@@ -43,7 +43,9 @@ const Home = () => {
     setdescription("");
     setuuid("");
     setportfolio_ownerName("")
-    setportfolio_owner("")
+    setportfolio_owner("");
+    setstatus("")
+
   };
 
   useEffect(() => {
@@ -77,6 +79,8 @@ const Home = () => {
           // Handle any errors that occurred during the request
         }
         handleClose();
+    
+
       } 
      else {
       const response1 = await axios.put(`/api/put?id=${uuid}`, {

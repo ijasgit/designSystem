@@ -33,6 +33,7 @@ const DataTable = (props) => {
 
 
   const delete1row = (uuid,index) => {
+    alert('Your Data Completely Deleted ')
     deleterow(uuid);
   };
 
