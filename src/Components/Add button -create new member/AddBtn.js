@@ -34,8 +34,8 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
 
   const [owner, setOwner] = useState("");
   const [manager, setManager] = useState("Kapil Dev");
-  const [selectedValue, setSelectedValue] = useState("a");
-  const [selectedValue1, setSelectedValue1] = useState("e");
+  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue1, setSelectedValue1] = useState("");
   const [ownerUUID, setUUid] = useState("");
   const [date] = useState(new Date());
   const formattedDate = format(date, "MMM dd,hh:mm a");

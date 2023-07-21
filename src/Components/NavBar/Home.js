@@ -44,6 +44,7 @@ const Home = () => {
     setuuid("");
     setportfolio_ownerName("")
     setportfolio_owner("")
+    setstatus("")
   };
 
   useEffect(() => {
