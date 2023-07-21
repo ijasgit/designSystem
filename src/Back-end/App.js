@@ -87,11 +87,14 @@ app.post("/api/login", async (req, res) => {
     const dbPassword = result.rows[0].password;
     if (dbPassword === dataPassword) {
       res.send(true);
+      console.log(result,"result123")
     } else {
       res.send(false);
+      console.log(result,"result123")
     }
   } else {
     res.send(false);
+    console.log(result,"result123")
     
   }
 });

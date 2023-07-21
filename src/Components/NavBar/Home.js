@@ -45,6 +45,7 @@ const Home = () => {
     setportfolio_ownerName("")
     setportfolio_owner("");
     setstatus("")
+    // setdescond(false)
 
   };
 
@@ -107,6 +108,7 @@ const Home = () => {
   };
   const handleSetEname = (name) => {
     setEname(name);
+
   };
   const handleSetDes = (name) => {
     setdescription(name);

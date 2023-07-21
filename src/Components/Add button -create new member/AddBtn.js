@@ -27,9 +27,18 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
 
   useEffect(() => {
     fetchUsers();
+    setdescond(false)
   
   }, []);
 
+  const handleClose1=()=>{
+    handleClose()
+    setnamecond(false)
+    setdescond(false)
+    setownercond(false)
+    setstatuscond(false)
+
+  }
 
 
   const [owner, setOwner] = useState("");
@@ -41,6 +50,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
   const formattedDate = format(date, "MMM dd,hh:mm a");
   const [namecond, setnamecond] = useState(false);
   const [descond, setdescond] = useState(false);
+
   const [ownercond, setownercond] = useState(false);
   const [statuscond, setstatuscond] = useState(false);
   const [nameInput, setNameInput] = useState("");
@@ -60,6 +70,10 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
     }
     
   };
+
+
+
+  
  
   const handleDiscriptionInputChange = (event) => {
     const inputValue = event.target.value;
@@ -145,6 +159,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
       setownercond(false)
       setstatuscond(false)
 
+
     }
     else{
       console.log("not woring")
@@ -191,7 +206,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
      
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleClose1}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -442,7 +457,7 @@ const AddBtn = ({handleSave, open, handleClose,editedData,Ename,Edescription,Est
             </div>
           </div>
           <div className="footer" style={{ marginTop: "20px" }}>
-            <Buttons label="Cancel" variant="secondary" onClick={handleClose} />
+            <Buttons label="Cancel" variant="secondary" onClick={handleClose1} />
             <Buttons label="Save" variant="primary" onClick={handleSave1} />
           </div>
         </Box>
