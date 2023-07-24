@@ -14,8 +14,7 @@ import image from "../NavBar/Image/logo.png";
 import "./signIn.css";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
 
 const defaultTheme = createTheme();
 
@@ -219,7 +218,7 @@ const[invalidpassword,setinvalidpassword]=useState(false)
         </Box>
       </Grid>
     </Grid>
-
+    
   </ThemeProvider>
   </div>
     
