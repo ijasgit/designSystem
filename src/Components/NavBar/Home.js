@@ -129,7 +129,8 @@ const Home = () => {
     setuuid(uuid);
     setEname(response.data[0].name);
     setdescription(response.data[0].description);
-    setstatus(response.data[0].status ==='Active'?true: false);
+    // console.log(response.data[0].status)
+    setstatus(response.data[0].status);
     setportfolio_owner(response.data[0].portfolio_owner)
     const responseOfOwner=await axios.get(`/api/ownername?id=${response.data[0].portfolio_owner}`)
     setportfolio_ownerName(responseOfOwner.data[0].label)

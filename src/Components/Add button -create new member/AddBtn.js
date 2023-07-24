@@ -393,7 +393,7 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                     variant="primary"
                   />
                   <Radio
-                    checked={!Estatus}
+                    checked={Estatus?null:!Estatus}
                     // onChange={handleChange1}
                     
                     onClick={(event) => {
@@ -401,7 +401,7 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                       // handleStatusInputChange(event)
 
                     }}
-                    value="Inactive"
+                    // value="Inactive"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "E" }}
                     sx={{
@@ -424,13 +424,13 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                     />
                   </label>
                   <Radio
-                    checked={Estatus}
+                    checked={Estatus?Estatus:null}
                     // onChange={handleChange1}
                     onClick={(event) => {
                       handlestatus(true);
                       // handleStatusInputChange(event)
                     }}
-                    value="Active"
+                    // value="Active"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "D" }}
                     sx={{

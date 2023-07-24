@@ -127,10 +127,10 @@ const DataTable = (props) => {
                       <TableCell
                         align="right"
                         style={{
-                          color: row.status=="true" ? "#15AC52" : "#C03767",
+                          color: row.status ?"#15AC52":"#C03767"
                         }}
                       >
-                        {row.status=="false"?"Inactive":"Active"}
+                        {row.status? "Active":"Inactive"}
                         {console.log(row.status,"status")}
 
                       
