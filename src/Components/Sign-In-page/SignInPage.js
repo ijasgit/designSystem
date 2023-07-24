@@ -168,8 +168,7 @@ const[invalidpassword,setinvalidpassword]=useState(false)
           <span>{usercond?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Enter E-mail</span>:null}</span>  
           <span>{invalidEmail?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Invalid E-mail</span>:null}</span>  
 
-            
-    
+          <div className="text-field">
             <TextField
               margin="normal"
               required
@@ -191,13 +190,16 @@ const[invalidpassword,setinvalidpassword]=useState(false)
                
               }}
             />
+                <div className="aiOutlet-icon">
+                <AiOutlineEye style={{ fontSize: "22px" }}></AiOutlineEye>
+                </div>
+             
+            </div>
+
              <span>{passwordcond?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Enter password</span>:null}</span>  
              <span>{invalidpassword?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Incorrect password</span>:null}</span>  
 
 
-            <div className="aiOutlet-icon">
-              <AiOutlineEye style={{ fontSize: "22px" }}></AiOutlineEye>
-            </div>
 
             <Button
               fullWidth
