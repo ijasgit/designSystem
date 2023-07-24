@@ -124,14 +124,16 @@ const DataTable = (props) => {
                         {row.name}
                       </p>
                     </TableCell>
-                    <TableCell
-                      align="right"
-                      style={{
-                        color: row.status === "Active" ? "#15AC52" : "#C03767",
-                      }}
-                    >
-                      {row.status}
-                    </TableCell>
+                      <TableCell
+                        align="right"
+                        style={{
+                          color: row.status ? "#15AC52" : "#C03767",
+                        }}
+                      >
+                        {row.status ? "Active" : "Inactive"}
+
+                      
+                      </TableCell>
                     <TableCell align="right">{row.create_date}</TableCell>
                     <TableCell align="right">{row.manager}</TableCell>
 
