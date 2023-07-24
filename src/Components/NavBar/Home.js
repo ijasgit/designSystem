@@ -27,7 +27,7 @@ const Home = () => {
   const [Eportfolio_owner, setportfolio_owner] = useState("");
   console.log(Eportfolio_owner,"Eportfolio_owner got it")
   const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
-  const [Estatus, setstatus] = useState("");
+  const [Estatus, setstatus] = useState(false);
   console.log(Estatus,"status got it")
   const [uuid, setuuid] = useState("");
 
@@ -124,7 +124,8 @@ const Home = () => {
       }
 
   const editrow = async (uuid) => {
-    console.log(uuid,"home uuid gotit")
+    // console.log(uuid,"home uuid gotit")
+    // const statusAsBoolean = response.data[0].status === 'Active' ? true : false;
     const response = await axios.get(`/api/edit?id=${uuid}`);
     setuuid(uuid);
     setEname(response.data[0].name);
