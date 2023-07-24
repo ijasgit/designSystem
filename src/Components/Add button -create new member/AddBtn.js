@@ -401,7 +401,7 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                       // handleStatusInputChange(event)
 
                     }}
-                    value="Inactive"
+                    // value="Inactive"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "E" }}
                     sx={{
@@ -430,7 +430,7 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                       handlestatus(true);
                       // handleStatusInputChange(event)
                     }}
-                    value="Active"
+                    // value="Active"
                     name="radio-buttons"
                     inputProps={{ "aria-label": "D" }}
                     sx={{

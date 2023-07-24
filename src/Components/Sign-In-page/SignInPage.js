@@ -15,6 +15,8 @@ import "./signIn.css";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 // import { ToastContainer, toast } from 'react-toastify';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const defaultTheme = createTheme();
 
@@ -29,6 +31,7 @@ const[usercond,setusercond]=useState(false)
 const[passwordcond,setpasscond]=useState(false)
 const[invalidEmail,setinvalidEmail]=useState(false)
 const[invalidpassword,setinvalidpassword]=useState(false)
+const[passwordVisible,setpasswordvisible]=useState(true)
 
 
   const handleSubmit = async () => {
@@ -175,7 +178,7 @@ const[invalidpassword,setinvalidpassword]=useState(false)
               fullWidth
               name="password"
               label="Password"
-              type="password"
+              type={passwordVisible?"password":"text"}
               id="password"
               autoComplete="current-password"
               style={{
@@ -200,6 +203,10 @@ const[invalidpassword,setinvalidpassword]=useState(false)
              <span>{invalidpassword?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Incorrect password</span>:null}</span>  
 
 
+            <div className="aiOutlet-icon">
+              {/* <AiOutlineEye style={{ fontSize: "22px" }}></AiOutlineEye> */}
+           {passwordVisible?   <VisibilityIcon onClick={()=>setpasswordvisible(false)} />: <VisibilityOffIcon onClick={()=>setpasswordvisible(true)}/>}
+            </div>
 
             <Button
               fullWidth
