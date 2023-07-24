@@ -39,7 +39,7 @@ const DataTable = (props) => {
 
   const edit1row=(uuid)=>{
     editrow(uuid)
-    console.log(editrow,"edit ")
+    // console.log(editrow,"edit ")
    
   }
 
@@ -127,10 +127,10 @@ const DataTable = (props) => {
                       <TableCell
                         align="right"
                         style={{
-                          color: row.status ?"#15AC52":"#C03767"
+                          color: row.status ? "#15AC52" : "#C03767",
                         }}
                       >
-                        {row.status? "Active":"Inactive"}
+                       {row.status ? "Active" : "Inactive"}
                         {console.log(row.status,"status")}
 
                       
