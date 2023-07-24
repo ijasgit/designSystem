@@ -171,7 +171,7 @@ const[passwordVisible,setpasswordvisible]=useState(true)
           <span>{usercond?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Enter E-mail</span>:null}</span>  
           <span>{invalidEmail?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Invalid E-mail</span>:null}</span>  
 
-          <div className="text-field">
+          
             <TextField
               margin="normal"
               required
@@ -193,20 +193,19 @@ const[passwordVisible,setpasswordvisible]=useState(true)
                
               }}
             />
-                <div className="aiOutlet-icon">
-                <AiOutlineEye style={{ fontSize: "22px" }}></AiOutlineEye>
-                </div>
-             
-            </div>
+             <div className="aiOutlet-icon">
+            
+            {passwordVisible?   <VisibilityIcon onClick={()=>setpasswordvisible(false)} />: <VisibilityOffIcon onClick={()=>setpasswordvisible(true)}/>}
+             </div>
+
+            
+                  
 
              <span>{passwordcond?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Enter password</span>:null}</span>  
              <span>{invalidpassword?<span style={{color:"red",paddingLeft:"10px",fontSize:"12px"}}>*Incorrect password</span>:null}</span>  
 
 
-            <div className="aiOutlet-icon">
-              {/* <AiOutlineEye style={{ fontSize: "22px" }}></AiOutlineEye> */}
-           {passwordVisible?   <VisibilityIcon onClick={()=>setpasswordvisible(false)} />: <VisibilityOffIcon onClick={()=>setpasswordvisible(true)}/>}
-            </div>
+           
 
             <Button
               fullWidth

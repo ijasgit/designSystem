@@ -7,18 +7,22 @@ body{
     background-color: #F5F5F5 !important;
 }
 
-.aiOutlet-icon{
+.aiOutlet-icon {
     display: flex;
     position: relative;
     bottom: 48px;
     left: 87%;
-    width:7%;
-  
-}
+    width: 7%;
+    
+   
+  }
 
 .grid-1{
 
     box-shadow: 2px 2px 9px gray;    
     
 }
+.icon-with-margin-top {
+    margin-top: 20px;
+  }
 
