@@ -393,7 +393,7 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                     variant="primary"
                   />
                   <Radio
-                    checked={Estatus?null:!Estatus}
+                    checked={!Estatus}
                     // onChange={handleChange1}
                     
                     onClick={(event) => {
@@ -424,7 +424,7 @@ const AddBtn = ({handleSave, open, handleClose,Ename,Edescription,Estatus,Eportf
                     />
                   </label>
                   <Radio
-                    checked={Estatus?Estatus:null}
+                    checked={Estatus}
                     // onChange={handleChange1}
                     onClick={(event) => {
                       handlestatus(true);
