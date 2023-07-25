@@ -1,36 +1,52 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./NavBar.css";
-import SideNav from "./SideNav";
 import NavBar from "./NavBar";
 import CreateNewPortfolio from "../CreateNewProtfolio/CreateNewPortfolio";
 import DataTable from "../../Stories/Table/DataTable";
 import AddBtn from "../Add button -create new member/AddBtn";
 import Buttons from "../../Stories/Buttons/Buttons";
-import { useSelector } from "react-redux";
 import SearchBar from "../../Stories/Search Bar/SearchBar";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { TbShare2 } from "react-icons/tb";
-import { HiSortDescending } from "react-icons/hi";
 import CircularProgress from "@mui/joy/CircularProgress";
-import { set } from "date-fns";
+import { BsSortAlphaDownAlt,BsSortAlphaDown } from "react-icons/bs";
+
 
 const Home = () => {
   const [data, setData] = useState("");
+  // console.log (data)
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [editedData, seteditData] = useState();
   const [Ename, setEname] = useState("");
-  console.log(Ename,"ename got it")
+  // console.log(Ename,"ename got it")
   const [Edescription, setdescription] = useState("");
-  console.log(Edescription,"Edescription got it")
+  // console.log(Edescription,"Edescription got it")
   const [Eportfolio_owner, setportfolio_owner] = useState("");
-  console.log(Eportfolio_owner,"Eportfolio_owner got it")
+  // console.log(Eportfolio_owner,"Eportfolio_owner got it")
   const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
-  const [Estatus, setstatus] = useState("");
+  const [Estatus, setstatus] = useState(false);
   // console.log(Estatus,"status got it")
   const [uuid, setuuid] = useState("");
+  const [isAscending, setIsAscending] = useState(true);
 
+
+
+  const handleSort = () => {
+    setIsAscending((prevIsAscending) => !prevIsAscending);
+    const sortedData = [...data];
+  sortedData.sort((a, b) => {
+    if (isAscending) { 
+      return b.name.localeCompare(a.name);
+    } else {
+      return a.name.localeCompare(b.name);
+    }
+
+  });
+    setData(sortedData);
+    
+  };
  
   const handleOpen = () => {
     setOpen(true);
@@ -181,8 +197,13 @@ const Home = () => {
                   }}
                 >
                   <GiSettingsKnobs className="icon" />
-                  <HiSortDescending className="icon" />
-                  <TbShare2 className="icon" />
+
+                  {isAscending ? (
+                  <BsSortAlphaDown className="icon" onClick={handleSort} />
+                        ) : (
+                  <BsSortAlphaDownAlt className="icon" onClick={handleSort} />
+                     )}  
+                      <TbShare2 className="icon" />
                 </div>
                 <div>
                   <Buttons

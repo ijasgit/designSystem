@@ -43,7 +43,7 @@ app.delete("/api/portfolio/:uuid", async (req, res) => {
 });
 
 app.get("/api/portfolio", async (req, res) => {
-  client.query('SELECT * FROM "portfolio"', (err, result) => {
+  client.query('SELECT * FROM "portfolio"ORDER BY name ASC', (err, result) => {
     if (err) {
       console.error("Error executing query:", err);
     } else {
@@ -81,7 +81,7 @@ app.post("/api/login", async (req, res) => {
   const dataPassword = req.body.password;
 
   // await client.connect();
-  const query = 'SELECT password FROM "my_newdb" WHERE username = $1';
+  const query = 'SELECT password FROM "my_newdb" WHERE usersname = $1';
   const result = await client.query(query, [dataUserName]);
   if (result.rows.length > 0) {
     const dbPassword = result.rows[0].password;
