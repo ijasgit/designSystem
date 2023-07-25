@@ -34,16 +34,15 @@ const Home = () => {
 
 
   const handleSort = () => {
-    setIsAscending((prevIsAscending) => !prevIsAscending);
+    setIsAscending((value)=>!value);
     const sortedData = [...data];
-  sortedData.sort((a, b) => {
-    if (isAscending) { 
-      return b.name.localeCompare(a.name);
-    } else {
-      return a.name.localeCompare(b.name);
-    }
-
-  });
+    sortedData.sort((a, b) => {
+      if (isAscending) {
+        return b.name.localeCompare(a.name);
+      } else {
+        return a.name.localeCompare(b.name);
+      }
+    });
     setData(sortedData);
     
   };
@@ -81,7 +80,8 @@ const Home = () => {
       console.error("Error fetching data:", error.response);
     }
   };
-  const handleSave = async (data1) => {
+  const handleSave = async (data1,isAscending) => {
+    setIsAscending(true)
     if (!uuid) {
       console.log("yes",data1)
      
@@ -97,6 +97,7 @@ const Home = () => {
           // Handle any errors that occurred during the request
         }
         handleClose();
+      
     
 
       } 
@@ -110,6 +111,7 @@ const Home = () => {
       handleClose()
       fetchPortfolio()
     }
+  
   };
 
   const deleterow = async (uuid) => {
@@ -238,6 +240,8 @@ const Home = () => {
           handlestatus={handlestatus}
           handleSetDes={handleSetDes}
           handleownername={handleownername}
+          isAscending={isAscending} 
+          handleSort={handleSort}
         />
       </div>
     </div>
