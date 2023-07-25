@@ -27,9 +27,10 @@ const Home = () => {
   const [Eportfolio_owner, setportfolio_owner] = useState("");
   console.log(Eportfolio_owner,"Eportfolio_owner got it")
   const [Eportfolio_ownerName, setportfolio_ownerName] = useState("");
-  const [Estatus, setstatus] = useState("");
+  const [Estatus, setstatus] = useState(false);
   // console.log(Estatus,"status got it")
   const [uuid, setuuid] = useState("");
+  const[search,setsearch]=useState("")
 
  
   const handleOpen = () => {
@@ -66,6 +67,7 @@ const Home = () => {
     }
   };
   const handleSave = async (data1) => {
+
     if (!uuid) {
       console.log("yes",data1)
      
@@ -170,6 +172,7 @@ const Home = () => {
                     placeholder="Search"
                     varient="small"
                     width="250px"
+                    onClick={(e)=>setsearch(e.target.value)}
                   />
                 </div>
 
@@ -193,7 +196,7 @@ const Home = () => {
                   />
                 </div>
               </div>
-              <DataTable data={data} deleterow={deleterow} editrow={editrow}  />
+              <DataTable data={data} deleterow={deleterow} editrow={editrow} search={search}  />
             </div>
           ) : (
             <CreateNewPortfolio

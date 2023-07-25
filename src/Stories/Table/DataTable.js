@@ -26,30 +26,35 @@ import { blue } from "@mui/material/colors";
 
 const DataTable = (props) => {
   const nav = useNavigate();
-  
 
-  const { variant = "primary", height, width, data,deleterow,editrow , ...rest} = props;
+  const {
+    variant = "primary",
+    height,
+    width,
+    data,
+    deleterow,
+    search,
+    editrow,
+    ...rest
+  } = props;
   const [rows, setRows] = useState(data);
+  console.log(rows, "roewws");
 
-
-  const delete1row = (uuid,index) => {
-    alert('Your Data Completely Deleted ')
+  const delete1row = (uuid, index) => {
+    alert("Your Data Completely Deleted ");
     deleterow(uuid);
   };
 
-  const edit1row=(uuid)=>{
-    editrow(uuid)
+  const edit1row = (uuid) => {
+    editrow(uuid);
     // console.log(editrow,"edit ")
-   
-  }
+  };
 
   const check = (id, index) => {
     let data = rows.slice();
     data[index].show = !data[index].show;
     setRows(data);
   };
-
-
 
   const diapatch = useDispatch();
 
@@ -62,7 +67,9 @@ const DataTable = (props) => {
     );
     nav("/software");
   };
-
+const filtervalue=()=>{
+  
+}
   return (
     <div>
       <div
@@ -73,15 +80,12 @@ const DataTable = (props) => {
         }}
       >
         <div style={{ display: "flex", columnGap: "32px" }}>
-    
           <div
             style={{
               position: "relative",
               display: "flex",
             }}
-          >
-           
-          </div>
+          ></div>
         </div>
       </div>
       {data && data.length && (
@@ -97,7 +101,6 @@ const DataTable = (props) => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  
                   <TableCell>Name</TableCell>
                   <TableCell align="right">Status</TableCell>
                   <TableCell align="right">Created date</TableCell>
@@ -106,55 +109,72 @@ const DataTable = (props) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                   
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      onClick={() => NavtoSoftware(row.name)}
+                {rows
+                  .filter((item) => { 
+                    let active = "active"   
+                    if(search.toLowerCase() !== "" && active.includes(search.toLowerCase())){
+                      return item.status === true
+                    } 
+                    let inactive = "inactive"    
+                    if(search.toLowerCase() !== "" && inactive.includes(search.toLowerCase())){
+                      return item.status === false
+                    }
+                    else{
+                      return search.toLowerCase() === ""
+                      ? item
+                      : item.name.toLowerCase().includes(search) ||
+                        item.create_date.toLowerCase().includes(search)
+                    }                                                
+                  })
+                  .map((row, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <p
-                        style={{ color: "blue", cursor: "pointer" }}
-                        className="link-hover"
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        onClick={() => NavtoSoftware(row.name)}
                       >
-                        {row.name}
-                      </p>
-                    </TableCell>
+                        <p
+                          style={{ color: "blue", cursor: "pointer" }}
+                          className="link-hover"
+                        >
+                          {row.name}
+                        </p>
+                      </TableCell>
                       <TableCell
                         align="right"
                         style={{
                           color: row.status ? "#15AC52" : "#C03767",
                         }}
                       >
-                       {row.status ? "Active" : "Inactive"}
-                        {console.log(row.status,"status")}
-
-                      
+                        {row.status ? "Active" : "Inactive"}
+                        {console.log(row.status, "status")}
                       </TableCell>
-                    <TableCell align="right">{row.create_date}</TableCell>
-                    <TableCell align="right">{row.manager}</TableCell>
+                      <TableCell align="right">{row.create_date}</TableCell>
+                      <TableCell align="right">{row.manager}</TableCell>
 
-                    <TableCell align="right">
-                      {row.protein}
-                      <MoreHorizIcon onClick={() => check(row.id, index)} />
-                      {row.show ? (
-                        
-                        <Paper>
-                          <MenuList>
-                          <MenuItem onClick={()=>edit1row(row.uuid)}>Edit</MenuItem>
-                            <MenuItem onClick={()=>delete1row(row.uuid,index)}>Delete</MenuItem>
-                        
-
-                          </MenuList>
-                        </Paper>
-                      ) : null}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                      <TableCell align="right">
+                        {row.protein}
+                        <MoreHorizIcon onClick={() => check(row.id, index)} />
+                        {row.show ? (
+                          <Paper>
+                            <MenuList>
+                              <MenuItem onClick={() => edit1row(row.uuid)}>
+                                Edit
+                              </MenuItem>
+                              <MenuItem
+                                onClick={() => delete1row(row.uuid, index)}
+                              >
+                                Delete
+                              </MenuItem>
+                            </MenuList>
+                          </Paper>
+                        ) : null}
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>

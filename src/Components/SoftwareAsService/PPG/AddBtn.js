@@ -261,18 +261,17 @@ const AddBtn = (props,ref) => {
                     fontFamily="Poppins"
                     fontSize={12}
                     fontWeight={500}
-                    label="Role 1 user"
+                    label="Select user"
                     letterSpacing={0}
                     lineHeight="18px"
                     variant="primary"
                   />
-                                    <TextFields
+                    <TextFields
                     borderRadius="4px"
                     height="32px"
                     label=""
                     placeholder="Select case development custom field"
-                    width="375px"
-                    
+                    width="375px"                    
                   />
                 </div>
                 

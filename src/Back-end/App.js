@@ -9,7 +9,7 @@ const client = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
-  password: "Sarathi@123",
+  password: "test",
   port: 5432,
 });
 
@@ -60,6 +60,7 @@ app.post("/api/portfolio", async (req, res) => {
   const create_date = req.body.data.formattedDate;
   const dataOwner = req.body.data.owner;
   const dataStatus = req.body.data.status;
+
   const uuid = v4();
 
   const query =
@@ -81,7 +82,7 @@ app.post("/api/login", async (req, res) => {
   const dataPassword = req.body.password;
 
   // await client.connect();
-  const query = 'SELECT password FROM "my_newdb" WHERE username = $1';
+  const query = 'SELECT password FROM "Authentication" WHERE username = $1';
   const result = await client.query(query, [dataUserName]);
   if (result.rows.length > 0) {
     const dbPassword = result.rows[0].password;
