@@ -13,13 +13,14 @@ const SearchBar = (props) => {
     placeholder="search",
     fontSize="",
     backgroundColor,
+    onClick,
     ...rest
   } = props;
 
   return (
     <div className="searchBar">
       <TextField
-        
+        onChange={onClick}
         id="input-with-icon-textfield"
         placeholder={placeholder}
         InputProps={{

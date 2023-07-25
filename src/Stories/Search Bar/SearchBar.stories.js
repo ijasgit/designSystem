@@ -4,6 +4,7 @@ export default {
   title: "Search bar/Search bar",
   component: SearchBar,
   tags: ["autodocs"],
+  argTypes: { onClick: { action: 'clicked ac' } },
 };
 
 export const Primary = {
@@ -13,7 +14,8 @@ export const Primary = {
     width: "333px",
     borderRadius: "4px",
     placeholder:"Search Portfolio or Product",
-    fontSize:"large"
+    fontSize:"large",
+
   },
 };
 

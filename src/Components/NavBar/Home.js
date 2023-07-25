@@ -31,7 +31,7 @@ const Home = () => {
   const [uuid, setuuid] = useState("");
   const [isAscending, setIsAscending] = useState(true);
 
-
+  const[search,setsearch]=useState("")
 
   const handleSort = () => {
     setIsAscending((value)=>!value);
@@ -80,7 +80,7 @@ const Home = () => {
       console.error("Error fetching data:", error.response);
     }
   };
-  const handleSave = async (data1,isAscending) => {
+  const handleSave = async (data1) => {
     setIsAscending(true)
     if (!uuid) {
       console.log("yes",data1)
@@ -188,6 +188,7 @@ const Home = () => {
                     placeholder="Search"
                     varient="small"
                     width="250px"
+                    onClick={(e)=>setsearch(e.target.value)}
                   />
                 </div>
 
@@ -216,7 +217,7 @@ const Home = () => {
                   />
                 </div>
               </div>
-              <DataTable data={data} deleterow={deleterow} editrow={editrow}  />
+              <DataTable data={data} deleterow={deleterow} editrow={editrow} search={search}  />
             </div>
           ) : (
             <CreateNewPortfolio
