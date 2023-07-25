@@ -243,6 +243,7 @@ const Home = () => {
           handleownername={handleownername}
           isAscending={isAscending} 
           handleSort={handleSort}
+        
         />
       </div>
     </div>
